@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// 360 DigiSigns RGB theme colors
+				'digi-red': '#ea2027',
+				'digi-green': '#6ab04c',
+				'digi-blue': '#4834d4',
+				'digi-black': '#121212',
+				'digi-white': '#ffffff',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +91,48 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-20px)' },
+				},
+				'pulse-rgb': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px rgba(234, 32, 39, 0.7)' 
+					},
+					'25%': { 
+						boxShadow: '0 0 20px rgba(106, 176, 76, 0.7)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 20px rgba(72, 52, 212, 0.7)' 
+					},
+					'75%': { 
+						boxShadow: '0 0 20px rgba(234, 32, 39, 0.7)' 
+					},
+				},
+				'flow-rgb': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-rgb': 'pulse-rgb 6s ease-in-out infinite',
+				'flow-rgb': 'flow-rgb 8s ease infinite',
+			},
+			backgroundImage: {
+				'gradient-rgb': 'linear-gradient(45deg, #ea2027, #6ab04c, #4834d4, #ea2027)',
+			},
+			backgroundSize: {
+				'300%': '300% 300%',
+			},
+			fontFamily: {
+				'sans': ['Inter', 'sans-serif'],
+				'display': ['Montserrat', 'sans-serif'],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
