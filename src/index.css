@@ -98,18 +98,19 @@
 }
 
 .text-rgb-animated {
-  background: linear-gradient(45deg, #ea2027, #6ab04c, #4834d4, #ea2027);
+  background: linear-gradient(45deg, #ff1a1a, #4dff4d, #1a1aff, #ff1a1a);
   background-size: 300% 300%;
-  animation: flow-rgb 8s ease infinite;
+  animation: flow-rgb 6s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  text-shadow: 0 0 5px rgba(255,255,255,0.1);
 }
 
 .bg-rgb-animated {
-  background: linear-gradient(45deg, #ea2027, #6ab04c, #4834d4, #ea2027);
+  background: linear-gradient(45deg, #ff1a1a, #4dff4d, #1a1aff, #ff1a1a);
   background-size: 300% 300%;
-  animation: flow-rgb 8s ease infinite;
+  animation: flow-rgb 6s ease infinite;
 }
 
 @keyframes flow-rgb {
@@ -121,5 +122,35 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.logo-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-shine::after {
+  content: '';
+  position: absolute;
+  top: -110%;
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: rotate(30deg);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
   }
 }
