@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Info, Star } from "lucide-react";
+import { Info, Star, Check } from "lucide-react";
 
 const Hero = () => {
   return (
