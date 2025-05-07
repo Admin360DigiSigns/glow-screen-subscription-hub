@@ -1,6 +1,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Info, Star, Check, Sparkles, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import ContactForm from "@/components/ContactForm";
 
 const Hero = () => {
   return (
@@ -54,10 +57,23 @@ const Hero = () => {
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-8 animate-fade-in" style={{animationDelay: "1.4s"}}>
-              <Button size="lg" className="bg-rgb-animated group relative overflow-hidden">
-                <span className="absolute inset-0 bg-white/20 transform -translate-x-full hover:translate-x-0 transition-transform duration-300 group-hover:translate-x-full"></span>
-                <Zap className="mr-2 h-5 w-5" /> Start Your Subscription
-              </Button>
+              <Link to="/pricing">
+                <Button size="lg" className="bg-rgb-animated group relative overflow-hidden">
+                  <span className="absolute inset-0 bg-white/20 transform -translate-x-full hover:translate-x-0 transition-transform duration-300 group-hover:translate-x-full"></span>
+                  <Zap className="mr-2 h-5 w-5" /> Start Your Subscription
+                </Button>
+              </Link>
+              
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" variant="demoButton">
+                    Explore Digital Solutions
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-black border-gray-800 text-white max-w-xl">
+                  <ContactForm />
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Key benefits section with enhanced styling */}

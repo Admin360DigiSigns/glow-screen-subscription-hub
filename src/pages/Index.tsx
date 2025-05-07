@@ -8,6 +8,8 @@ import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import LedVideoWall from "@/components/LedVideoWall";
 import DigitalScreenAdvantages from "@/components/DigitalScreenAdvantages";
+import ContactSection from "@/components/ContactSection";
+import SubscriptionPlans from "@/components/SubscriptionPlans";
 
 const Index = () => {
   return (
@@ -20,6 +22,7 @@ const Index = () => {
       <Showcase />
       <ClientLogos />
       <Testimonials />
+      <ContactSection />
       <Footer />
     </div>
   );
