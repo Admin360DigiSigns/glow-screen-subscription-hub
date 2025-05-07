@@ -925,13 +925,7 @@ export default function SubscriptionForm({
                             </li>
                           </ul>
                         </div>
-                        <div className="hidden md:block ml-4">
-                          <img 
-                            src="/lovable-uploads/b58d80aa-bd76-4980-be0a-c66ecc9da3b6.png" 
-                            alt="Installation Process" 
-                            className="w-24 h-24 object-cover rounded-lg opacity-80" 
-                          />
-                        </div>
+                        
                       </div>
                     </motion.div>
                   </motion.div>
