@@ -32,10 +32,11 @@ const Navbar = () => {
           {/* Desktop Navigation - Centered with white text */}
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex space-x-8">
-              <Link to="/" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">Home<span className="text-rgb-animated"></Link>
-              <ProductNavMenu />
-              <Link to="/pricing" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">Pricing<span className="text-rgb-animated"></Link>
-              <a href="/#showcase" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">About Us<span className="text-rgb-animated"></a>
+              <span className="text-rgb-animated"><Link to="/" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">Home</Link></span>
+              <span className="text-rgb-animated"><ProductNavMenu /></span>
+            
+              <span className="text-rgb-animated"><Link to="/pricing" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">Pricing</Link></span>
+              <span className="text-rgb-animated"><a href="/#showcase" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">About Us</a></span>
             </div>
           </div>
 
