@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
@@ -349,7 +348,7 @@ export default function SubscriptionForm({
                                 <div className="flex items-center px-3 bg-gray-800 border border-r-0 border-gray-700 rounded-l-md">
                                   <span className="text-gray-400 flex items-center gap-1">
                                     <img 
-                                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MzYgNDgwIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjY3IiBkPSJNMCAwaDYzNnY0ODBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iMXB0IiBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xODEuNzYgMGg0NzkuNnY0OGgtNDc5LjZ6bTAgMTkxLjk5aDQ3OS42djQ4aC00NzkuNnptMCAxOTEuOTloNDc5LjZ2NDhoLTQ3OS42ek0wIDBoMjM5Ljk5djI0MGgzOTZWMGgtNjM2eiIvPjxwYXRoIGZpbGw9InJlZCIgZD0iTTE1LjI1IDE1LjI1aDIwOS41djIwOS41aC0yMDkuNXoiLz48cGF0aCBmaWxsPSIjMDAwMDYyIiBkPSJNNjAgMTE5Ljk5TDM4LjQ1IDk1Ljk4bC0yMS4yMyAyNC41NkwyMS41IDkwLjQxbDAtMzAuNDRsMjQuMzQgMTkuMjhMMjcuNzMgNTUuNDYgNDguMSAzNC4yOCA0Ni4pIEMgOTggNDMuMTYgNzIuMDMgNzMuNzcgNjEuMvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05My45MiA2MC4yVjIwLjM3TDEyMC43OCAwaDI2LjgydjYwLjJIODcuMjV6TTM0LjIxIDE4NC42TDApIGQ9Ik0xMTMuNSAyMC4zN2gtMTYuOUw4MC4xIDQwLjE5aDMzLjM3em0tMzMuMzcgMHYxOS44Mkw2MCw2MC4yaDMzLjM3di0yMC4xbC0xMy4yNS0xOS43M3oiLz48L2c+PC9zdmc+" 
+                                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MzYgNDgwIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjY3IiBkPSJNMCAwaDYzNnY0ODBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iMXB0IiBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xODEuNzYgMGg0NzkuNnY0OGgtNDc5LjZ6bTAgMTkxLjk5aDQ3OS42djQ4aC00NzkuNnptMCAxOTEuOTloNDc5LjZ2NDhoLTQ3OS42ek0wIDBoMjM5Ljk5djI0MGgzOTZWMGgtNjM2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05My45MiA2MC4yVjIwLjM3TDEyMC43OCAwaDI2LjgydjYwLjJIODcuMjV6TTM0LjIxIDE4NC42TDApIGQ9Ik0xMTMuNSAyMC4zN2gtMTYuOUw4MC4xIDQwLjE5aDMzLjM3em0tMzMuMzcgMHYxOS44Mkw2MCw2MC4yaDMzLjM3di0yMC4xbC0xMy4yNS0xOS43M3oiLz48L2c+PC9zdmc+" 
                                       alt="Canada Flag" 
                                       className="w-5 h-3.5 mr-1"
                                     />
@@ -1003,17 +1002,32 @@ export default function SubscriptionForm({
                       
                       <div className="rounded-lg border border-gray-700 p-4">
                         <h3 className="text-lg font-semibold mb-3">Terms & Conditions</h3>
-                        <div className="h-20 overflow-y-auto mb-4 p-3 text-xs text-gray-400 bg-black/50 rounded border border-gray-700">
-                          THIS EQUIPMENT RENTAL AGREEMENT (this "Agreement") dated this 7 day of May, 2025<br/><br/>
-                          By subscribing to our service, you agree to the terms and conditions outlined in our rental agreement.
-                          The equipment remains the property of 360 DIGI-SIGNS. Monthly fees are charged in advance.
-                          Cancellation requires 30 days notice. Damage to equipment may result in repair charges.
+                        <div className="max-h-60 overflow-y-auto mb-4 p-5 text-sm text-gray-200 bg-black/50 rounded border border-gray-700 leading-relaxed">
+                          <h4 className="font-medium text-white mb-3">EQUIPMENT RENTAL AGREEMENT</h4>
+                          <p className="mb-3">THIS EQUIPMENT RENTAL AGREEMENT (this "Agreement") dated this 7 day of May, 2025</p>
+                          
+                          <p className="mb-3">By subscribing to our service, you agree to the terms and conditions outlined in our rental agreement.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">1. Equipment Ownership</h5>
+                          <p className="mb-3">The equipment remains the property of 360 DIGI-SIGNS at all times. Customer shall not make any alterations, changes or modifications to the equipment without written permission from 360 DIGI-SIGNS.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">2. Payment Terms</h5>
+                          <p className="mb-3">Monthly fees are charged in advance on the first day of each month. Late payments will incur a 2% fee per month on the outstanding amount.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">3. Cancellation Policy</h5>
+                          <p className="mb-3">Cancellation requires 30 days written notice to be provided to 360 DIGI-SIGNS. Any outstanding fees must be paid in full prior to cancellation being processed.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">4. Damage & Liability</h5>
+                          <p className="mb-3">Damage to equipment may result in repair charges. Customer is responsible for maintaining appropriate insurance coverage for the equipment while it is in their possession.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">5. Content Guidelines</h5>
+                          <p>Customer agrees to display only appropriate content that complies with all applicable laws and regulations. 360 DIGI-SIGNS reserves the right to review and reject any content deemed inappropriate.</p>
                         </div>
                         <div className="flex items-center gap-2">
                           <input 
                             type="checkbox" 
                             id="terms" 
-                            className="h-4 w-4 rounded border-gray-500 text-digi-red focus:ring-digi-red"
+                            className="h-5 w-5 rounded border-gray-500 text-digi-red focus:ring-digi-red"
                             required 
                           />
                           <label htmlFor="terms" className="text-sm text-gray-300">
