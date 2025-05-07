@@ -114,15 +114,7 @@ const DigitalScreenAdvantages = () => {
                 </p>
               </div>
               
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-digi-red/20 via-digi-green/20 to-digi-blue/20 rounded-xl animate-pulse opacity-50"></div>
-                <div className="relative bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10">
-                  <h4 className="text-xl font-semibold text-white mb-4">Transparent Display Features</h4>
-                  <div className="flex flex-col space-y-6">
-                    {/* Content intentionally left empty as per user request */}
-                  </div>
-                </div>
-              </div>
+              
             </div>
             
             {/* Animated elements */}
