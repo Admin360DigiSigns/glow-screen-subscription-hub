@@ -220,9 +220,9 @@ const Products = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="lg:w-1/3"
+                className="lg:w-1/3 h-full"
               >
-                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24">
+                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24 h-full flex flex-col">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
                   
                   <CardHeader className="relative border-b border-gray-800">
@@ -236,7 +236,7 @@ const Products = () => {
                     </div>
                   </CardHeader>
                   
-                  <CardContent className="pt-6">
+                  <CardContent className="pt-6 flex-grow">
                     <ul className="space-y-6">
                       {selectedCategory.whyChoose.map((reason, i) => (
                         <li key={i} className="flex gap-3">
@@ -250,7 +250,7 @@ const Products = () => {
                     </ul>
                   </CardContent>
                   
-                  <CardFooter className="pt-2">
+                  <CardFooter className="mt-auto">
                     <Button 
                       className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white" 
                       onClick={() => window.location.href = `/contact?product=${selectedCategory.id}`}
