@@ -1,5 +1,5 @@
 
-import { Monitor, Zap, Smartphone, Check, Video, RefreshCw, Shield, Images } from "lucide-react";
+import { Monitor, Zap, Smartphone, Check, Video, RefreshCw, Shield, Images, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,12 @@ const advantages = [
     title: "Ultra HD Resolution",
     description: "Crystal-clear 4K displays with vibrant colors and perfect contrast ratios that make content stand out from across the room.",
     details: "Our digital screens feature HDR10+ support, 10-bit color depth, and anti-glare technology for perfect visibility in any lighting environment."
+  },
+  {
+    icon: <Layers className="h-12 w-12 text-digi-blue p-2" />,
+    title: "Transparent Display Technology",
+    description: "Revolutionary transparent screens that blend seamlessly with your environment while displaying vivid content.",
+    details: "Up to 80% transparency with adjustable opacity settings, perfect for retail storefronts, museum displays, and modern office environments."
   },
   {
     icon: <Zap className="h-12 w-12 text-digi-green p-2" />,
@@ -34,12 +40,6 @@ const advantages = [
     title: "Customizable Templates",
     description: "Choose from hundreds of professionally designed templates or create your own with our drag-and-drop editor.",
     details: "Industry-specific templates for restaurants, retail, healthcare, and corporate environments with easy customization options."
-  },
-  {
-    icon: <Shield className="h-12 w-12 text-digi-blue p-2" />,
-    title: "Enterprise-Grade Security",
-    description: "End-to-end encryption for content delivery with secure user authentication and access controls.",
-    details: "SOC 2 compliant infrastructure with regular security audits, remote device monitoring, and instant alerts for unauthorized access attempts."
   }
 ];
 
@@ -71,38 +71,98 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Creative writing highlight box - Replacing the image */}
+        {/* Transparent Screen Highlight Box */}
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
           <div className="absolute inset-0 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
           <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h3 className="text-3xl font-bold text-white mb-6 text-glow animate-pulse-slow">
-                <span className="text-digi-red">Transform</span> • <span className="text-digi-green">Engage</span> • <span className="text-digi-blue">Impress</span>
-              </h3>
-              
-              <p className="text-xl text-gray-100 mb-4 font-light leading-relaxed">
-                Step into the future with our revolutionary digital display technology that doesn't just show content—it creates <span className="font-semibold text-digi-green">unforgettable experiences</span>.
-              </p>
-              
-              <p className="text-lg text-gray-200 mb-6">
-                From vibrant storefronts that stop traffic to immersive corporate environments that tell your story, our displays deliver unmatched visual impact with intelligent features that adapt to your needs.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-4 mb-6">
-                <div className="px-4 py-2 bg-digi-red/20 backdrop-blur-sm rounded-full border border-digi-red/30">
-                  <span className="text-white font-semibold">4K Ultra HD</span>
-                </div>
-                <div className="px-4 py-2 bg-digi-green/20 backdrop-blur-sm rounded-full border border-digi-green/30">
-                  <span className="text-white font-semibold">Smart Content Management</span>
-                </div>
-                <div className="px-4 py-2 bg-digi-blue/20 backdrop-blur-sm rounded-full border border-digi-blue/30">
-                  <span className="text-white font-semibold">Energy Efficient</span>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-6 text-glow">
+                  <span className="text-digi-red">Transparent</span> <span className="text-digi-green">Digital</span> <span className="text-digi-blue">Screens</span>
+                </h3>
+                
+                <p className="text-xl text-gray-100 mb-4 font-light leading-relaxed">
+                  Experience the future with our revolutionary transparent digital displays that create a <span className="font-semibold text-digi-green">magical floating content effect</span>.
+                </p>
+                
+                <p className="text-lg text-gray-200 mb-6">
+                  Our transparent screens allow content to appear suspended in mid-air while maintaining visibility through the display, perfect for:
+                </p>
+                
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-digi-green mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-200">Retail storefronts that showcase products while displaying dynamic content</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-digi-red mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-200">Museum exhibits that overlay information without blocking artifacts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-digi-blue mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-200">Corporate environments with glass partitions and meeting rooms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 text-digi-green mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-200">Hospitality settings creating immersive experiences without obstructing views</span>
+                  </li>
+                </ul>
+                
+                <p className="text-gray-300 italic">
+                  "Transparent displays create <span className="text-digi-green font-semibold">73%</span> more engagement than traditional screens in high-foot-traffic areas."
+                </p>
               </div>
               
-              <p className="text-gray-300 italic">
-                "Digital signage delivers <span className="text-digi-green font-semibold">400%</span> more views than static displays with <span className="text-digi-green font-semibold">83%</span> better information recall."
-              </p>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-digi-red/20 via-digi-green/20 to-digi-blue/20 rounded-xl animate-pulse opacity-50"></div>
+                <div className="relative bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10">
+                  <h4 className="text-xl font-semibold text-white mb-4">Transparent Display Specifications</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-digi-red rounded-full mt-2 mr-2"></div>
+                      <div>
+                        <span className="font-semibold text-white">Transparency Level:</span>
+                        <span className="text-gray-300 ml-2">Up to 80% with adjustable opacity</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-digi-green rounded-full mt-2 mr-2"></div>
+                      <div>
+                        <span className="font-semibold text-white">Resolution:</span>
+                        <span className="text-gray-300 ml-2">Full HD to 4K options available</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-digi-blue rounded-full mt-2 mr-2"></div>
+                      <div>
+                        <span className="font-semibold text-white">Panel Type:</span>
+                        <span className="text-gray-300 ml-2">OLED with transparent substrate</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-digi-red rounded-full mt-2 mr-2"></div>
+                      <div>
+                        <span className="font-semibold text-white">Sizes:</span>
+                        <span className="text-gray-300 ml-2">32" to 84" diagonal</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-digi-green rounded-full mt-2 mr-2"></div>
+                      <div>
+                        <span className="font-semibold text-white">Installation Options:</span>
+                        <span className="text-gray-300 ml-2">Hanging, freestanding, or wall-mounted</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-digi-blue rounded-full mt-2 mr-2"></div>
+                      <div>
+                        <span className="font-semibold text-white">Interactivity:</span>
+                        <span className="text-gray-300 ml-2">Optional touch capability</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             
             {/* Animated elements */}
