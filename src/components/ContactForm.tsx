@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { sendEmail } from "@/utils/emailService";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -27,35 +27,30 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Create a mailto URL with the form data
-      const subject = encodeURIComponent(`New Inquiry from ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Phone: ${formData.phone || 'Not provided'}\n\n` +
-        `Message:\n${formData.message}`
-      );
+      // Send email using the backend service
+      const success = await sendEmail(formData);
       
-      // Open the default email client with the specified recipient and sender
-      window.open(`mailto:info@360digisigns.com?subject=${subject}&body=${body}&from=nandish@360digisigns.com`);
-      
-      toast({
-        title: "Inquiry Submitted",
-        description: "Email client opened. Please send the email to complete your inquiry.",
-      });
-
-      // Reset the form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: ""
-      });
+      if (success) {
+        toast({
+          title: "Inquiry Submitted",
+          description: "Thank you! Your message has been sent successfully.",
+        });
+  
+        // Reset the form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
         title: "Submission Error",
-        description: "There was a problem submitting your inquiry. Please try again.",
+        description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
     } finally {
