@@ -5,6 +5,7 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -63,7 +64,7 @@ export function ProductNavMenu() {
     <NavigationMenu className="h-full">
       <NavigationMenuList className="h-full">
         <NavigationMenuItem className="h-full flex items-center">
-          <NavigationMenuTrigger className="bg-transparent text-white font-bold hover:text-digi-green hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent h-auto py-0">
+          <NavigationMenuTrigger className="bg-transparent text-white font-display text-xl font-bold hover:text-digi-green hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent h-auto py-0 animate-pulse-rgb">
             Products
           </NavigationMenuTrigger>
           <NavigationMenuContent>
