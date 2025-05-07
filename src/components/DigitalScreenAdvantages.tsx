@@ -117,7 +117,10 @@ const DigitalScreenAdvantages = () => {
               
             </div>
             
-          
+            {/* Animated elements */}
+            <div className="absolute -top-12 -right-12 w-24 h-24 bg-digi-red opacity-30 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-digi-blue opacity-30 rounded-full blur-2xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
+          </div>
         </div>
         
         {/* Advantages cards */}
