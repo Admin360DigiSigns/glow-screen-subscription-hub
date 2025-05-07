@@ -16,8 +16,8 @@ const Index = () => {
       <Hero />
       <Features />
       <DigitalScreenAdvantages />
-      <Showcase />
       <LedVideoWall />
+      <Showcase />
       <Testimonials />
       <ContactSection />
       <Footer />
