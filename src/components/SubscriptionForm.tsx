@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
 import { FormSteps } from "./SubscriptionFormSteps";
 import { User, Calendar, Check, ChevronRight, Plus, Minus, FileText, MapPin, CreditCard } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -159,18 +159,9 @@ export default function SubscriptionForm({
     screens: 1
   });
   
-  // Animation elements for the background
-  const [animationElements] = useState([
-    { x: '10%', y: '5%', size: '150px', color: 'bg-digi-red/10', delay: 0 },
-    { x: '85%', y: '15%', size: '200px', color: 'bg-digi-green/10', delay: 2 },
-    { x: '75%', y: '80%', size: '180px', color: 'bg-digi-blue/10', delay: 4 },
-    { x: '15%', y: '75%', size: '220px', color: 'bg-purple-500/10', delay: 1 },
-    { x: '50%', y: '50%', size: '300px', color: 'bg-yellow-500/5', delay: 3 }
-  ]);
-  
   const { toast } = useToast();
   
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
@@ -284,37 +275,8 @@ export default function SubscriptionForm({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0 relative">
-        <DialogTitle className="sr-only">Subscription Form</DialogTitle>
-        
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden z-0 opacity-70">
-          {animationElements.map((el, index) => (
-            <motion.div
-              key={index}
-              className={`absolute rounded-full ${el.color} blur-3xl`}
-              style={{
-                left: el.x,
-                top: el.y,
-                width: el.size,
-                height: el.size,
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.4, 0.7, 0.4]
-              }}
-              transition={{
-                duration: 8,
-                ease: "easeInOut",
-                repeat: Infinity,
-                delay: el.delay,
-                repeatType: "reverse"
-              }}
-            />
-          ))}
-        </div>
-        
-        <div className="p-6 bg-black/90 backdrop-blur-sm text-white relative z-10">
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0">
+        <div className="p-6 bg-black text-white">
           <FormSteps currentStep={step} />
           
           <Form {...form}>
@@ -577,6 +539,13 @@ export default function SubscriptionForm({
                                       id={plan.value}
                                       className="sr-only"
                                     />
+                                    {plan.value === "premium" && (
+                                      <div className="absolute -top-3 inset-x-0 flex justify-center">
+                                        <div className="px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/90 to-yellow-600/90 text-white text-xs font-bold">
+                                          Popular 🔥
+                                        </div>
+                                      </div>
+                                    )}
                                     <div className={cn(
                                       "h-12 w-12 rounded-full flex items-center justify-center mb-3",
                                       `bg-gradient-to-br ${plan.color}`
@@ -657,6 +626,13 @@ export default function SubscriptionForm({
                               </li>
                             </ul>
                           </div>
+                          <div className="hidden md:block ml-4">
+                            <img 
+                              src="/lovable-uploads/6d2277e4-d817-4132-8e47-069572950bad.png" 
+                              alt="Standard Plan Visual" 
+                              className="w-24 h-24 object-cover rounded-lg opacity-80" 
+                            />
+                          </div>
                         </div>
                       )}
                       
@@ -675,6 +651,13 @@ export default function SubscriptionForm({
                               </li>
                             </ul>
                           </div>
+                          <div className="hidden md:block ml-4">
+                            <img 
+                              src="/lovable-uploads/55ae7ee6-a5d1-4976-a594-3a46e36d2b2b.png" 
+                              alt="Premium Plan Visual" 
+                              className="w-24 h-24 object-cover rounded-lg opacity-80" 
+                            />
+                          </div>
                         </div>
                       )}
                       
@@ -692,6 +675,13 @@ export default function SubscriptionForm({
                                 <span className="text-gray-300 text-sm">Multi-screen synchronization</span>
                               </li>
                             </ul>
+                          </div>
+                          <div className="hidden md:block ml-4">
+                            <img 
+                              src="/lovable-uploads/934cf8b0-ddcd-4f91-b0ad-920a469349e6.png" 
+                              alt="Enterprise Plan Visual" 
+                              className="w-24 h-24 object-cover rounded-lg opacity-80" 
+                            />
                           </div>
                         </div>
                       )}
@@ -953,6 +943,13 @@ export default function SubscriptionForm({
                             </li>
                           </ul>
                         </div>
+                        <div className="hidden md:block ml-4">
+                          <img 
+                            src="/lovable-uploads/b58d80aa-bd76-4980-be0a-c66ecc9da3b6.png" 
+                            alt="Installation Process" 
+                            className="w-24 h-24 object-cover rounded-lg opacity-80" 
+                          />
+                        </div>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -979,6 +976,11 @@ export default function SubscriptionForm({
                     <div className="space-y-4">
                       <div className="rounded-lg border border-gray-700 overflow-hidden">
                         <div className="flex items-center gap-3 bg-gray-800 p-4 border-b border-gray-700">
+                          <img 
+                            src="/lovable-uploads/31ca5d5e-9078-4081-b275-427104aac166.png" 
+                            alt="Confirmation" 
+                            className="w-10 h-10 rounded-full" 
+                          />
                           <h3 className="text-lg font-semibold">Order Details</h3>
                         </div>
                         

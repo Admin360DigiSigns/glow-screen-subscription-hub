@@ -3,20 +3,7 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
+import SubscriptionForm from "@/components/SubscriptionForm";
 
 const plans = [
   {
@@ -72,44 +59,13 @@ const plans = [
   }
 ];
 
-// Form schema for direct inline form
-const formSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  phoneNumber: z.string().min(5, "Phone number is required"),
-  businessName: z.string().min(2, "Business name is required"),
-});
-
 const SubscriptionPlans = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<"standard" | "premium" | "enterprise">("standard");
-  const { toast } = useToast();
-
-  // Initialize form
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      businessName: "",
-    }
-  });
 
   const handleSubscribe = (planType: "standard" | "premium" | "enterprise") => {
-    console.log("Subscribing to plan:", planType);
     setSelectedPlan(planType);
     setDialogOpen(true);
-  };
-
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log("Form submitted with values:", values, "for plan:", selectedPlan);
-    toast({
-      title: "Subscription request submitted",
-      description: "We'll contact you shortly to complete your setup",
-    });
-    setDialogOpen(false);
-    form.reset();
   };
 
   return (
@@ -165,7 +121,7 @@ const SubscriptionPlans = () => {
                       ? "bg-gradient-rgb bg-300% animate-flow-rgb hover:bg-gradient-rgb" 
                       : `bg-${plan.color} hover:bg-${plan.color}/90`
                   }`}
-                  onClick={() => handleSubscribe(plan.value as "standard" | "premium" | "enterprise")}
+                  onClick={() => handleSubscribe(plan.value as any)}
                 >
                   Subscribe Now
                 </Button>
@@ -179,90 +135,11 @@ const SubscriptionPlans = () => {
         </div>
       </div>
       
-      {/* Simple inline subscription form instead of importing the complex one */}
-      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="sm:max-w-md bg-black text-white border border-white/10">
-          <div className="space-y-6 py-4">
-            <div>
-              <h3 className="text-lg font-medium text-center mb-2">
-                Subscribe to {selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1)} Plan
-              </h3>
-              <p className="text-sm text-gray-400 text-center">
-                Fill out this form and we'll contact you to complete your subscription
-              </p>
-            </div>
-            
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="fullName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Full Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your full name" {...field} className="bg-gray-900 border-gray-700" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} className="bg-gray-900 border-gray-700" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="phoneNumber"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
-                      <FormControl>
-                        <Input placeholder="+1 (555) 000-0000" {...field} className="bg-gray-900 border-gray-700" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="businessName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Business Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your business name" {...field} className="bg-gray-900 border-gray-700" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <div className="pt-4">
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-gradient-rgb animate-flow-rgb bg-300%"
-                  >
-                    Submit Request
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <SubscriptionForm 
+        open={dialogOpen} 
+        onOpenChange={setDialogOpen} 
+        initialPlan={selectedPlan}
+      />
     </section>
   );
 };
