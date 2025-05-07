@@ -5,9 +5,17 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Receipt, DollarSign, BadgePercent, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SubscriptionForm from "@/components/SubscriptionForm";
 
 const Pricing = () => {
   const [activeTab, setActiveTab] = useState<"digital" | "led">("digital");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<"standard" | "premium" | "enterprise">("standard");
+
+  const handleSubscribe = (planType: "standard" | "premium" | "enterprise") => {
+    setSelectedPlan(planType);
+    setDialogOpen(true);
+  };
 
   const digitalPlans = [
     {
@@ -23,7 +31,8 @@ const Pricing = () => {
         "Standard Support"
       ],
       color: "digi-red",
-      isPopular: false
+      isPopular: false,
+      value: "standard"
     },
     {
       name: "Premium",
@@ -39,7 +48,8 @@ const Pricing = () => {
         "Analytics Dashboard"
       ],
       color: "digi-green",
-      isPopular: false
+      isPopular: true,
+      value: "premium"
     },
     {
       name: "Enterprise",
@@ -56,7 +66,8 @@ const Pricing = () => {
         "Multi-Screen Management"
       ],
       color: "digi-blue",
-      isPopular: false
+      isPopular: false,
+      value: "enterprise"
     }
   ];
 
@@ -283,16 +294,22 @@ const Pricing = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                       >
-                        <Button className="w-full shadow-lg bg-gradient-rgb bg-300% animate-flow-rgb text-white hover:shadow-xl transition-all">
+                        <Button 
+                          className="w-full shadow-lg bg-gradient-rgb bg-300% animate-flow-rgb text-white hover:shadow-xl transition-all"
+                          onClick={() => handleSubscribe(plan.value as any)}
+                        >
                           <BadgePercent className="mr-2 h-4 w-4" /> Subscribe Now
                         </Button>
                       </motion.div>
                     ) : (
-                      <Button className={`w-full shadow-lg ${
-                        plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
-                        plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
-                        'bg-blue-600 hover:bg-blue-700 text-white'
-                      }`}>
+                      <Button 
+                        className={`w-full shadow-lg ${
+                          plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
+                          plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
+                          'bg-blue-600 hover:bg-blue-700 text-white'
+                        }`}
+                        onClick={() => handleSubscribe(plan.value as any)}
+                      >
                         <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
                       </Button>
                     )}
@@ -388,16 +405,22 @@ const Pricing = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                       >
-                        <Button className="w-full shadow-lg bg-gradient-rgb bg-300% animate-flow-rgb text-white hover:shadow-xl transition-all">
+                        <Button 
+                          className="w-full shadow-lg bg-gradient-rgb bg-300% animate-flow-rgb text-white hover:shadow-xl transition-all"
+                          onClick={() => handleSubscribe('standard')}
+                        >
                           <BadgePercent className="mr-2 h-4 w-4" /> Subscribe Now
                         </Button>
                       </motion.div>
                     ) : (
-                      <Button className={`w-full shadow-lg ${
-                        plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
-                        plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
-                        'bg-blue-600 hover:bg-blue-700 text-white'
-                      }`}>
+                      <Button 
+                        className={`w-full shadow-lg ${
+                          plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
+                          plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
+                          'bg-blue-600 hover:bg-blue-700 text-white'
+                        }`}
+                        onClick={() => handleSubscribe('standard')}
+                      >
                         <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
                       </Button>
                     )}
@@ -413,6 +436,12 @@ const Pricing = () => {
           </div>
         </div>
       </section>
+      
+      <SubscriptionForm 
+        open={dialogOpen} 
+        onOpenChange={setDialogOpen} 
+        initialPlan={selectedPlan}
+      />
       
       <Footer />
     </div>
