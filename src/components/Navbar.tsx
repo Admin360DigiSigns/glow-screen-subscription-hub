@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Facebook, Twitter, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
@@ -32,11 +32,24 @@ const Navbar = () => {
           {/* Desktop Navigation - Centered with white text */}
           <div className="hidden md:flex items-center justify-center font-large flex-1 font-bold">
             <div className="flex space-x-8">
-              <span className="text-rgb-animated font-display"  font-bold ><Link to="/" >Home</Link></span>
-              <span className="text-rgb-animated font-display "font-bold><Link to="/products" >Products</Link></span>
+              <span className="text-rgb-animated font-display" font-bold><Link to="/">Home</Link></span>
+              <span className="text-rgb-animated font-display" font-bold><Link to="/products">Products</Link></span>
             
-              <span className="text-rgb-animated font-display"font-bold><Link to="/pricing" >Pricing</Link></span>
-              <span className="text-rgb-animated font-display" font-bold><a href="/#showcase" >About Us</a></span>
+              <span className="text-rgb-animated font-display" font-bold><Link to="/pricing">Pricing</Link></span>
+              <div className="flex items-center space-x-2">
+                <span className="text-rgb-animated font-display" font-bold><a href="/#showcase">About Us</a></span>
+                <div className="flex items-center space-x-3 ml-2 social-icons-container">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon facebook hover:scale-110 transition-transform">
+                    <Facebook size={18} className="text-white hover:text-[#4267B2] transition-colors" />
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter hover:scale-110 transition-transform">
+                    <Twitter size={18} className="text-white hover:text-[#1DA1F2] transition-colors" />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon instagram hover:scale-110 transition-transform">
+                    <Instagram size={18} className="text-white hover:text-[#E1306C] transition-colors" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -75,6 +88,17 @@ const Navbar = () => {
           <Link to="/products" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">Products</Link>
           <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">Pricing</Link>
           <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">About Us</a>
+          <div className="flex items-center space-x-4 px-3 py-2">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
+              <Facebook size={20} className="text-white hover:text-[#4267B2]" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
+              <Twitter size={20} className="text-white hover:text-[#1DA1F2]" />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
+              <Instagram size={20} className="text-white hover:text-[#E1306C]" />
+            </a>
+          </div>
           <div className="px-3 py-2">
             <Dialog>
               <DialogTrigger asChild>
