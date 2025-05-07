@@ -1,3 +1,4 @@
+
 import { Check, X, Monitor, Tv, Layers, Image, Video, Maximize, ScreenShare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -251,29 +252,6 @@ const LedVideoWall = () => {
                 </Card>
               </div>
             ))}
-          </div>
-          
-          {/* Technical specifications */}
-          <div className="mt-16 bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 animate-fade-in" style={{animationDelay: "1.5s"}}>
-            <h4 className="text-xl font-bold text-white mb-4">Technical Specifications</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="p-4 bg-black/40 rounded-lg">
-                <p className="text-digi-green font-bold">Pixel Pitch</p>
-                <p className="text-white">1.5mm - 10mm options</p>
-              </div>
-              <div className="p-4 bg-black/40 rounded-lg">
-                <p className="text-digi-green font-bold">Brightness</p>
-                <p className="text-white">800 - 5,000 nits</p>
-              </div>
-              <div className="p-4 bg-black/40 rounded-lg">
-                <p className="text-digi-green font-bold">Refresh Rate</p>
-                <p className="text-white">3,840Hz</p>
-              </div>
-              <div className="p-4 bg-black/40 rounded-lg">
-                <p className="text-digi-green font-bold">IP Rating</p>
-                <p className="text-white">IP65 (outdoor models)</p>
-              </div>
-            </div>
           </div>
           
           <div className="mt-12 text-center animate-fade-in" style={{animationDelay: "1.6s"}}>
