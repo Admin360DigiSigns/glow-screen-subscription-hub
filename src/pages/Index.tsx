@@ -2,7 +2,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import SubscriptionPlans from "@/components/SubscriptionPlans";
 import Showcase from "@/components/Showcase";
 import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
@@ -17,7 +16,6 @@ const Index = () => {
       <Hero />
       <Features />
       <DigitalScreenAdvantages />
-      <SubscriptionPlans />
       <Showcase />
       <LedVideoWall />
       <Testimonials />
