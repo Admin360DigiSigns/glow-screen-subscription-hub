@@ -174,11 +174,11 @@ const Products = () => {
                   variants={fadeInUpVariants}
                   className={`${activeCategory === null || activeCategory === category.id ? "block" : "hidden"}`}
                 >
-                  <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[450px] flex flex-col shadow-lg shadow-blue-900/20">
+                  <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[500px] flex flex-col shadow-lg shadow-blue-900/20">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-20"></div>
                     
                     <CardHeader className="relative">
-                      <div className="h-48 w-full mb-4 overflow-hidden rounded-lg">
+                      <div className="h-52 w-full mb-4 overflow-hidden rounded-lg">
                         <img 
                           src={category.image} 
                           alt={category.name}
@@ -194,7 +194,7 @@ const Products = () => {
                     </CardHeader>
                     
                     <CardContent className="relative flex-grow">
-                      <ul className="space-y-2">
+                      <ul className="space-y-3 mb-4">
                         {category.features.map((feature, i) => (
                           <li key={i} className="flex items-center">
                             <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
@@ -204,9 +204,12 @@ const Products = () => {
                       </ul>
                     </CardContent>
                     
-                    <CardFooter className="relative flex justify-center mt-auto pb-6">
-                      <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
+                    <CardFooter className="relative flex flex-col space-y-3 mt-auto pb-6">
+                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
                         Learn More
+                      </Button>
+                      <Button className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10">
+                        View Demo
                       </Button>
                     </CardFooter>
                   </Card>
@@ -222,7 +225,7 @@ const Products = () => {
                 transition={{ duration: 0.5 }}
                 className="lg:w-1/3"
               >
-                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24">
+                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24 h-[500px] flex flex-col justify-between">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
                   
                   <CardHeader className="relative border-b border-gray-800">
@@ -236,7 +239,7 @@ const Products = () => {
                     </div>
                   </CardHeader>
                   
-                  <CardContent className="pt-6">
+                  <CardContent className="pt-6 flex-grow overflow-y-auto">
                     <ul className="space-y-6">
                       {selectedCategory.whyChoose.map((reason, i) => (
                         <li key={i} className="flex gap-3">
@@ -250,12 +253,15 @@ const Products = () => {
                     </ul>
                   </CardContent>
                   
-                  <CardFooter className="pt-2">
+                  <CardFooter className="pt-2 border-t border-gray-800 flex flex-col space-y-3">
                     <Button 
                       className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white" 
                       onClick={() => window.location.href = `/contact?product=${selectedCategory.id}`}
                     >
                       Request Quote
+                    </Button>
+                    <Button className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10">
+                      Schedule Demo
                     </Button>
                   </CardFooter>
                 </Card>
