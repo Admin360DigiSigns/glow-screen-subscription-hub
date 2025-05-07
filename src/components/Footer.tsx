@@ -15,12 +15,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="flex mr-2">
+              <div className="flex items-center">
                 <span className="text-digi-red font-bold text-4xl">3</span>
                 <span className="text-digi-green font-bold text-4xl">6</span>
                 <span className="text-digi-blue font-bold text-4xl">0</span>
+                <span className="text-white text-2xl font-bold ml-0.5">
+                  <svg className="w-24 h-8" viewBox="0 0 190 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 20C0 8.954 8.954 0 20 0H170C181.046 0 190 8.954 190 20C190 31.046 181.046 40 170 40H20C8.954 40 0 31.046 0 20Z" fill="transparent"/>
+                    <path d="M90 35C101.046 35 110 31.046 110 20" stroke="white" strokeWidth="2"/>
+                    <text x="80" y="25" fontFamily="Arial" fontSize="18" fontWeight="bold" fill="white">DIGI-SIGNS</text>
+                  </svg>
+                </span>
               </div>
-              <span className="font-display font-bold text-xl">DIGI-SIGNS</span>
             </div>
             <p className="text-gray-400 mb-6">
               Your ultimate partner in digital growth. We provide next-generation digital screens with AI-powered brilliance to help your business stand out.
