@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Menu, X, Facebook, Twitter, Instagram } from "lucide-react";
+import { Menu, X, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
@@ -43,7 +43,7 @@ const Navbar = () => {
                     <Facebook size={24} className="text-[#4267B2]" />
                   </a>
                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <Twitter size={24} className="text-[#1DA1F2]" />
+                    <X size={24} className="text-black bg-white rounded-full p-0.5" />
                   </a>
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
                     <Instagram size={24} className="text-[#E1306C]" />
@@ -93,7 +93,7 @@ const Navbar = () => {
               <Facebook size={26} className="text-[#4267B2]" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <Twitter size={26} className="text-[#1DA1F2]" />
+              <X size={26} className="text-black bg-white rounded-full p-0.5" />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
               <Instagram size={26} className="text-[#E1306C]" />
