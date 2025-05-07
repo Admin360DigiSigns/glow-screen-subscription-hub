@@ -5,38 +5,32 @@ const features = [
   {
     icon: <Monitor className="h-8 w-8 text-digi-red" />,
     title: "Ultra-Bright HD Displays",
-    description: "Next-gen transparency with crystal clear resolution, perfect for any lighting condition and viewable from long distances.",
-    details: "Our screens feature 1,500+ nits brightness, 4K resolution with HDR support, and anti-glare coating for perfect visibility in direct sunlight."
+    description: "Next-gen transparency with crystal clear resolution, perfect for any lighting condition and viewable from long distances."
   },
   {
     icon: <Zap className="h-8 w-8 text-digi-green" />,
     title: "Energy Efficient",
-    description: "Our screens use advanced technology to minimize power consumption while maximizing brightness and performance.",
-    details: "Up to 40% less power consumption than standard LED displays, with automatic brightness adjustment based on ambient light."
+    description: "Our screens use advanced technology to minimize power consumption while maximizing brightness and performance."
   },
   {
     icon: <Smartphone className="h-8 w-8 text-digi-blue" />,
     title: "Smart Control via App",
-    description: "Control your displays remotely through our intuitive app. Update content in real-time from anywhere.",
-    details: "Cloud-based content management system accessible from any device with scheduling, playlist creation, and multi-screen synchronization."
+    description: "Control your displays remotely through our intuitive app. Update content in real-time from anywhere."
   },
   {
     icon: <Star className="h-8 w-8 text-digi-red" />,
     title: "AI-Powered Content",
-    description: "AI algorithms optimize your content for maximum impact, analyzing engagement metrics to improve performance.",
-    details: "Machine learning analyzes viewer demographics, engagement time, and interaction patterns to suggest optimal content placement and timing."
+    description: "AI algorithms optimize your content for maximum impact, analyzing engagement metrics to improve performance."
   },
   {
     icon: <RefreshCw className="h-8 w-8 text-digi-green" />,
     title: "Dynamic Content Playback",
-    description: "Seamlessly display videos, images, animations, and social media content from Instagram and Facebook.",
-    details: "Supports all major file formats including MP4, WebM, GIF, JPG, PNG, SVG with automatic formatting and live social media feeds."
+    description: "Seamlessly display videos, images, animations, and social media content from Instagram and Facebook."
   },
   {
     icon: <Shield className="h-8 w-8 text-digi-blue" />,
     title: "Free Maintenance & Support",
-    description: "We handle all repairs, replacements and maintenance to ensure your displays always look perfect.",
-    details: "24/7 technical support, next-business-day on-site service, and complimentary annual hardware inspection included in all subscriptions."
+    description: "We handle all repairs, replacements and maintenance to ensure your displays always look perfect."
   }
 ];
 
@@ -64,15 +58,7 @@ const Features = () => {
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold mb-3 text-white">{feature.title}</h3>
-              <p className="text-gray-300 mb-4">{feature.description}</p>
-              
-              {/* Additional detailed information */}
-              <div className="mt-4 pt-4 border-t border-gray-700">
-                <div className="flex items-start">
-                  <Info className="h-5 w-5 text-digi-green mr-2 mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-400 text-sm">{feature.details}</p>
-                </div>
-              </div>
+              <p className="text-gray-300">{feature.description}</p>
             </div>
           ))}
         </div>
