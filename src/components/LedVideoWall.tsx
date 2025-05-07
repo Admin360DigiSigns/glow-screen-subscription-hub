@@ -92,9 +92,8 @@ const useCases = [
     title: "Retail & Brand Experiences",
     description: "Transform storefronts and retail environments with captivating product showcases that stop shoppers in their tracks and drive engagement",
     icon: <Monitor className="h-12 w-12 text-digi-green p-2" />,
-    // Updated image for retail-specific LED video wall
+    // Using only one image for retail
     image: "/lovable-uploads/094e86c9-ef5b-4edd-b8da-5379d9dcf8b2.png",
-    extraImage: "/lovable-uploads/070c2fbf-16f9-4327-9b8d-6926c8c29ebe.png",
     animation: "animate-fade-in",
     delay: "1.2s"
   },
@@ -248,18 +247,6 @@ const LedVideoWall = () => {
                         className="w-full h-full object-cover rounded-lg relative transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
-
-                    {/* Display extra image for Retail & Brand Experiences */}
-                    {useCase.extraImage && (
-                      <div className="aspect-video overflow-hidden rounded-lg relative mt-4">
-                        <div className="absolute inset-0.5 bg-gradient-rgb rounded-lg opacity-50 blur-sm"></div>
-                        <img 
-                          src={useCase.extraImage} 
-                          alt={`${useCase.title} - Additional Example`}
-                          className="w-full h-full object-cover rounded-lg relative transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                    )}
                   </CardContent>
                 </Card>
               </div>
