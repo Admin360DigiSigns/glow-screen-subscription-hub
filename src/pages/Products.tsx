@@ -134,7 +134,7 @@ const Products = () => {
                 variants={fadeInUpVariants}
                 className={`${activeCategory === null || activeCategory === category.id ? "block" : "hidden"}`}
               >
-                <Card className="bg-black border border-gray-800 overflow-hidden h-full">
+                <Card className="bg-black border border-gray-800 overflow-hidden h-[450px] flex flex-col">
                   <div className={`absolute inset-0 bg-gradient-rgb opacity-10 animate-${category.animation}`}></div>
                   
                   <CardHeader className="relative">
@@ -145,13 +145,13 @@ const Products = () => {
                         className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                       />
                     </div>
-                    <CardTitle className="text-2xl text-center">{category.name}</CardTitle>
+                    <CardTitle className="text-2xl text-center text-digi-green">{category.name}</CardTitle>
                     <CardDescription className="text-gray-400 text-center">
                       {category.description}
                     </CardDescription>
                   </CardHeader>
                   
-                  <CardContent className="relative">
+                  <CardContent className="relative flex-grow">
                     <ul className="space-y-2">
                       {category.features.map((feature, i) => (
                         <li key={i} className="flex items-center">
@@ -162,7 +162,7 @@ const Products = () => {
                     </ul>
                   </CardContent>
                   
-                  <CardFooter className="relative flex justify-center">
+                  <CardFooter className="relative flex justify-center mt-auto pb-6">
                     <Button className="bg-gradient-rgb animate-flow-rgb">Learn More</Button>
                   </CardFooter>
                 </Card>
@@ -180,7 +180,7 @@ const Products = () => {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm">
+            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm h-[600px] flex flex-col">
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-digi-red opacity-30 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-digi-blue opacity-30 rounded-full blur-3xl"></div>
               
@@ -192,11 +192,11 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4">Indoor Digital Displays</h3>
+              <h3 className="text-2xl font-bold mb-4 text-digi-green">Indoor Digital Displays</h3>
               <p className="text-gray-300 mb-6">
                 Our indoor digital screens provide crystal clear visuals and vibrant colors, perfect for retail environments, corporate settings, and entertainment venues. Available in various sizes and configurations to meet your specific needs.
               </p>
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-digi-green rounded-full mr-2"></span>
                   <span>Ultra-slim bezels for seamless integration</span>
@@ -210,10 +210,10 @@ const Products = () => {
                   <span>Remote content management system</span>
                 </li>
               </ul>
-              <Button className="bg-rgb-animated">Explore Indoor Solutions</Button>
+              <Button className="bg-rgb-animated mt-auto">Explore Indoor Solutions</Button>
             </div>
             
-            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm">
+            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm h-[600px] flex flex-col">
               <div className="absolute -top-20 -left-20 w-40 h-40 bg-digi-green opacity-30 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-digi-red opacity-30 rounded-full blur-3xl"></div>
               
@@ -225,11 +225,11 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4">Outdoor LED Technology</h3>
+              <h3 className="text-2xl font-bold mb-4 text-digi-green">Outdoor LED Technology</h3>
               <p className="text-gray-300 mb-6">
                 Built to withstand harsh weather conditions, our outdoor LED screens deliver exceptional brightness and visibility even in direct sunlight. Ideal for storefronts, event venues, and high-traffic areas where visibility is crucial.
               </p>
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-digi-blue rounded-full mr-2"></span>
                   <span>Weather-resistant construction (IP65 rated)</span>
@@ -243,12 +243,12 @@ const Products = () => {
                   <span>Temperature resistant (-20°C to 50°C)</span>
                 </li>
               </ul>
-              <Button className="bg-rgb-animated">Discover Outdoor Options</Button>
+              <Button className="bg-rgb-animated mt-auto">Discover Outdoor Options</Button>
             </div>
           </div>
           
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">Custom Solutions Available</h3>
+            <h3 className="text-2xl font-bold mb-4 text-digi-green">Custom Solutions Available</h3>
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
               Don't see exactly what you need? Our team specializes in creating custom digital signage solutions tailored to your specific requirements and space constraints.
             </p>
