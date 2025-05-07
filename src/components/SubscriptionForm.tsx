@@ -7,9 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
 import { FormSteps } from "./SubscriptionFormSteps";
-import { User, Calendar, Check, ChevronRight, Plus, Minus } from "lucide-react";
+import { User, Calendar, Check, ChevronRight, Plus, Minus, FileText, MapPin, CreditCard } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Form,
   FormControl,
