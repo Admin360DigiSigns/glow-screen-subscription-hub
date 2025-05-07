@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,7 +15,7 @@ const Products = () => {
       name: "Indoor Digital Screens",
       description: "High-resolution displays perfect for retail, corporate, and entertainment environments",
       icon: <Monitor className="h-10 w-10" />,
-      features: ["Ultra-bright LED panels", "Slim profile design", "Multiple size options", "4K resolution support"],
+      features: ["Ultra-bright LED panels", "Slim profile design", "4K resolution support"],
       animation: "float",
       image: "/lovable-uploads/2a4551f7-3b70-4b91-9f39-aae6fa2ee77b.png"
     },
@@ -25,7 +24,7 @@ const Products = () => {
       name: "Video Wall Solutions",
       description: "Create stunning visual experiences with our seamless video wall technology",
       icon: <Tv className="h-10 w-10" />,
-      features: ["Bezel-less design", "Synchronized content", "Modular configuration", "Remote management"],
+      features: ["Bezel-less design", "Synchronized content", "Modular configuration"],
       animation: "pulse-slow",
       image: "/lovable-uploads/d26589fa-89cf-4e06-9040-3c929662351b.png"
     },
@@ -34,7 +33,7 @@ const Products = () => {
       name: "Outdoor LED Screens",
       description: "Weather-resistant displays designed to capture attention in any outdoor environment",
       icon: <Video className="h-10 w-10" />,
-      features: ["IP65 weather protection", "High brightness (7000+ nits)", "Temperature resistant", "Vandal-proof options"],
+      features: ["IP65 weather protection", "High brightness (7000+ nits)", "Temperature resistant"],
       animation: "glow-pulse",
       image: "/lovable-uploads/757e202f-cdb3-414c-8eaa-21ee158e698c.png"
     },
@@ -43,7 +42,7 @@ const Products = () => {
       name: "Touchscreen Kiosks",
       description: "Interactive solutions for wayfinding, self-service, and information display",
       icon: <ZapIcon className="h-10 w-10" />,
-      features: ["Multi-touch capability", "Anti-microbial coating", "Custom branding options", "ADA compliant"],
+      features: ["Multi-touch capability", "Anti-microbial coating", "Custom branding options"],
       animation: "border-glow",
       image: "/lovable-uploads/31d7fe0b-c78c-43fd-8b6f-23f11975048a.png"
     },
@@ -52,7 +51,7 @@ const Products = () => {
       name: "Drive-Through Kiosks",
       description: "Streamline drive-through operations with our weatherproof display solutions",
       icon: <Image className="h-10 w-10" />,
-      features: ["Anti-glare screen", "Integrated speaker system", "Order confirmation display", "Payment integration"],
+      features: ["Anti-glare screen", "Integrated speaker system", "Payment integration"],
       animation: "pulse-slow",
       image: "/lovable-uploads/f166ac1d-4054-4d75-93bf-6d176c885383.png"
     },
@@ -61,9 +60,9 @@ const Products = () => {
       name: "Digital Billboards",
       description: "High-impact outdoor advertising displays with remote content management",
       icon: <Tag className="h-10 w-10" />,
-      features: ["Massive visibility", "Scheduled content rotation", "Real-time updates", "Traffic analysis integration"],
+      features: ["Massive visibility", "Scheduled content rotation", "Real-time updates"],
       animation: "border-glow",
-      image: "/lovable-uploads/d57eb9f2-1fba-479e-90f5-d681548d7c73.png"
+      image: "/lovable-uploads/a0165491-abc9-4d16-9773-8121b1bcb322.png"
     },
   ];
 
