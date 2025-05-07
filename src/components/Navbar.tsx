@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import ContactForm from "@/components/ContactForm";
+import { ProductNavMenu } from "./ProductNavMenu";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex space-x-8">
               <Link to="/" className="text-white hover:text-digi-green font-medium">Home</Link>
-              <a href="/#features" className="text-white hover:text-digi-green font-medium">Features</a>
+              <ProductNavMenu />
               <Link to="/pricing" className="text-white hover:text-digi-green font-medium">Pricing</Link>
               <a href="/#showcase" className="text-white hover:text-digi-green font-medium">Gallery</a>
               <a href="/#testimonials" className="text-white hover:text-digi-green font-medium">Clients</a>
@@ -71,7 +72,7 @@ const Navbar = () => {
       <div className={`md:hidden ${mobileMenuOpen ? "block" : "hidden"}`} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black shadow-md">
           <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Home</Link>
-          <a href="/#features" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Features</a>
+          <Link to="/products" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Products</Link>
           <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Pricing</Link>
           <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Gallery</a>
           <a href="/#testimonials" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Clients</a>
