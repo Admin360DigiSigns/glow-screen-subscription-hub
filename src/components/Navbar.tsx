@@ -33,9 +33,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex space-x-8">
               <Link to="/" className="text-white hover:text-digi-green font-medium">Home</Link>
-              <div className="flex items-center">
-                <ProductNavMenu />
-              </div>
+              <ProductNavMenu />
               <Link to="/pricing" className="text-white hover:text-digi-green font-medium">Pricing</Link>
               <a href="/#showcase" className="text-white hover:text-digi-green font-medium">Gallery</a>
               <a href="/#testimonials" className="text-white hover:text-digi-green font-medium">Clients</a>
