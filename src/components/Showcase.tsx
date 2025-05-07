@@ -1,8 +1,8 @@
 
 import { useRef } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const showcaseImages = [
   {
@@ -112,7 +112,7 @@ const Showcase = () => {
             </Button>
           </div>
           
-          {/* Horizontal scrolling gallery - removed text content underneath images */}
+          {/* Horizontal scrolling gallery with square thumbnails */}
           <div 
             ref={scrollContainerRef}
             className="flex overflow-x-auto space-x-4 pb-6 no-scrollbar scroll-smooth snap-x"
@@ -124,16 +124,18 @@ const Showcase = () => {
             {showcaseImages.map((image, index) => (
               <div 
                 key={index}
-                className="flex-none snap-center w-[300px] md:w-[400px] transition-transform hover:scale-[1.02] duration-200"
+                className="flex-none snap-center w-[200px] transition-transform hover:scale-[1.02] duration-200"
               >
                 <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 h-full">
-                  <div className="relative aspect-video">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt}
-                      className="w-full h-full object-cover" 
-                      loading="lazy"
-                    />
+                  <div className="w-[200px] h-[200px]">
+                    <AspectRatio ratio={1/1} className="overflow-hidden">
+                      <img 
+                        src={image.src} 
+                        alt={image.alt}
+                        className="w-full h-full object-cover" 
+                        loading="lazy"
+                      />
+                    </AspectRatio>
                   </div>
                 </div>
               </div>
