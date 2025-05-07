@@ -164,7 +164,7 @@ const Products = () => {
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Products grid */}
-            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${activeCategory ? '2' : '3'} gap-8 ${activeCategory ? 'lg:w-2/3' : 'w-full'}`}>
+            <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${activeCategory ? 'lg:w-2/3' : 'w-full'}`}>
               {productCategories.map((category, index) => (
                 <motion.div 
                   key={category.id}
