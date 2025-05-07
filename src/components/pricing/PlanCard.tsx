@@ -13,12 +13,15 @@ interface PlanCardProps {
     features: string[];
     color: string;
     value: string;
+    id?: string;
   };
   type: "digital" | "led";
   index: number;
+  selected?: boolean;
+  onClick?: () => void;
 }
 
-const PlanCard = ({ plan, type, index }: PlanCardProps) => {
+const PlanCard = ({ plan, type, index, selected, onClick }: PlanCardProps) => {
   const navigate = useNavigate();
 
   const handleSubscribe = (planType: string) => {
@@ -40,7 +43,8 @@ const PlanCard = ({ plan, type, index }: PlanCardProps) => {
   return (
     <motion.div 
       variants={itemVariants}
-      className="relative rounded-2xl overflow-hidden"
+      className={`relative rounded-2xl overflow-hidden ${selected ? 'ring-2 ring-white/50 shadow-glow' : ''}`}
+      onClick={onClick}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${
         plan.color === "digi-red" ? "from-digi-red/30 to-black/90" :
@@ -97,9 +101,9 @@ const PlanCard = ({ plan, type, index }: PlanCardProps) => {
             plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
             'bg-blue-600 hover:bg-blue-700 text-white'
           }`}
-          onClick={() => handleSubscribe(plan.value)}
+          onClick={onClick || (() => handleSubscribe(plan.value))}
         >
-          <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
+          {selected ? 'Selected' : <><Receipt className="mr-2 h-4 w-4" /> Subscribe Now</>}
         </Button>
       </div>
     </motion.div>
