@@ -39,7 +39,7 @@ const Pricing = () => {
         "Analytics Dashboard"
       ],
       color: "digi-green",
-      isPopular: true
+      isPopular: false
     },
     {
       name: "Enterprise",
@@ -92,7 +92,7 @@ const Pricing = () => {
         "Content Creation Services"
       ],
       color: "digi-green",
-      isPopular: true
+      isPopular: false
     },
     {
       name: "Outdoor Ultra",

@@ -1,5 +1,5 @@
 
-import { Check, Star } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -33,7 +33,7 @@ const plans = [
       "Analytics Dashboard"
     ],
     color: "digi-green",
-    isPopular: true
+    isPopular: false
   },
   {
     name: "Enterprise",
@@ -71,28 +71,8 @@ const SubscriptionPlans = () => {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`relative rounded-2xl shadow-lg ${
-                plan.isPopular 
-                  ? 'mt-6 ring-2 ring-digi-green ring-offset-4 ring-offset-black' 
-                  : 'border-2 border-transparent'
-              }`}
+              className="relative rounded-2xl shadow-lg border-2 border-transparent"
             >
-              {plan.isPopular && (
-                <div className="absolute -top-6 inset-x-0 z-10">
-                  <div className="flex justify-center">
-                    <motion.div 
-                      className="px-8 py-2 rounded-full bg-gradient-to-r from-digi-green/90 to-digi-blue/90 border-2 border-white text-white font-bold shadow-[0_0_15px_rgba(106,176,76,0.8)] animate-pulse-slow"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <div className="flex items-center justify-center gap-2">
-                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                        <span className="text-white text-lg tracking-wider">MOST POPULAR</span>
-                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                      </div>
-                    </motion.div>
-                  </div>
-                </div>
-              )}
               <div className={`p-8 bg-gradient-to-br ${
                 plan.color === "digi-red" ? "from-digi-red/10 to-black/95" :
                 plan.color === "digi-green" ? "from-digi-green/10 to-black/95" :
@@ -123,11 +103,7 @@ const SubscriptionPlans = () => {
                   ))}
                 </ul>
                 <Button 
-                  className={`w-full ${
-                    plan.isPopular 
-                      ? 'bg-gradient-rgb bg-300% animate-flow-rgb text-white shadow-lg' 
-                      : `bg-${plan.color} hover:bg-${plan.color}/90`
-                  }`}>
+                  className={`w-full bg-${plan.color} hover:bg-${plan.color}/90`}>
                   Subscribe Now
                 </Button>
               </div>
