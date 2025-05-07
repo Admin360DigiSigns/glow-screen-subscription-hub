@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -53,7 +54,7 @@ const Products = () => {
       icon: <Image className="h-10 w-10" />,
       features: ["Anti-glare screen", "Integrated speaker system", "Order confirmation display", "Payment integration"],
       animation: "pulse-slow",
-      image: "/lovable-uploads/e0cebf14-cb64-4d2a-b651-ff8878e38a9d.png"
+      image: "/lovable-uploads/f166ac1d-4054-4d75-93bf-6d176c885383.png"
     },
     {
       id: "billboard",
