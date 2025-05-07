@@ -1,10 +1,5 @@
 
 import { useEffect, useState, useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 
 // Client logos
 const clientLogos = [
@@ -91,48 +86,12 @@ const clientLogos = [
 ];
 
 const ClientLogos = () => {
-  const [autoPlay, setAutoPlay] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
-  // Start the auto-play after component mount
   useEffect(() => {
-    const timer = setTimeout(() => setAutoPlay(true), 1000);
-    return () => clearTimeout(timer);
+    // Simple continuous animation with CSS is more reliable
+    // No JavaScript animation needed, using pure CSS animation
   }, []);
-
-  // Auto-scroll effect
-  useEffect(() => {
-    if (!autoPlay || !carouselRef.current) return;
-    
-    const scrollContainer = carouselRef.current;
-    let animationFrameId: number;
-    let lastTimestamp: number;
-    
-    const scroll = (timestamp: number) => {
-      if (!lastTimestamp) lastTimestamp = timestamp;
-      const elapsed = timestamp - lastTimestamp;
-      
-      if (elapsed > 50) { // Control scroll speed (lower = faster)
-        lastTimestamp = timestamp;
-        scrollContainer.scrollLeft += 1;
-        
-        // Loop back to beginning when reaching the end
-        if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth)) {
-          scrollContainer.scrollLeft = 0;
-        }
-      }
-      
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-    
-    animationFrameId = requestAnimationFrame(scroll);
-    
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-  }, [autoPlay]);
 
   return (
     <section className="py-12 bg-black border-t border-b border-gray-800">
@@ -147,18 +106,12 @@ const ClientLogos = () => {
           <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-black to-transparent"></div>
           <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-black to-transparent"></div>
           
-          <div 
-            ref={carouselRef}
-            className="flex overflow-x-auto space-x-8 no-scrollbar scroll-smooth"
-            style={{ 
-              scrollbarWidth: 'none', 
-              msOverflowStyle: 'none' 
-            }}
-          >
-            <div className="flex space-x-8 animate-scroll">
+          {/* Using CSS-only marquee effect which is more reliable */}
+          <div className="marquee-container overflow-hidden">
+            <div className="marquee-content flex space-x-10">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="flex-none">
-                  <div className="p-3 h-16 flex items-center justify-center">
+                  <div className="p-4 h-24 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
@@ -169,9 +122,9 @@ const ClientLogos = () => {
               ))}
               
               {/* Duplicate logos for seamless looping */}
-              {clientLogos.slice(0, 6).map((logo, index) => (
+              {clientLogos.slice(0, 10).map((logo, index) => (
                 <div key={`dup-${index}`} className="flex-none">
-                  <div className="p-3 h-16 flex items-center justify-center">
+                  <div className="p-4 h-24 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
@@ -187,17 +140,29 @@ const ClientLogos = () => {
       
       <style>
         {`
-        @keyframes scroll {
-          from {
+        .marquee-container {
+          width: 100%;
+          overflow: hidden;
+        }
+        
+        .marquee-content {
+          display: flex;
+          animation: marquee 60s linear infinite;
+          will-change: transform;
+        }
+        
+        @keyframes marquee {
+          0% {
             transform: translateX(0);
           }
-          to {
-            transform: translateX(calc(-100% + 100vw));
+          100% {
+            transform: translateX(-50%);
           }
         }
         
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
+        /* Pause animation on hover */
+        .marquee-container:hover .marquee-content {
+          animation-play-state: paused;
         }
         
         .no-scrollbar::-webkit-scrollbar {

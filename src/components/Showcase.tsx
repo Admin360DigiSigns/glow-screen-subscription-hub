@@ -64,13 +64,13 @@ const Showcase = () => {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      scrollContainerRef.current.scrollBy({ left: -350, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      scrollContainerRef.current.scrollBy({ left: 350, behavior: "smooth" });
     }
   };
 
@@ -124,7 +124,7 @@ const Showcase = () => {
             {showcaseImages.map((image, index) => (
               <div 
                 key={index}
-                className="flex-none snap-center w-[280px] md:w-[320px] transition-transform hover:scale-[1.02] duration-200"
+                className="flex-none snap-center w-[340px] md:w-[400px] transition-transform hover:scale-[1.02] duration-200"
               >
                 <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 h-full shadow-lg shadow-black/50">
                   <div className="w-full h-auto">
@@ -137,8 +137,8 @@ const Showcase = () => {
                       />
                     </AspectRatio>
                   </div>
-                  <div className="p-3 bg-gray-900/80">
-                    <p className="text-xs text-gray-300 truncate">{image.alt}</p>
+                  <div className="p-4 bg-gray-900/80">
+                    <p className="text-sm text-gray-300">{image.alt}</p>
                   </div>
                 </div>
               </div>
