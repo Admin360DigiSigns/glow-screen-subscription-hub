@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -168,10 +167,9 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Main content section with products grid and why choose card - UPDATED LAYOUT */}
+      {/* Main content section with products grid and why choose card */}
       <section className="py-12 px-4 relative z-10">
         <div className="container mx-auto">
-          {/* Modified the grid layout to show products and Why Choose card when category is selected */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {productCategories.map((category, index) => {
               // Only display this product card if no category is selected or this is the selected category
@@ -221,12 +219,15 @@ const Products = () => {
                     </CardContent>
                     
                     <CardFooter className="relative flex flex-col space-y-3 mt-auto pb-6">
-                      <Button 
-                        className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
-                        onClick={() => handleScheduleDemo(category.id)}
-                      >
-                        <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
-                      </Button>
+                      {/* Only show Schedule Demo button on main product page (when no category is selected) */}
+                      {!activeCategory && (
+                        <Button 
+                          className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
+                          onClick={() => handleScheduleDemo(category.id)}
+                        >
+                          <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
+                        </Button>
+                      )}
                     </CardFooter>
                   </Card>
                 </motion.div>
