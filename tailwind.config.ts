@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,12 +62,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// 360 DigiSigns RGB theme colors
+				// 360 DigiSigns RGB theme colors - kept but will be used differently in light theme
 				'digi-red': '#ea2027',
 				'digi-green': '#6ab04c',
 				'digi-blue': '#4834d4',
-				'digi-black': '#121212',
+				'digi-black': '#333333',
 				'digi-white': '#ffffff',
+				// New light theme colors
+				'light-bg': '#f8f9fa',
+				'light-card': '#ffffff',
+				'light-accent': '#f0f2f5',
+				'light-border': '#e2e8f0',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -155,6 +159,13 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-rgb': 'linear-gradient(45deg, #ea2027, #6ab04c, #4834d4, #ea2027)',
+				'light-gradient': 'linear-gradient(to right, #f8f9fa, #ffffff, #f0f2f5)',
+			},
+			boxShadow: {
+				'light-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+				'light-md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+				'light-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+				'light-card': '0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1)',
 			},
 			backgroundSize: {
 				'300%': '300% 300%',

@@ -9,11 +9,10 @@ import Footer from "@/components/Footer";
 import LedVideoWall from "@/components/LedVideoWall";
 import DigitalScreenAdvantages from "@/components/DigitalScreenAdvantages";
 import ContactSection from "@/components/ContactSection";
-import SubscriptionPlans from "@/components/SubscriptionPlans";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-light-bg text-gray-800">
       <Navbar />
       <Hero />
       <Features />

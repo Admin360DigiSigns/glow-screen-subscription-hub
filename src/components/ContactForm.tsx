@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -62,16 +63,16 @@ const ContactForm = () => {
     <div className="w-full">
       <DialogHeader className="mb-6">
         <DialogTitle className="text-2xl font-display">
-          <span className="text-rgb-animated">Get Started</span> with 360 DIGI-SIGNS
+          <span className="text-digi-blue font-bold">Get Started</span> with 360 DIGI-SIGNS
         </DialogTitle>
-        <DialogDescription className="text-gray-400">
+        <DialogDescription className="text-gray-600">
           Fill out the form below and our team will reach out to discuss how our digital displays can illuminate your business.
         </DialogDescription>
       </DialogHeader>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
             Full Name
           </label>
           <Input 
@@ -81,12 +82,12 @@ const ContactForm = () => {
             onChange={handleChange}
             placeholder="Your name"
             required
-            className="bg-gray-900 border-gray-700 text-white"
+            className="bg-gray-50 border-gray-300 text-gray-900"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
             Email Address
           </label>
           <Input 
@@ -97,12 +98,12 @@ const ContactForm = () => {
             onChange={handleChange}
             placeholder="your.email@example.com"
             required
-            className="bg-gray-900 border-gray-700 text-white"
+            className="bg-gray-50 border-gray-300 text-gray-900"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
             Phone Number (Optional)
           </label>
           <Input 
@@ -111,12 +112,12 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="(123) 456-7890"
-            className="bg-gray-900 border-gray-700 text-white"
+            className="bg-gray-50 border-gray-300 text-gray-900"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
             Tell us about your business needs
           </label>
           <Textarea 
@@ -127,13 +128,13 @@ const ContactForm = () => {
             placeholder="What are you looking for? Any specific requirements or questions?"
             required
             rows={4}
-            className="bg-gray-900 border-gray-700 text-white"
+            className="bg-gray-50 border-gray-300 text-gray-900"
           />
         </div>
 
         <Button 
           type="submit" 
-          className="w-full bg-rgb-animated mt-2"
+          className="w-full bg-digi-blue hover:bg-digi-blue/90 text-white mt-2"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
