@@ -12,19 +12,16 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center">
-              <div className="flex items-center">
-                <span className="text-digi-red font-bold text-4xl">3</span>
-                <span className="text-digi-green font-bold text-4xl">6</span>
-                <span className="text-digi-blue font-bold text-4xl">0</span>
-                <span className="text-black text-2xl font-bold ml-0.5 bg-transparent">
-                  <svg className="w-24 h-8" viewBox="0 0 190 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 20C0 8.954 8.954 0 20 0H170C181.046 0 190 8.954 190 20C190 31.046 181.046 40 170 40H20C8.954 40 0 31.046 0 20Z" fill="transparent"/>
-                    <path d="M90 35C101.046 35 110 31.046 110 20" stroke="black" strokeWidth="2"/>
-                    <text x="80" y="25" fontFamily="Arial" fontSize="18" fontWeight="bold" fill="white">DIGI-SIGNS</text>
-                  </svg>
-                </span>
+          <div className="flex-shrink-0 flex items-center logo-shine">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="flex logo-glow">
+                <span className="text-digi-red font-bold text-4xl animate-pulse">3</span>
+                <span className="text-digi-green font-bold text-4xl animate-pulse" style={{animationDelay: "0.2s"}}>6</span>
+                <span className="text-digi-blue font-bold text-4xl animate-pulse" style={{animationDelay: "0.4s"}}>0</span>
+              </div>
+              <div className="block">
+                <span className="font-display font-bold text-2xl text-white">DIGI-SIGNS</span>
+                <span className="block text-xs text-gray-300">ILLUMINATE YOUR BUSINESS</span>
               </div>
             </Link>
           </div>

@@ -36,16 +36,10 @@ const Hero = () => {
               <span className="block animate-fade-in" style={{animationDelay: "0.4s"}}>DIGITAL SCREENS</span>
               <span className="block text-sm font-normal mt-2 animate-fade-in" style={{animationDelay: "0.6s"}}>POWERED BY</span>
               <div className="flex items-center justify-center lg:justify-start mt-2 logo-shine animate-fade-in" style={{animationDelay: "0.8s"}}>
-                <span className="text-digi-red font-bold text-5xl">3</span>
-                <span className="text-digi-green font-bold text-5xl">6</span>
-                <span className="text-digi-blue font-bold text-5xl">0</span>
-                <span className="ml-1">
-                  <svg className="w-32 h-10 inline-block" viewBox="0 0 190 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 20C0 8.954 8.954 0 20 0H170C181.046 0 190 8.954 190 20C190 31.046 181.046 40 170 40H20C8.954 40 0 31.046 0 20Z" fill="transparent"/>
-                    <path d="M90 35C101.046 35 110 31.046 110 20" stroke="white" strokeWidth="2"/>
-                    <text x="80" y="25" fontFamily="Arial" fontSize="18" fontWeight="bold" fill="white">DIGI-SIGNS</text>
-                  </svg>
-                </span>
+                <span className="text-digi-red font-bold text-5xl animate-pulse-rgb">3</span>
+                <span className="text-digi-green font-bold text-5xl animate-pulse-rgb" style={{animationDelay: "0.3s"}}>6</span>
+                <span className="text-digi-blue font-bold text-5xl animate-pulse-rgb" style={{animationDelay: "0.6s"}}>0</span>
+                <span className="text-white font-bold ml-1 text-3xl">DIGI-SIGNS</span>
               </div>
             </h1>
             
