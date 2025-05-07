@@ -70,22 +70,16 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Feature showcase image */}
-        <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
-          <div className="absolute inset-0.5 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
-          <div className="relative overflow-hidden rounded-xl">
-            <img 
-              src="/lovable-uploads/d0bf0d7e-dc73-4ecb-86be-ad2c4768b83b.png" 
-              alt="360 DIGI-SIGNS Premium Digital Display" 
-              className="w-full h-auto object-cover rounded-xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent flex items-end">
-              <div className="p-6 md:p-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Brilliance on Display</h3>
-                <p className="text-gray-200 max-w-xl">
-                  Ultra-bright HD displays with AI-powered content optimization to attract customers and boost engagement
-                </p>
-              </div>
+        {/* Feature showcase image - REDUCED SIZE to approximately 5x5 cms */}
+        <div className="mb-16 relative animate-fade-in flex justify-center" style={{animationDelay: "0.4s"}}>
+          <div className="w-48 h-48"> {/* Approximately 5x5 cms (192x192px) */}
+            <div className="absolute inset-0.5 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
+            <div className="relative overflow-hidden rounded-xl h-full">
+              <img 
+                src="/lovable-uploads/d0bf0d7e-dc73-4ecb-86be-ad2c4768b83b.png" 
+                alt="360 DIGI-SIGNS Premium Digital Display" 
+                className="w-full h-full object-cover rounded-xl"
+              />
             </div>
           </div>
         </div>
