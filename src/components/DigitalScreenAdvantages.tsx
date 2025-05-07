@@ -71,37 +71,9 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Transparent Screen Highlight Box - Updated with dark background and lighting animations */}
+        {/* Transparent Screen Highlight Box - Content Removed */}
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
-          {/* Dark background with lighting animations */}
-          <div className="absolute inset-0 bg-[#0a0a15] rounded-xl"></div>
-          
-          {/* Animated lighting effects */}
-          <div className="absolute inset-0 overflow-hidden rounded-xl">
-            {/* Glowing orbs */}
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-digi-blue/20 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-digi-red/20 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: "1.5s"}}></div>
-            <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-digi-green/15 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: "2.5s"}}></div>
-            
-            {/* Light rays */}
-            <div className="absolute top-1/3 left-0 w-full h-24 bg-gradient-to-r from-digi-blue/0 via-digi-blue/10 to-digi-blue/0 skew-y-6 animate-pulse-slow"></div>
-            <div className="absolute top-2/3 left-0 w-full h-16 bg-gradient-to-r from-digi-red/0 via-digi-red/10 to-digi-red/0 -skew-y-6 animate-pulse-slow" style={{animationDelay: "1s"}}></div>
-            
-            {/* Subtle grid lines */}
-            <div className="absolute inset-0 opacity-10" 
-                 style={{
-                   backgroundImage: "linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)",
-                   backgroundSize: "40px 40px"
-                 }}>
-            </div>
-            
-            {/* Moving particles */}
-            <div className="absolute top-10 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-float" style={{animationDuration: "7s"}}></div>
-            <div className="absolute bottom-10 right-1/3 w-3 h-3 bg-white/20 rounded-full animate-float" style={{animationDuration: "9s", animationDelay: "1s"}}></div>
-            <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-white/20 rounded-full animate-float" style={{animationDuration: "8s", animationDelay: "2s"}}></div>
-          </div>
-          
-          {/* Main content with glass effect */}
+          <div className="absolute inset-0 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
           <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
