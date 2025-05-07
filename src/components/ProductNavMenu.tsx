@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Monitor, Tv, Video, Image, Tag, ZapIcon } from "lucide-react";
 import {
@@ -61,10 +60,10 @@ const products = [
 // NavigationMenu component for product categories
 export function ProductNavMenu() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-white hover:text-digi-green hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent">
+    <NavigationMenu className="h-full">
+      <NavigationMenuList className="h-full">
+        <NavigationMenuItem className="h-full flex items-center">
+          <NavigationMenuTrigger className="bg-transparent text-white hover:text-digi-green hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent h-auto py-0">
             Products
           </NavigationMenuTrigger>
           <NavigationMenuContent>
