@@ -35,8 +35,7 @@ const Navbar = () => {
               <Link to="/" className="text-white hover:text-digi-green font-medium">Home</Link>
               <ProductNavMenu />
               <Link to="/pricing" className="text-white hover:text-digi-green font-medium">Pricing</Link>
-              <a href="/#showcase" className="text-white hover:text-digi-green font-medium">Gallery</a>
-              <a href="/#testimonials" className="text-white hover:text-digi-green font-medium">Clients</a>
+              <a href="/#showcase" className="text-white hover:text-digi-green font-medium">About Us</a>
             </div>
           </div>
 
@@ -74,8 +73,7 @@ const Navbar = () => {
           <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Home</Link>
           <Link to="/products" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Products</Link>
           <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Pricing</Link>
-          <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Gallery</a>
-          <a href="/#testimonials" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Clients</a>
+          <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">About Us</a>
           <div className="px-3 py-2">
             <Dialog>
               <DialogTrigger asChild>
