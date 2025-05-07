@@ -3,11 +3,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Monitor, Tv, Video, Image, Tag, ZapIcon, CheckCircle } from "lucide-react";
+import { Monitor, Tv, Video, Image, Tag, ZapIcon, CheckCircle, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+import ContactForm from "@/components/ContactForm";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   
   const productCategories = [
     {
@@ -112,11 +116,16 @@ const Products = () => {
     ? productCategories.find(category => category.id === activeCategory) 
     : null;
 
+  const handleScheduleDemo = (productId: string) => {
+    setSelectedProduct(productId);
+    setIsContactDialogOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Dark space background with subtle blue nebula effect instead of stars */}
       <div className="fixed inset-0 bg-gradient-to-b from-black via-blue-950/30 to-black z-0"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAgICAgIDxmZUZ1bmNBPgogICAgICAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0idGFibGUiIHRhYmxlVmFsdWVzPSIwIDEiPjwvZmVGdW5jQT4KICAgICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICkgIDxmZUJsZW5kIG1vZGU9InNvZnQtbGlnaHQiIGluPSJub2lzZUJsdXIiIGluMj0iU291cmNlR3JhcGhpYyIgcmVzdWx0PSJub2lzZUJsZW5kIj48L2ZlQmxlbmQ+CiAgICAgICAgPC9maWx0ZXI+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzA0MDgyMCIgZmlsdGVyPSJ1cmwoI2ZpbHRlcikiIG9wYWNpdHk9IjAuMiI+PC9yZWN0Pgo8L3N2Zz4=')]
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAgICAgIDxmZUZ1bmNBPgogICAgICAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0idGFibGUiIHRhYmxlVmFsdWVzPSIwIDEiPjwvZmVGdW5jQT4KICAgICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICApICA8ZmVCbGVuZCBtb2RlPSJzb2Z0LWxpZ2h0IiBpbj0ibm9pc2VCbHVyIiBpbjI9IlNvdXJjZUdyYXBoaWMiIHJlc3VsdD0ibm9pc2VCbGVuZCI+PC9mZUJsZW5kPgogICAgICAgIDwvZmlsdGVyPgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9IjUwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMwNDA4MjAiIGZpbHRlcj0idXJsKCNmaWx0ZXIpIiBvcGFjaXR5PSIwLjIiPjwvcmVjdD4KPC9zdmc+')]
         bg-repeat opacity-30 z-0"></div>
 
       <Navbar />
@@ -211,11 +220,11 @@ const Products = () => {
                     </CardContent>
                     
                     <CardFooter className="relative flex flex-col space-y-3 mt-auto pb-6">
-                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
-                        Learn More
-                      </Button>
-                      <Button className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10">
-                        View Demo
+                      <Button 
+                        className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
+                        onClick={() => handleScheduleDemo(category.id)}
+                      >
+                        <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
                       </Button>
                     </CardFooter>
                   </Card>
@@ -261,13 +270,10 @@ const Products = () => {
                   
                   <CardFooter className="pt-2 border-t border-gray-800 flex flex-col space-y-3">
                     <Button 
-                      className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white" 
-                      onClick={() => window.location.href = `/contact?product=${selectedCategory.id}`}
+                      className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
+                      onClick={() => handleScheduleDemo(selectedCategory.id)}
                     >
-                      Request Quote
-                    </Button>
-                    <Button className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10">
-                      Schedule Demo
+                      <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
                     </Button>
                   </CardFooter>
                 </Card>
@@ -318,8 +324,11 @@ const Products = () => {
                   <span className="text-white">Remote content management system</span>
                 </li>
               </ul>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto animate-pulse-rgb">
-                Explore Indoor Solutions
+              <Button 
+                className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white mt-auto"
+                onClick={() => handleScheduleDemo('indoor')}
+              >
+                <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
               </Button>
             </div>
             
@@ -353,8 +362,11 @@ const Products = () => {
                   <span className="text-white">Temperature resistant (-20°C to 50°C)</span>
                 </li>
               </ul>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto animate-pulse-rgb">
-                Discover Outdoor Options
+              <Button 
+                className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white mt-auto"
+                onClick={() => handleScheduleDemo('outdoor')}
+              >
+                <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
               </Button>
             </div>
           </div>
@@ -364,12 +376,22 @@ const Products = () => {
             <p className="text-white mb-8 max-w-2xl mx-auto">
               Don't see exactly what you need? Our team specializes in creating custom digital signage solutions tailored to your specific requirements and space constraints.
             </p>
-            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white text-lg px-8 py-6 animate-pulse-rgb">
-              Request Custom Quote
+            <Button 
+              className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white text-lg px-8 py-6"
+              onClick={() => handleScheduleDemo('custom')}
+            >
+              <Calendar className="mr-2 h-5 w-5" /> Schedule Custom Demo
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Contact Form Dialog */}
+      <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
+        <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
+          <ContactForm />
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
