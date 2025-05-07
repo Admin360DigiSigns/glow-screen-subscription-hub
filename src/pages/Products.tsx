@@ -26,7 +26,7 @@ const Products = () => {
       description: "Create stunning visual experiences with our seamless video wall technology",
       icon: <Tv className="h-10 w-10" />,
       features: ["Bezel-less design", "Synchronized content", "Modular configuration", "Remote management"],
-      animation: "pulse-rgb",
+      animation: "pulse-slow",
       image: "/lovable-uploads/35655ba6-4ae2-46e3-9441-c19bae51b5c6.png"
     },
     {
@@ -62,7 +62,7 @@ const Products = () => {
       description: "High-impact outdoor advertising displays with remote content management",
       icon: <Tag className="h-10 w-10" />,
       features: ["Massive visibility", "Scheduled content rotation", "Real-time updates", "Traffic analysis integration"],
-      animation: "flow-rgb",
+      animation: "border-glow",
       image: "/lovable-uploads/d57eb9f2-1fba-479e-90f5-d681548d7c73.png"
     },
   ];
@@ -81,22 +81,23 @@ const Products = () => {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Stars background */}
-      <div className="stars fixed top-0 left-0 w-full h-full"></div>
-      <div className="twinkling fixed top-0 left-0 w-full h-full"></div>
+      {/* Dark space background with subtle blue nebula effect instead of stars */}
+      <div className="fixed inset-0 bg-gradient-to-b from-black via-blue-950/30 to-black z-0"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0idGFibGUiIHRhYmxlVmFsdWVzPSIwIDEiPjwvZmVGdW5jQT4KICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxMCIgaW49Im5vaXNlQWxwaGEiIHJlc3VsdD0ibm9pc2VCbHVyIj48L2ZlR2F1c3NpYW5CbHVyPgogICAgICAgICAgICA8ZmVCbGVuZCBtb2RlPSJzb2Z0LWxpZ2h0IiBpbj0ibm9pc2VCbHVyIiBpbjI9IlNvdXJjZUdyYXBoaWMiIHJlc3VsdD0ibm9pc2VCbGVuZCI+PC9mZUJsZW5kPgogICAgICAgIDwvZmlsdGVyPgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9IjUwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMwNDA4MjAiIGZpbHRlcj0idXJsKCNmaWx0ZXIpIiBvcGFjaXR5PSIwLjIiPjwvcmVjdD4KPC9zdmc+')]
+        bg-repeat opacity-30 z-0"></div>
 
       <Navbar />
 
       {/* Header section */}
       <section className="relative pt-28 pb-12 px-4">
         <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-glow-pulse">
-            <span className="text-rgb-animated">Digital Signage</span> Solutions
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">Digital Signage</span> Solutions
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8 text-gray-300">
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8 text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
             Transform your space with our state-of-the-art digital display technology
           </p>
-          <div className="w-24 h-1 bg-gradient-rgb mx-auto rounded-full animate-flow-rgb"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-300 mx-auto rounded-full"></div>
         </div>
       </section>
 
@@ -110,8 +111,8 @@ const Products = () => {
                 onClick={() => setActiveCategory(category.id === activeCategory ? null : category.id)}
                 className={`${
                   category.id === activeCategory 
-                    ? "bg-rgb-animated" 
-                    : "bg-gray-800 hover:bg-gray-700"
+                    ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white" 
+                    : "bg-gray-800 hover:bg-gray-700 text-white"
                 } transition-all duration-300`}
               >
                 {category.name}
@@ -134,8 +135,8 @@ const Products = () => {
                 variants={fadeInUpVariants}
                 className={`${activeCategory === null || activeCategory === category.id ? "block" : "hidden"}`}
               >
-                <Card className="bg-black border border-gray-800 overflow-hidden h-[450px] flex flex-col">
-                  <div className={`absolute inset-0 bg-gradient-rgb opacity-10 animate-${category.animation}`}></div>
+                <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[450px] flex flex-col shadow-lg shadow-blue-900/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-20"></div>
                   
                   <CardHeader className="relative">
                     <div className="h-48 w-full mb-4 overflow-hidden rounded-lg">
@@ -145,8 +146,8 @@ const Products = () => {
                         className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                       />
                     </div>
-                    <CardTitle className="text-2xl text-center text-digi-green">{category.name}</CardTitle>
-                    <CardDescription className="text-gray-400 text-center">
+                    <CardTitle className="text-2xl text-center text-digi-green font-semibold drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">{category.name}</CardTitle>
+                    <CardDescription className="text-gray-300 text-center">
                       {category.description}
                     </CardDescription>
                   </CardHeader>
@@ -155,15 +156,17 @@ const Products = () => {
                     <ul className="space-y-2">
                       {category.features.map((feature, i) => (
                         <li key={i} className="flex items-center">
-                          <span className="w-2 h-2 bg-gradient-rgb rounded-full mr-2 animate-pulse-rgb"></span>
-                          <span>{feature}</span>
+                          <span className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-2"></span>
+                          <span className="text-white">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                   
                   <CardFooter className="relative flex justify-center mt-auto pb-6">
-                    <Button className="bg-gradient-rgb animate-flow-rgb">Learn More</Button>
+                    <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white">
+                      Learn More
+                    </Button>
                   </CardFooter>
                 </Card>
               </motion.div>
@@ -175,14 +178,14 @@ const Products = () => {
       {/* Product Highlights */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Discover Our <span className="text-rgb-animated">Premium</span> Display Technology
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+            Discover Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">Premium</span> Display Technology
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm h-[600px] flex flex-col">
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-digi-red opacity-30 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-digi-blue opacity-30 rounded-full blur-3xl"></div>
+            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-gray-900/80 backdrop-blur-sm h-[600px] flex flex-col shadow-lg shadow-blue-900/20">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-600 opacity-20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-500 opacity-20 rounded-full blur-3xl"></div>
               
               <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
                 <img 
@@ -192,30 +195,32 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 text-digi-green">Indoor Digital Displays</h3>
-              <p className="text-gray-300 mb-6">
+              <h3 className="text-2xl font-bold mb-4 text-digi-green drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">Indoor Digital Displays</h3>
+              <p className="text-white mb-6">
                 Our indoor digital screens provide crystal clear visuals and vibrant colors, perfect for retail environments, corporate settings, and entertainment venues. Available in various sizes and configurations to meet your specific needs.
               </p>
               <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-digi-green rounded-full mr-2"></span>
-                  <span>Ultra-slim bezels for seamless integration</span>
+                  <span className="text-white">Ultra-slim bezels for seamless integration</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-digi-red rounded-full mr-2"></span>
-                  <span>4K resolution for stunning clarity</span>
+                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                  <span className="text-white">4K resolution for stunning clarity</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-digi-blue rounded-full mr-2"></span>
-                  <span>Remote content management system</span>
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                  <span className="text-white">Remote content management system</span>
                 </li>
               </ul>
-              <Button className="bg-rgb-animated mt-auto">Explore Indoor Solutions</Button>
+              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white mt-auto">
+                Explore Indoor Solutions
+              </Button>
             </div>
             
-            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm h-[600px] flex flex-col">
-              <div className="absolute -top-20 -left-20 w-40 h-40 bg-digi-green opacity-30 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-digi-red opacity-30 rounded-full blur-3xl"></div>
+            <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-gray-900/80 backdrop-blur-sm h-[600px] flex flex-col shadow-lg shadow-blue-900/20">
+              <div className="absolute -top-20 -left-20 w-40 h-40 bg-cyan-500 opacity-20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-blue-600 opacity-20 rounded-full blur-3xl"></div>
               
               <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
                 <img 
@@ -225,34 +230,38 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 text-digi-green">Outdoor LED Technology</h3>
-              <p className="text-gray-300 mb-6">
+              <h3 className="text-2xl font-bold mb-4 text-digi-green drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">Outdoor LED Technology</h3>
+              <p className="text-white mb-6">
                 Built to withstand harsh weather conditions, our outdoor LED screens deliver exceptional brightness and visibility even in direct sunlight. Ideal for storefronts, event venues, and high-traffic areas where visibility is crucial.
               </p>
               <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-digi-blue rounded-full mr-2"></span>
-                  <span>Weather-resistant construction (IP65 rated)</span>
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                  <span className="text-white">Weather-resistant construction (IP65 rated)</span>
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-digi-green rounded-full mr-2"></span>
-                  <span>High brightness levels (7000+ nits)</span>
+                  <span className="text-white">High brightness levels (7000+ nits)</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-digi-red rounded-full mr-2"></span>
-                  <span>Temperature resistant (-20°C to 50°C)</span>
+                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                  <span className="text-white">Temperature resistant (-20°C to 50°C)</span>
                 </li>
               </ul>
-              <Button className="bg-rgb-animated mt-auto">Discover Outdoor Options</Button>
+              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white mt-auto">
+                Discover Outdoor Options
+              </Button>
             </div>
           </div>
           
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 text-digi-green">Custom Solutions Available</h3>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4 text-digi-green drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">Custom Solutions Available</h3>
+            <p className="text-white mb-8 max-w-2xl mx-auto">
               Don't see exactly what you need? Our team specializes in creating custom digital signage solutions tailored to your specific requirements and space constraints.
             </p>
-            <Button className="bg-rgb-animated text-lg px-8 py-6">Request Custom Quote</Button>
+            <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white text-lg px-8 py-6">
+              Request Custom Quote
+            </Button>
           </div>
         </div>
       </section>
@@ -263,3 +272,4 @@ const Products = () => {
 };
 
 export default Products;
+
