@@ -1,67 +1,14 @@
 
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import SubscriptionForm from "@/components/SubscriptionForm";
-
-const plans = [
-  {
-    name: "Standard",
-    price: "79.99",
-    description: "Perfect for small businesses",
-    features: [
-      "1M x 1M Digital Display",
-      "HD Resolution",
-      "Basic Content Management",
-      "8 Hours Daily Operation",
-      "Monthly Content Updates",
-      "Standard Support"
-    ],
-    color: "digi-red",
-    value: "standard"
-  },
-  {
-    name: "Premium",
-    price: "129.99",
-    description: "Ideal for growing businesses",
-    features: [
-      "1.5M x 1.5M Digital Display",
-      "4K Ultra HD Resolution",
-      "Advanced Content Management",
-      "12 Hours Daily Operation",
-      "Weekly Content Updates",
-      "Priority Support",
-      "Analytics Dashboard"
-    ],
-    color: "digi-green",
-    value: "premium"
-  },
-  {
-    name: "Enterprise",
-    price: "199.99",
-    description: "For maximum business impact",
-    features: [
-      "Custom Size Digital Display",
-      "8K Resolution",
-      "AI-Powered Content Optimization",
-      "24/7 Operation",
-      "Unlimited Content Updates",
-      "Premium Support & Consultation",
-      "Advanced Analytics",
-      "Multi-Screen Management"
-    ],
-    color: "digi-blue",
-    value: "enterprise"
-  }
-];
+import { useNavigate } from "react-router-dom";
+import { digitalPlans } from "@/data/planData";
 
 const SubscriptionPlans = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<"standard" | "premium" | "enterprise">("standard");
+  const navigate = useNavigate();
 
-  const handleSubscribe = (planType: "standard" | "premium" | "enterprise") => {
-    setSelectedPlan(planType);
-    setDialogOpen(true);
+  const handleSubscribe = (planType: string) => {
+    navigate(`/subscribe/${planType}`);
   };
 
   return (
@@ -77,7 +24,7 @@ const SubscriptionPlans = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
+          {digitalPlans.map((plan, index) => (
             <div 
               key={index}
               className="relative rounded-2xl shadow-lg border-2 border-transparent h-full"
@@ -112,12 +59,8 @@ const SubscriptionPlans = () => {
                   ))}
                 </ul>
                 <Button 
-                  className={`w-full ${
-                    plan.color === "digi-red" ? "bg-digi-red hover:bg-digi-red/90" : 
-                    plan.color === "digi-green" ? "bg-digi-green hover:bg-digi-green/90" : 
-                    "bg-digi-blue hover:bg-digi-blue/90"
-                  }`}
-                  onClick={() => handleSubscribe(plan.value as any)}
+                  className={`w-full bg-${plan.color} hover:bg-${plan.color}/90`}
+                  onClick={() => handleSubscribe(plan.value)}
                 >
                   Subscribe Now
                 </Button>
@@ -130,12 +73,6 @@ const SubscriptionPlans = () => {
           No long-term contracts. Cancel anytime. Free installation and maintenance included.
         </div>
       </div>
-      
-      <SubscriptionForm 
-        open={dialogOpen} 
-        onOpenChange={setDialogOpen} 
-        initialPlan={selectedPlan}
-      />
     </section>
   );
 };
