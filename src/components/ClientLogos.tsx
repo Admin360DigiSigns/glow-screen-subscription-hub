@@ -88,11 +88,6 @@ const clientLogos = [
 const ClientLogos = () => {
   const marqueeRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Simple continuous animation with CSS is more reliable
-    // No JavaScript animation needed, using pure CSS animation
-  }, []);
-
   return (
     <section className="py-12 bg-black border-t border-b border-gray-800">
       <div className="container mx-auto px-4">
@@ -108,10 +103,10 @@ const ClientLogos = () => {
           
           {/* Using CSS-only marquee effect which is more reliable */}
           <div className="marquee-container overflow-hidden">
-            <div className="marquee-content flex space-x-10">
+            <div className="marquee-content flex space-x-12">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="flex-none">
-                  <div className="p-4 h-24 flex items-center justify-center">
+                  <div className="p-4 h-32 w-40 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
@@ -122,9 +117,9 @@ const ClientLogos = () => {
               ))}
               
               {/* Duplicate logos for seamless looping */}
-              {clientLogos.slice(0, 10).map((logo, index) => (
+              {clientLogos.map((logo, index) => (
                 <div key={`dup-${index}`} className="flex-none">
-                  <div className="p-4 h-24 flex items-center justify-center">
+                  <div className="p-4 h-32 w-40 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
@@ -147,7 +142,7 @@ const ClientLogos = () => {
         
         .marquee-content {
           display: flex;
-          animation: marquee 60s linear infinite;
+          animation: marquee 40s linear infinite;
           will-change: transform;
         }
         
