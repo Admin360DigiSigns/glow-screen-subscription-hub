@@ -28,15 +28,19 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-end md:flex-1">
-            <div className="flex space-x-6 mr-4">
+          {/* Desktop Navigation - Centered with white text */}
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex space-x-8">
               <Link to="/" className="text-white hover:text-digi-green font-medium">Home</Link>
               <a href="/#features" className="text-white hover:text-digi-green font-medium">Features</a>
               <Link to="/pricing" className="text-white hover:text-digi-green font-medium">Pricing</Link>
               <a href="/#showcase" className="text-white hover:text-digi-green font-medium">Gallery</a>
               <a href="/#testimonials" className="text-white hover:text-digi-green font-medium">Clients</a>
             </div>
+          </div>
+
+          {/* Get Started Button */}
+          <div className="hidden md:block">
             <Dialog>
               <DialogTrigger asChild>
                 <Button className="bg-rgb-animated font-bold">Get Started</Button>
