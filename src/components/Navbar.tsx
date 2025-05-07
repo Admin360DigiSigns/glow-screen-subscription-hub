@@ -40,13 +40,13 @@ const Navbar = () => {
                 <span className="text-rgb-animated font-display mr-4" font-bold><a href="/#showcase">About Us</a></span>
                 <div className="flex items-center space-x-4 ml-2 social-icons-container">
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <Facebook size={20} className="text-[#4267B2]" />
+                    <Facebook size={24} className="text-[#4267B2]" />
                   </a>
                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <Twitter size={20} className="text-[#1DA1F2]" />
+                    <Twitter size={24} className="text-[#1DA1F2]" />
                   </a>
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <Instagram size={20} className="text-[#E1306C]" />
+                    <Instagram size={24} className="text-[#E1306C]" />
                   </a>
                 </div>
               </div>
@@ -90,13 +90,13 @@ const Navbar = () => {
           <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">About Us</a>
           <div className="flex items-center space-x-4 px-3 py-2 mt-2">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <Facebook size={22} className="text-[#4267B2]" />
+              <Facebook size={26} className="text-[#4267B2]" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <Twitter size={22} className="text-[#1DA1F2]" />
+              <Twitter size={26} className="text-[#1DA1F2]" />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <Instagram size={22} className="text-[#E1306C]" />
+              <Instagram size={26} className="text-[#E1306C]" />
             </a>
           </div>
           <div className="px-3 py-2">
