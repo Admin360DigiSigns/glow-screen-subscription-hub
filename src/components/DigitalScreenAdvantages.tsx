@@ -71,55 +71,61 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Transparent Screen Highlight Box - Updated with dark background and lighting animations */}
+        {/* Transparent Screen Highlight Box - Updated with RGB illumination effects */}
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
-          {/* Dark background with lighting animations */}
+          {/* Dark background */}
           <div className="absolute inset-0 bg-[#0a0a15] rounded-xl"></div>
           
-          {/* Animated lighting effects */}
+          {/* RGB illumination effects */}
           <div className="absolute inset-0 overflow-hidden rounded-xl">
-            {/* Glowing orbs */}
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-digi-blue/20 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-digi-red/20 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: "1.5s"}}></div>
-            <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-digi-green/15 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: "2.5s"}}></div>
+            {/* Dynamic RGB orbs with animated movement */}
+            <div className="absolute -top-40 -left-20 w-96 h-96 bg-digi-red/15 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-digi-blue/15 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: "1.5s"}}></div>
+            <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-digi-green/15 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: "2.5s"}}></div>
             
-            {/* Light rays */}
-            <div className="absolute top-1/3 left-0 w-full h-24 bg-gradient-to-r from-digi-blue/0 via-digi-blue/10 to-digi-blue/0 skew-y-6 animate-pulse-slow"></div>
-            <div className="absolute top-2/3 left-0 w-full h-16 bg-gradient-to-r from-digi-red/0 via-digi-red/10 to-digi-red/0 -skew-y-6 animate-pulse-slow" style={{animationDelay: "1s"}}></div>
+            {/* RGB light beams */}
+            <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-purple-900/20 via-transparent to-transparent"></div>
+            <div className="absolute top-1/4 left-0 w-full h-32 bg-gradient-to-r from-pink-600/5 via-blue-600/10 to-pink-600/5 transform -skew-y-3 animate-pulse-slow"></div>
+            <div className="absolute bottom-1/3 right-0 w-full h-16 bg-gradient-to-l from-digi-blue/5 via-digi-red/10 to-digi-blue/5 transform skew-y-3 animate-pulse-slow" style={{animationDelay: "1s"}}></div>
             
-            {/* Subtle grid lines */}
-            <div className="absolute inset-0 opacity-10" 
+            {/* Animated RGB scan lines */}
+            <div className="absolute inset-0 opacity-5" 
                  style={{
-                   backgroundImage: "linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)",
-                   backgroundSize: "40px 40px"
+                   backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(166, 104, 255, 0.5) 2px, rgba(166, 104, 255, 0.5) 4px)",
+                   backgroundSize: "100% 4px",
+                   animation: "scanlines 8s linear infinite"
                  }}>
             </div>
             
-            {/* Moving particles */}
-            <div className="absolute top-10 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-float" style={{animationDuration: "7s"}}></div>
-            <div className="absolute bottom-10 right-1/3 w-3 h-3 bg-white/20 rounded-full animate-float" style={{animationDuration: "9s", animationDelay: "1s"}}></div>
-            <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-white/20 rounded-full animate-float" style={{animationDuration: "8s", animationDelay: "2s"}}></div>
+            {/* RGB floating particles */}
+            <div className="absolute top-1/5 left-1/4 w-3 h-3 bg-pink-500/40 rounded-full blur-sm animate-float" style={{animationDuration: "7s"}}></div>
+            <div className="absolute bottom-1/4 right-1/3 w-4 h-4 bg-blue-500/40 rounded-full blur-sm animate-float" style={{animationDuration: "9s", animationDelay: "1s"}}></div>
+            <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-green-500/40 rounded-full blur-sm animate-float" style={{animationDuration: "8s", animationDelay: "3s"}}></div>
+            <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-purple-500/40 rounded-full blur-sm animate-float" style={{animationDuration: "10s", animationDelay: "2s"}}></div>
           </div>
           
-          {/* Main content with glass effect */}
+          {/* Main content with glass effect - Centered */}
           <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-3xl font-bold text-white mb-6 text-glow">
-                  <span className="text-digi-red">Transparent</span> <span className="text-digi-green">Digital</span> <span className="text-digi-blue">Screens</span>
-                </h3>
-                
-                <p className="text-xl text-gray-100 mb-4 font-light leading-relaxed">
-                  Experience the future with our revolutionary transparent digital displays that create a <span className="font-semibold text-digi-green">magical floating content effect</span>.
-                </p>
-                
-                <p className="text-lg text-gray-200 mb-6">
-                  Our transparent screens allow content to appear suspended in mid-air while maintaining visibility through the display, perfect for:
-                </p>
-                
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-4xl font-bold mb-6 font-display">
+                <span className="text-digi-red text-glow">Transparent</span>{" "}
+                <span className="text-digi-green text-glow">Digital</span>{" "}
+                <span className="text-digi-blue text-glow">Screens</span>
+              </h3>
+              
+              <p className="text-xl text-gray-100 mb-6 font-light leading-relaxed max-w-3xl mx-auto">
+                Experience the future with our revolutionary transparent digital displays that create a{" "}
+                <span className="font-semibold text-digi-green">magical floating content effect</span>.
+              </p>
+              
+              <p className="text-lg text-gray-200 mb-6 max-w-3xl mx-auto">
+                Our transparent screens allow content to appear suspended in mid-air while maintaining visibility through the display, perfect for:
+              </p>
+              
+              <div className="inline-block text-left">
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start">
-                    <Check className="h-5 w-5 text-digi-green mr-2 mt-0.5 flex-shrink-0" />
+                    <Check className="h-5 w-5 text-digi-red mr-2 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-200">Retail storefronts that showcase products while displaying dynamic content</span>
                   </li>
                   <li className="flex items-start">
@@ -135,26 +141,18 @@ const DigitalScreenAdvantages = () => {
                     <span className="text-gray-200">Hospitality settings creating immersive experiences without obstructing views</span>
                   </li>
                 </ul>
-                
-                <p className="text-gray-300 italic">
-                  "Transparent displays create <span className="text-digi-green font-semibold">73%</span> more engagement than traditional screens in high-foot-traffic areas."
-                </p>
               </div>
               
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-digi-red/20 via-digi-green/20 to-digi-blue/20 rounded-xl animate-pulse opacity-50"></div>
-                <div className="relative bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10">
-                  <h4 className="text-xl font-semibold text-white mb-4">Transparent Display Features</h4>
-                  <div className="flex flex-col space-y-6">
-                    {/* Content intentionally left empty as per user request */}
-                  </div>
-                </div>
-              </div>
+              <p className="text-gray-300 italic mt-6">
+                "Transparent displays create <span className="text-digi-green font-semibold">73%</span> more engagement than traditional screens in high-foot-traffic areas."
+              </p>
             </div>
             
-            {/* Animated elements */}
-            <div className="absolute -top-12 -right-12 w-24 h-24 bg-digi-red opacity-30 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-digi-blue opacity-30 rounded-full blur-2xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
+            {/* Animated RGB glow elements */}
+            <div className="absolute -top-12 -left-12 w-24 h-24 bg-digi-red opacity-30 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute -bottom-12 -right-12 w-24 h-24 bg-digi-blue opacity-30 rounded-full blur-2xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
+            <div className="absolute top-1/2 right-0 w-24 h-24 bg-digi-green opacity-20 rounded-full blur-2xl animate-pulse" style={{animationDelay: "1s"}}></div>
+            <div className="absolute bottom-1/2 left-0 w-24 h-24 bg-purple-600 opacity-20 rounded-full blur-2xl animate-pulse" style={{animationDelay: "2s"}}></div>
           </div>
         </div>
         
