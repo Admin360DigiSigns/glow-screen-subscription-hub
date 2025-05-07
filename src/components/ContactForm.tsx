@@ -36,8 +36,8 @@ const ContactForm = () => {
         `Message:\n${formData.message}`
       );
       
-      // Open the default email client
-      window.open(`mailto:Info@360digisigns.com?subject=${subject}&body=${body}`);
+      // Open the default email client with the specified recipient and sender
+      window.open(`mailto:info@360digisigns.com?subject=${subject}&body=${body}&from=nandish@360digisigns.com`);
       
       toast({
         title: "Inquiry Submitted",
