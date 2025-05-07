@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,6 +20,7 @@ import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChevronLeft } from "lucide-react";
 
 const subscriptionFormSchema = z.object({
   fullName: z.string().min(2, { message: "Please enter your full name" }),
@@ -77,6 +78,8 @@ const Subscribe = () => {
   const handlePrevious = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+    } else {
+      navigate("/pricing");
     }
   };
 
@@ -114,6 +117,18 @@ const Subscribe = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
+          {/* Back button */}
+          <div className="mb-6">
+            <Button 
+              onClick={() => navigate("/pricing")}
+              variant="outline" 
+              className="flex items-center gap-1 border-white/20 text-white hover:bg-white/5"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Back to Pricing
+            </Button>
+          </div>
+
           <motion.div 
             className="max-w-3xl mx-auto bg-black/60 p-8 rounded-xl border border-white/10 backdrop-blur-sm shadow-xl"
             initial={{ opacity: 0, y: 20 }}
@@ -407,10 +422,14 @@ const Subscribe = () => {
                     type="button"
                     onClick={handlePrevious}
                     variant="outline"
-                    disabled={currentStep === 1}
                     className="border-white/20 text-white"
                   >
-                    Previous
+                    {currentStep === 1 ? (
+                      <>
+                        <ChevronLeft className="h-4 w-4 mr-1" />
+                        Back to Pricing
+                      </>
+                    ) : "Previous"}
                   </Button>
                   
                   <Button 
