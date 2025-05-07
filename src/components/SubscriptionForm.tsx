@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
 import { FormSteps } from "./SubscriptionFormSteps";
 import { User, Calendar, Check, ChevronRight, Plus, Minus, FileText, MapPin, CreditCard } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -170,7 +170,7 @@ export default function SubscriptionForm({
   
   const { toast } = useToast();
   
-  const form = useForm<FormValues>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
@@ -285,6 +285,8 @@ export default function SubscriptionForm({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0 relative">
+        <DialogTitle className="sr-only">Subscription Form</DialogTitle>
+        
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden z-0 opacity-70">
           {animationElements.map((el, index) => (
