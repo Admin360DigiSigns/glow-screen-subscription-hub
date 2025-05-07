@@ -16,22 +16,34 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Calendar, Check, ChevronRight, Plus, Minus } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 const subscriptionFormSchema = z.object({
   fullName: z.string().min(2, { message: "Please enter your full name" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
+  country: z.string().min(1, { message: "Please select a country" }),
+  installationDate: z.date({ required_error: "Installation date is required" }),
+  locationType: z.enum(["single", "multiple"]),
   plan: z.enum(["standard", "premium", "enterprise"]),
+  businessType: z.string().min(2, { message: "Please enter your business type" }),
   businessName: z.string().min(2, { message: "Please enter your business name" }),
   address: z.string().min(5, { message: "Please enter your business address" }),
-  city: z.string().min(2, { message: "Please enter your city" }),
-  state: z.string().min(2, { message: "Please enter your state" }),
-  zipCode: z.string().min(5, { message: "Please enter a valid zip code" })
+  businessCountry: z.string().min(1, { message: "Country is required" }),
+  province: z.string().min(1, { message: "Province/State is required" }),
+  city: z.string().min(1, { message: "City is required" }),
+  postalCode: z.string().min(1, { message: "Please enter a valid postal code" }),
+  contractDuration: z.string().min(1, { message: "Contract duration is required" }),
+  totalScreens: z.number().min(1, { message: "At least one screen is required" })
 });
 
 type SubscriptionFormValues = z.infer<typeof subscriptionFormSchema>;
@@ -48,12 +60,19 @@ const Subscribe = () => {
       fullName: "",
       email: "",
       phone: "",
+      country: "Canada",
+      installationDate: undefined,
+      locationType: "single",
       plan: (planType as "standard" | "premium" | "enterprise") || "standard",
+      businessType: "",
       businessName: "",
       address: "",
+      businessCountry: "Canada",
+      province: "",
       city: "",
-      state: "",
-      zipCode: ""
+      postalCode: "",
+      contractDuration: "12 months",
+      totalScreens: 1
     }
   });
 
@@ -104,6 +123,50 @@ const Subscribe = () => {
       }
     }
   };
+  
+  const planFeatures = {
+    standard: [
+      "1M x 1M Digital Display",
+      "HD Resolution",
+      "Basic Content Management",
+      "8 Hours Daily Operation",
+      "Monthly Content Updates",
+      "Standard Support"
+    ],
+    premium: [
+      "1.5M x 1.5M Digital Display",
+      "4K Ultra HD Resolution",
+      "Advanced Content Management",
+      "12 Hours Daily Operation",
+      "Weekly Content Updates", 
+      "Priority Support",
+      "Analytics Dashboard"
+    ],
+    enterprise: [
+      "Custom Size Digital Display",
+      "8K Resolution",
+      "AI-Powered Content Optimization",
+      "24/7 Operation",
+      "Unlimited Content Updates",
+      "Premium Support & Consultation",
+      "Advanced Analytics",
+      "Multi-Screen Management"
+    ]
+  };
+
+  // Get pricing based on selected plan
+  const getPlanPrice = () => {
+    const plan = form.getValues("plan");
+    return plan === "standard" ? 79.99 : 
+           plan === "premium" ? 129.99 : 199.99;
+  };
+
+  // Calculate total price
+  const calculateTotal = () => {
+    const screens = form.getValues("totalScreens") || 1;
+    const planPrice = getPlanPrice();
+    return (planPrice * screens).toFixed(2);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -130,15 +193,11 @@ const Subscribe = () => {
           </div>
 
           <motion.div 
-            className="max-w-3xl mx-auto bg-black/60 p-8 rounded-xl border border-white/10 backdrop-blur-sm shadow-xl"
+            className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl font-bold text-center mb-6">
-              <span className="text-rgb-animated">Subscribe</span> to Our Services
-            </h1>
-            
             {/* Steps indicator */}
             <FormSteps currentStep={currentStep} />
             
@@ -158,19 +217,81 @@ const Subscribe = () => {
                         name="fullName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white">Full Name</FormLabel>
+                            <FormLabel className="text-gray-700">Full Name *</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter your full name" 
                                 {...field} 
-                                className="bg-black/50 border-white/20 text-white"
+                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-red-500" />
                           </FormItem>
                         )}
                       />
                     </motion.div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="country"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Country *</FormLabel>
+                              <Select 
+                                onValueChange={field.onChange} 
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="bg-white border-gray-300">
+                                    <SelectValue placeholder="Select country" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="Canada">Canada</SelectItem>
+                                  <SelectItem value="United States">United States</SelectItem>
+                                  <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                      
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Phone Number *</FormLabel>
+                              <FormControl>
+                                <div className="flex">
+                                  <div className="flex items-center px-3 bg-gray-100 border border-r-0 border-gray-300 rounded-l-md">
+                                    <span className="text-gray-500 flex items-center gap-1">
+                                      <img 
+                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MzYgNDgwIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjY3IiBkPSJNMCAwaDYzNnY0ODBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iMXB0IiBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xODEuNzYgMGg0NzkuNnY0OGgtNDc5LjZ6bTAgMTkxLjk5aDQ3OS42djQ4aC00NzkuNnptMCAxOTEuOTloNDc5LjZ2NDhoLTQ3OS42ek0wIDBoMjM5Ljk5djI0MGgzOTZWMGgtNjM2eiIvPjxwYXRoIGZpbGw9InJlZCIgZD0iTTE1LjI1IDE1LjI1aDIwOS41djIwOS41aC0yMDkuNXoiLz48cGF0aCBmaWxsPSIjMDAwMDYyIiBkPSJNNjAgMTE5Ljk5TDM4LjQ1IDk1Ljk4bC0yMS4yMyAyNC41NkwyMS41IDkwLjQxbDAtMzAuNDRsMjQuMzQgMTkuMjhMMjcuNzMgNTUuNDYgNDguMSAzNC4yOCA0Ni4pIEMgOTggNDMuMTYgNzIuMDMgNzMuNzcgNjEuMvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05My45MiA2MC4yVjIwLjM3TDEyMC43OCAwaDI2LjgydjYwLjJIODcuMjV6TTM0LjIxIDE4NC42TDApIGQ9Ik0xMTMuNSAyMC4zN2gtMTYuOUw4MC4xIDQwLjE5aDMzLjM3em0tMzMuMzcgMHYxOS44Mkw2MCw2MC4yaDMzLjM3di0yMC4xbC0xMy4yNS0xOS43M3oiLz48L2c+PC9zdmc+" 
+                                        alt="Canada Flag" 
+                                        className="w-5 h-3.5 mr-1"
+                                      />
+                                      +1
+                                    </span>
+                                  </div>
+                                  <Input 
+                                    placeholder="Enter phone number" 
+                                    {...field} 
+                                    className="rounded-l-none border-gray-300" 
+                                  />
+                                </div>
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                    </div>
                     
                     <motion.div variants={itemVariants}>
                       <FormField
@@ -178,16 +299,16 @@ const Subscribe = () => {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white">Email</FormLabel>
+                            <FormLabel className="text-gray-700">Email ID *</FormLabel>
                             <FormControl>
                               <Input 
-                                placeholder="Enter your email" 
-                                type="email"
+                                placeholder="Enter your email address" 
+                                type="email" 
                                 {...field} 
-                                className="bg-black/50 border-white/20 text-white"
+                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-red-500" />
                           </FormItem>
                         )}
                       />
@@ -196,21 +317,82 @@ const Subscribe = () => {
                     <motion.div variants={itemVariants}>
                       <FormField
                         control={form.control}
-                        name="phone"
+                        name="installationDate"
                         render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">Phone Number</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your phone number" 
-                                {...field} 
-                                className="bg-black/50 border-white/20 text-white"
-                              />
-                            </FormControl>
-                            <FormMessage />
+                          <FormItem className="flex flex-col">
+                            <FormLabel className="text-gray-700">Installation Date *</FormLabel>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                      "w-full pl-3 text-left font-normal border-gray-300",
+                                      !field.value && "text-gray-400"
+                                    )}
+                                  >
+                                    {field.value ? (
+                                      format(field.value, "yyyy-MM-dd")
+                                    ) : (
+                                      <span>yyyy-mm-dd</span>
+                                    )}
+                                    <Calendar className="ml-auto h-4 w-4 opacity-50" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-auto p-0" align="start">
+                                <CalendarComponent
+                                  mode="single"
+                                  selected={field.value}
+                                  onSelect={field.onChange}
+                                  disabled={(date) => date < new Date()}
+                                  initialFocus
+                                  className="p-3 pointer-events-auto"
+                                />
+                              </PopoverContent>
+                            </Popover>
+                            <FormMessage className="text-red-500" />
                           </FormItem>
                         )}
                       />
+                    </motion.div>
+                    
+                    <motion.div variants={itemVariants}>
+                      <FormField
+                        control={form.control}
+                        name="locationType"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormControl>
+                              <RadioGroup
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                                className="flex gap-4"
+                              >
+                                <div className="flex items-center">
+                                  <RadioGroupItem value="single" id="single" className="text-red-500" />
+                                  <label htmlFor="single" className="ml-2 text-gray-700">Single Location</label>
+                                </div>
+                                <div className="flex items-center">
+                                  <RadioGroupItem value="multiple" id="multiple" className="text-red-500" />
+                                  <label htmlFor="multiple" className="ml-2 text-gray-700">Multiple Locations</label>
+                                </div>
+                              </RadioGroup>
+                            </FormControl>
+                            <FormMessage className="text-red-500" />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
+                    
+                    <motion.div variants={itemVariants} className="pt-6">
+                      <Button 
+                        type="button" 
+                        onClick={() => form.handleSubmit(onSubmit)()}
+                        className="bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        Continue <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
                     </motion.div>
                   </motion.div>
                 )}
@@ -223,47 +405,154 @@ const Subscribe = () => {
                     initial="hidden"
                     animate="visible"
                   >
+                    <h2 className="text-xl font-bold text-gray-800">Pricing Plan *</h2>
+                    
                     <motion.div variants={itemVariants}>
                       <FormField
                         control={form.control}
                         name="plan"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white text-lg">Select Your Plan</FormLabel>
-                            <div className="mt-4">
+                            <FormControl>
                               <RadioGroup
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
-                                className="flex flex-col space-y-4"
+                                className="grid grid-cols-1 md:grid-cols-3 gap-4"
                               >
-                                <div className="flex items-center space-x-2 bg-red-900/20 p-4 rounded-lg border border-red-500/30">
-                                  <RadioGroupItem value="standard" id="standard" className="text-red-400" />
-                                  <label htmlFor="standard" className="flex flex-col cursor-pointer w-full">
-                                    <span className="font-bold text-red-400">Standard</span>
-                                    <span className="text-gray-300">$79.99/month - Perfect for small businesses</span>
-                                  </label>
+                                {/* Standard Plan */}
+                                <div className={`border rounded-md overflow-hidden ${field.value === "standard" ? "border-blue-500 ring-2 ring-blue-500" : "border-gray-300"}`}>
+                                  <div className="bg-blue-700 text-white p-4">
+                                    <div className="flex justify-between items-center mb-2">
+                                      <div className="flex items-center">
+                                        <input
+                                          type="radio"
+                                          id="standard"
+                                          value="standard"
+                                          checked={field.value === "standard"}
+                                          onChange={() => field.onChange("standard")}
+                                          className="sr-only"
+                                        />
+                                        <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none">
+                                          <path d="M3 7h18v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z" stroke="currentColor" strokeWidth="2" />
+                                          <path d="M3 7h18V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v2z" stroke="currentColor" strokeWidth="2" />
+                                        </svg>
+                                      </div>
+                                      <span className="font-bold">$79.99/month</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold">Standard Plan</h3>
+                                    <p className="text-sm text-blue-100">Perfect for small businesses</p>
+                                  </div>
+                                  <div className="p-4">
+                                    <ul className="space-y-2">
+                                      {planFeatures.standard.map((feature, idx) => (
+                                        <li key={idx} className="flex items-start text-gray-700">
+                                          <Check className="h-4 w-4 text-blue-500 mr-2 mt-1 shrink-0" />
+                                          <span className="text-sm">{feature}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
                                 </div>
-                                <div className="flex items-center space-x-2 bg-green-900/20 p-4 rounded-lg border border-green-500/30">
-                                  <RadioGroupItem value="premium" id="premium" className="text-green-400" />
-                                  <label htmlFor="premium" className="flex flex-col cursor-pointer w-full">
-                                    <span className="font-bold text-green-400">Premium</span>
-                                    <span className="text-gray-300">$129.99/month - Ideal for growing businesses</span>
-                                  </label>
+                                
+                                {/* Premium Plan */}
+                                <div className={`border rounded-md overflow-hidden ${field.value === "premium" ? "border-green-500 ring-2 ring-green-500" : "border-gray-300"}`}>
+                                  <div className="bg-gray-100 text-black p-4">
+                                    <div className="flex justify-between items-center mb-2">
+                                      <div className="flex items-center">
+                                        <input
+                                          type="radio"
+                                          id="premium"
+                                          value="premium"
+                                          checked={field.value === "premium"}
+                                          onChange={() => field.onChange("premium")}
+                                          className="sr-only"
+                                        />
+                                        <svg className="h-8 w-8 text-gray-700" viewBox="0 0 24 24" fill="none">
+                                          <path d="M13 2L3 14h12l-1 8 10-12h-12l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+                                      </div>
+                                      <span className="font-bold">$129.99/month</span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                      <div>
+                                        <h3 className="text-lg font-bold">Premium Plan</h3>
+                                        <p className="text-sm text-gray-600">Ideal for growing businesses</p>
+                                      </div>
+                                      <div className="bg-yellow-500 text-xs font-bold py-1 px-2 rounded-full text-white">
+                                        Popular 🔥
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="p-4">
+                                    <ul className="space-y-2">
+                                      {planFeatures.premium.map((feature, idx) => (
+                                        <li key={idx} className="flex items-start text-gray-700">
+                                          <Check className="h-4 w-4 text-green-500 mr-2 mt-1 shrink-0" />
+                                          <span className="text-sm">{feature}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
                                 </div>
-                                <div className="flex items-center space-x-2 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
-                                  <RadioGroupItem value="enterprise" id="enterprise" className="text-blue-400" />
-                                  <label htmlFor="enterprise" className="flex flex-col cursor-pointer w-full">
-                                    <span className="font-bold text-blue-400">Enterprise</span>
-                                    <span className="text-gray-300">$199.99/month - For maximum business impact</span>
-                                  </label>
+                                
+                                {/* Enterprise Plan */}
+                                <div className={`border rounded-md overflow-hidden ${field.value === "enterprise" ? "border-blue-500 ring-2 ring-blue-500" : "border-gray-300"}`}>
+                                  <div className="bg-gray-100 text-black p-4">
+                                    <div className="flex justify-between items-center mb-2">
+                                      <div className="flex items-center">
+                                        <input
+                                          type="radio"
+                                          id="enterprise"
+                                          value="enterprise"
+                                          checked={field.value === "enterprise"}
+                                          onChange={() => field.onChange("enterprise")}
+                                          className="sr-only"
+                                        />
+                                        <svg className="h-8 w-8 text-gray-700" viewBox="0 0 24 24" fill="none">
+                                          <path d="M21 16V8c0-.6-.4-1.1-.8-1.4l-7-4c-.3-.2-.7-.2-1 0l-7 4c-.4.3-.8.8-.8 1.4v8c0 .6.4 1.1.8 1.4l7 4c.3.2.7.2 1 0l7-4c.4-.3.8-.8.8-1.4z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+                                      </div>
+                                      <span className="font-bold">$199.99/month</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold">Enterprise Plan</h3>
+                                    <p className="text-sm text-gray-600">For maximum business impact</p>
+                                  </div>
+                                  <div className="p-4">
+                                    <ul className="space-y-2">
+                                      {planFeatures.enterprise.map((feature, idx) => (
+                                        <li key={idx} className="flex items-start text-gray-700">
+                                          <Check className="h-4 w-4 text-blue-500 mr-2 mt-1 shrink-0" />
+                                          <span className="text-sm">{feature}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
                                 </div>
                               </RadioGroup>
-                            </div>
-                            <FormMessage />
+                            </FormControl>
+                            <FormMessage className="text-red-500" />
                           </FormItem>
                         )}
                       />
                     </motion.div>
+                    
+                    <div className="flex justify-between pt-4">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={handlePrevious}
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                      >
+                        Back
+                      </Button>
+                      <Button 
+                        type="button" 
+                        onClick={() => form.handleSubmit(onSubmit)()}
+                        className="bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        Continue <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </motion.div>
                 )}
                 
@@ -278,18 +567,38 @@ const Subscribe = () => {
                     <motion.div variants={itemVariants}>
                       <FormField
                         control={form.control}
+                        name="businessType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-700">Business Type *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="Enter Business Type" 
+                                {...field} 
+                                className="border-gray-300"
+                              />
+                            </FormControl>
+                            <FormMessage className="text-red-500" />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
+                    
+                    <motion.div variants={itemVariants}>
+                      <FormField
+                        control={form.control}
                         name="businessName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white">Business Name</FormLabel>
+                            <FormLabel className="text-gray-700">Business Name *</FormLabel>
                             <FormControl>
                               <Input 
-                                placeholder="Enter your business name" 
+                                placeholder="Enter Business Name" 
                                 {...field} 
-                                className="bg-black/50 border-white/20 text-white"
+                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-red-500" />
                           </FormItem>
                         )}
                       />
@@ -301,80 +610,189 @@ const Subscribe = () => {
                         name="address"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white">Street Address</FormLabel>
+                            <FormLabel className="text-gray-700">Business Address *</FormLabel>
                             <FormControl>
                               <Input 
-                                placeholder="Enter your street address" 
+                                placeholder="Enter Business Address" 
                                 {...field} 
-                                className="bg-black/50 border-white/20 text-white"
+                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-red-500" />
                           </FormItem>
                         )}
                       />
                     </motion.div>
                     
-                    <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="city"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">City</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your city" 
-                                {...field} 
-                                className="bg-black/50 border-white/20 text-white"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="state"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">State</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your state" 
-                                {...field} 
-                                className="bg-black/50 border-white/20 text-white"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </motion.div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="businessCountry"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Country *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Enter Business Country" 
+                                  {...field} 
+                                  className="border-gray-300"
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                      
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="province"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Province/State *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Enter Province/State" 
+                                  {...field} 
+                                  className="border-gray-300"
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                    </div>
                     
-                    <motion.div variants={itemVariants}>
-                      <FormField
-                        control={form.control}
-                        name="zipCode"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">Zip Code</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your zip code" 
-                                {...field} 
-                                className="bg-black/50 border-white/20 text-white"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </motion.div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="city"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">City *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Enter City" 
+                                  {...field} 
+                                  className="border-gray-300"
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                      
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="postalCode"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Postal Code *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Enter Postal Code" 
+                                  {...field} 
+                                  className="border-gray-300"
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="contractDuration"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Contract Duration *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Enter Contract Duration" 
+                                  {...field} 
+                                  className="border-gray-300"
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                      
+                      <motion.div variants={itemVariants}>
+                        <FormField
+                          control={form.control}
+                          name="totalScreens"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-gray-700">Total Screens *</FormLabel>
+                              <FormControl>
+                                <div className="flex">
+                                  <Input 
+                                    type="number" 
+                                    {...field}
+                                    onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                                    className="border-gray-300" 
+                                  />
+                                  <div className="flex ml-2">
+                                    <Button
+                                      type="button"
+                                      size="icon"
+                                      onClick={() => field.onChange((field.value || 0) + 1)}
+                                      className="h-10 w-10 bg-red-500 hover:bg-red-600 text-white"
+                                    >
+                                      <Plus className="h-4 w-4" />
+                                    </Button>
+                                    <Button
+                                      type="button"
+                                      size="icon"
+                                      onClick={() => field.value > 1 && field.onChange(field.value - 1)}
+                                      disabled={field.value <= 1}
+                                      className="h-10 w-10 ml-1 bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50"
+                                    >
+                                      <Minus className="h-4 w-4" />
+                                    </Button>
+                                  </div>
+                                </div>
+                              </FormControl>
+                              <FormMessage className="text-red-500" />
+                            </FormItem>
+                          )}
+                        />
+                      </motion.div>
+                    </div>
+                    
+                    <div className="flex justify-between pt-4">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={handlePrevious}
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                      >
+                        Back
+                      </Button>
+                      <Button 
+                        type="button" 
+                        onClick={() => form.handleSubmit(onSubmit)()}
+                        className="bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        Continue <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </motion.div>
                 )}
                 
-                {/* Step 4: Confirmation */}
+                {/* Step 4: Review & Confirmation */}
                 {currentStep === 4 && (
                   <motion.div
                     className="space-y-6"
@@ -382,63 +800,81 @@ const Subscribe = () => {
                     initial="hidden"
                     animate="visible"
                   >
-                    <motion.div variants={itemVariants} className="text-center">
-                      <h2 className="text-2xl font-bold mb-4">Review Your Information</h2>
-                      <p className="text-gray-300 mb-8">Please review your subscription details before finalizing.</p>
-                      
-                      <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-left">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <h3 className="text-gray-400">Personal Information</h3>
-                            <p className="font-medium">{form.getValues("fullName")}</p>
-                            <p>{form.getValues("email")}</p>
-                            <p>{form.getValues("phone")}</p>
-                          </div>
+                    <div className="p-6 border border-gray-200 rounded-lg">
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center border-b border-gray-200 pb-4">
+                          <div className="text-gray-700">Total Screens:</div>
+                          <div className="font-medium">{form.getValues("totalScreens")}</div>
+                        </div>
+                        
+                        <div className="flex justify-between items-center border-b border-gray-200 pb-4">
+                          <div className="text-gray-700">Display Price:</div>
+                          <div className="font-medium">CA ${getPlanPrice()}</div>
+                        </div>
+                        
+                        <div className="flex justify-between items-center pt-2">
+                          <div className="text-gray-800 font-bold">Total:</div>
+                          <div className="font-bold text-red-500">CA ${calculateTotal()}</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <motion.div variants={itemVariants}>
+                      <div className="border border-gray-200 rounded-lg p-4">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-3">Equipment Rental Agreement</h3>
+                        <div className="h-48 overflow-y-auto mb-4 p-3 text-sm text-gray-600 bg-gray-50 rounded border border-gray-200">
+                          <p className="font-bold">THIS EQUIPMENT RENTAL AGREEMENT (this "Agreement") dated this 7 day of May, 2025</p>
+                          <p className="my-2">BETWEEN:</p>
+                          <p>Axis of Desire Inc. of Unit 9, 168 Kennedy Road S, Brampton, L6W3G6 (the "Lessor") of the First Part</p>
+                          <p className="my-2">- AND -</p>
+                          <p>(the "Lessee") of the Second Part</p>
+                          <p className="my-2">Business Name 1: {form.getValues("businessName")}</p>
+                          <p>Business Address 1: {form.getValues("address")}</p>
+                          <p className="my-4">(the Lessor and Lessee are collectively the "Parties")</p>
                           
-                          <div>
-                            <h3 className="text-gray-400">Selected Plan</h3>
-                            <p className="font-medium capitalize">{form.getValues("plan")} Plan</p>
-                            <p className="text-digi-green">
-                              {form.getValues("plan") === "standard" ? "$79.99" : 
-                               form.getValues("plan") === "premium" ? "$129.99" : "$199.99"}/month
-                            </p>
-                          </div>
+                          <p className="font-bold">IN CONSIDERATION OF:</p>
+                          <p className="my-2">The mutual covenants and promises in this Agreement, the receipt and sufficiency of which are hereby acknowledged, the Lessor leases the Equipment to the Lessee, and the Lessee leases the Equipment from the Lessor on the following terms:</p>
                           
-                          <div className="col-span-2 mt-4">
-                            <h3 className="text-gray-400">Business Information</h3>
-                            <p className="font-medium">{form.getValues("businessName")}</p>
-                            <p>{form.getValues("address")}</p>
-                            <p>{form.getValues("city")}, {form.getValues("state")} {form.getValues("zipCode")}</p>
-                          </div>
+                          <p className="font-bold mt-4">Definitions</p>
+                          <ul className="list-disc pl-5 my-2">
+                            <li>"Casualty Value" means the market value of the Equipment at the end of the Term or when in relation to a Total Loss, the market value the Equipment would have had at the end of the Term but for the Total Loss.</li>
+                            <li>"Equipment" means LED Indoor screen 400I CDI with an approximate value of $1,000.00.</li>
+                            <li>"Total Loss" means any loss or damage that is not repairable or that would cost more to repair than the value of the Equipment.</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="flex items-center gap-2">
+                          <input 
+                            type="checkbox" 
+                            id="terms" 
+                            className="h-4 w-4 rounded border-gray-300 text-red-500 focus:ring-red-500"
+                            required 
+                          />
+                          <label htmlFor="terms" className="text-sm text-gray-700">
+                            I agree to the Terms & Conditions
+                          </label>
                         </div>
                       </div>
                     </motion.div>
+                    
+                    <div className="flex justify-between pt-4">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={handlePrevious}
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                      >
+                        Back
+                      </Button>
+                      <Button 
+                        type="submit"
+                        className="bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        Complete Order
+                      </Button>
+                    </div>
                   </motion.div>
                 )}
-                
-                {/* Navigation buttons */}
-                <div className="flex justify-between mt-8">
-                  <Button 
-                    type="button"
-                    onClick={handlePrevious}
-                    variant="outline"
-                    className="border-white/20 text-white"
-                  >
-                    {currentStep === 1 ? (
-                      <>
-                        <ChevronLeft className="h-4 w-4 mr-1" />
-                        Back to Pricing
-                      </>
-                    ) : "Previous"}
-                  </Button>
-                  
-                  <Button 
-                    type="submit"
-                    className={`${currentStep === 4 ? 'bg-gradient-rgb bg-300% animate-flow-rgb' : 'bg-digi-blue'}`}
-                  >
-                    {currentStep < 4 ? "Next" : "Complete Subscription"}
-                  </Button>
-                </div>
               </form>
             </Form>
           </motion.div>
