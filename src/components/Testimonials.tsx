@@ -112,17 +112,82 @@ const Testimonials = () => {
           ))}
         </div>
         
-        <div className="mt-16">
-          <p className="text-white/70 mb-6 animate-fade-in" style={{animationDelay: "1s"}}>Trusted by businesses across the country</p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10 animate-fade-in hover:border-digi-red/50 transition-all duration-300" style={{animationDelay: "1.1s"}}>
-              <img src="/lovable-uploads/f1f53656-270a-4992-94d3-a3116d6bc129.png" alt="360 DigiSigns Logo" className="h-12 object-contain" />
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10 animate-fade-in hover:border-digi-green/50 transition-all duration-300" style={{animationDelay: "1.2s"}}>
-              <img src="/lovable-uploads/47882787-f5cf-418b-999e-1065f6b76035.png" alt="Client Logo" className="h-12 object-contain" />
-            </div>
-            <div className="hidden sm:block bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10 animate-fade-in hover:border-digi-blue/50 transition-all duration-300" style={{animationDelay: "1.3s"}}>
-              <Shield className="h-12 w-12 text-white/70" />
+        {/* Creative global presence section replacing "Trusted by businesses across the country" */}
+        <div className="mt-20 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-digi-blue/10 rounded-3xl"></div>
+          
+          <div className="relative z-10 p-8 md:p-12 overflow-hidden rounded-3xl border border-white/10 bg-black/40 backdrop-blur-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+              <div className="space-y-6">
+                <Badge className="px-3 py-1 bg-digi-blue/20 text-digi-blue border-digi-blue/30">
+                  Global Impact
+                </Badge>
+                
+                <h3 className="text-2xl md:text-3xl font-bold">
+                  Illuminating Businesses <span className="text-rgb-animated">Across The Globe</span>
+                </h3>
+                
+                <p className="text-gray-300">
+                  From bustling city centers to suburban shopping districts, our digital signage solutions are helping businesses stand out and capture attention in over 120 cities worldwide.
+                </p>
+                
+                {/* Animated stats */}
+                <div className="grid grid-cols-3 gap-4 pt-4">
+                  <div className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 animate-fade-in" style={{animationDelay: "0.6s"}}>
+                    <div className="text-2xl md:text-3xl font-bold text-digi-red">1200+</div>
+                    <div className="text-xs md:text-sm text-gray-400">Installations</div>
+                  </div>
+                  <div className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 animate-fade-in" style={{animationDelay: "0.8s"}}>
+                    <div className="text-2xl md:text-3xl font-bold text-digi-green">98%</div>
+                    <div className="text-xs md:text-sm text-gray-400">Satisfaction</div>
+                  </div>
+                  <div className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 animate-fade-in" style={{animationDelay: "1s"}}>
+                    <div className="text-2xl md:text-3xl font-bold text-digi-blue">24/7</div>
+                    <div className="text-xs md:text-sm text-gray-400">Support</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Animated world map/globe visualization */}
+              <div className="relative h-64 md:h-80 animate-fade-in" style={{animationDelay: "0.5s"}}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Glowing dots representing global locations */}
+                  <div className="relative w-full h-full">
+                    {/* World map silhouette */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-full h-full bg-white/5 mask-world-map rounded-xl"></div>
+                    </div>
+                    
+                    {/* Location dots - animated appearing */}
+                    <div className="absolute top-[20%] left-[25%] w-3 h-3 bg-digi-red rounded-full animate-ping-slow" style={{animationDelay: "1s"}}></div>
+                    <div className="absolute top-[30%] left-[80%] w-2 h-2 bg-digi-green rounded-full animate-ping-slow" style={{animationDelay: "2s"}}></div>
+                    <div className="absolute top-[70%] left-[60%] w-2 h-2 bg-digi-blue rounded-full animate-ping-slow" style={{animationDelay: "0.5s"}}></div>
+                    <div className="absolute top-[40%] left-[45%] w-3 h-3 bg-digi-red rounded-full animate-ping-slow" style={{animationDelay: "1.5s"}}></div>
+                    <div className="absolute top-[60%] left-[30%] w-2 h-2 bg-digi-green rounded-full animate-ping-slow" style={{animationDelay: "2.2s"}}></div>
+                    <div className="absolute top-[25%] left-[10%] w-2 h-2 bg-digi-blue rounded-full animate-ping-slow" style={{animationDelay: "0.8s"}}></div>
+                    <div className="absolute top-[65%] left-[75%] w-2 h-2 bg-digi-red rounded-full animate-ping-slow" style={{animationDelay: "1.8s"}}></div>
+                    
+                    {/* Connecting lines animation */}
+                    <div className="absolute inset-0 opacity-30">
+                      <div className="absolute top-1/2 left-1/2 w-full h-full bg-gradient-rgb opacity-20 blur-lg animate-pulse-slow"></div>
+                    </div>
+                    
+                    {/* Central hub */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <div className="relative">
+                        <div className="absolute -inset-4 bg-gradient-rgb rounded-full opacity-70 animate-pulse-rgb blur-md"></div>
+                        <div className="relative bg-white p-3 rounded-full z-10">
+                          <img 
+                            src="/lovable-uploads/f1f53656-270a-4992-94d3-a3116d6bc129.png" 
+                            alt="360 DigiSigns Logo" 
+                            className="h-12 w-12 object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
