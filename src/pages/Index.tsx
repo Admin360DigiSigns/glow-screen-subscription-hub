@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import LedVideoWall from "@/components/LedVideoWall";
+import DigitalScreenAdvantages from "@/components/DigitalScreenAdvantages";
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Features />
+      <DigitalScreenAdvantages />
       <SubscriptionPlans />
       <Showcase />
       <LedVideoWall />
