@@ -30,7 +30,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation - Centered with white text */}
-          <div className="hidden md:flex items-center justify-center flex-1 font-bold">
+          <div className="hidden md:flex items-center justify-center font-large flex-1 font-bold">
             <div className="flex space-x-8">
               <span className="text-rgb-animated font-display"  font-bold ><Link to="/" >Home</Link></span>
               <span className="text-rgb-animated font-display "font-bold><Link to="/products" >Products</Link></span>
