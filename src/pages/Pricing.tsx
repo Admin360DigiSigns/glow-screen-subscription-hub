@@ -237,7 +237,7 @@ const Pricing = () => {
                     "from-digi-blue/30 to-black/90"
                   } opacity-80`}></div>
                   
-                  <div className={`relative z-[1] p-8 border border-white/20 rounded-2xl backdrop-blur-sm`}>
+                  <div className={`relative z-[1] p-8 border border-white/20 rounded-2xl backdrop-blur-sm h-full flex flex-col`}>
                     <div className="flex items-center justify-between mb-4">
                       <h3 className={`text-2xl font-bold ${
                         plan.color === "digi-red" ? "text-red-400" :
@@ -259,7 +259,7 @@ const Pricing = () => {
                       <span className="text-gray-300 ml-1">/month</span>
                     </div>
                     
-                    <ul className="space-y-3 mb-8">
+                    <ul className="space-y-3 mb-8 flex-grow">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
                           <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full ${
@@ -342,7 +342,7 @@ const Pricing = () => {
                     "from-digi-blue/30 to-black/90"
                   } opacity-80`}></div>
                   
-                  <div className={`relative z-[1] p-8 border border-white/20 rounded-2xl backdrop-blur-sm`}>
+                  <div className={`relative z-[1] p-8 border border-white/20 rounded-2xl backdrop-blur-sm h-full flex flex-col`}>
                     <div className="flex items-center justify-between mb-4">
                       <h3 className={`text-2xl font-bold ${
                         plan.color === "digi-red" ? "text-red-400" :
@@ -364,7 +364,7 @@ const Pricing = () => {
                       <span className="text-gray-300 ml-1">/month</span>
                     </div>
                     
-                    <ul className="space-y-3 mb-8">
+                    <ul className="space-y-3 mb-8 flex-grow">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
                           <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full ${

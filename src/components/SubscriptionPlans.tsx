@@ -71,20 +71,20 @@ const SubscriptionPlans = () => {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className="relative rounded-2xl shadow-lg border-2 border-transparent"
+              className="relative rounded-2xl shadow-lg border-2 border-transparent h-full"
             >
               <div className={`p-8 bg-gradient-to-br ${
                 plan.color === "digi-red" ? "from-digi-red/10 to-black/95" :
                 plan.color === "digi-green" ? "from-digi-green/10 to-black/95" :
                 "from-digi-blue/10 to-black/95"
-              } rounded-2xl border border-white/10`}>
+              } rounded-2xl border border-white/10 h-full flex flex-col`}>
                 <h3 className={`text-2xl font-bold mb-2 text-${plan.color}`}>{plan.name}</h3>
                 <p className="text-gray-400 mb-4">{plan.description}</p>
                 <div className="flex items-end mb-8">
                   <span className="text-4xl font-bold">${plan.price}</span>
                   <span className="text-gray-600 ml-1">/month</span>
                 </div>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center">
                       <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full ${
