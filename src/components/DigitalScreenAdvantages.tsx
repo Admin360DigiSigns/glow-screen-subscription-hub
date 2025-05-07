@@ -76,7 +76,7 @@ const DigitalScreenAdvantages = () => {
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
           <div className="absolute inset-0  rounded-xl opacity-75 blur-sm"></div>
           <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center alin-center">
               <div>
                 <h3 className="text-3xl font-bold text-white mb-6 text-glow">
                   <span className="text-digi-red">Transparent</span> <span className="text-digi-green">Digital</span> <span className="text-digi-blue">Screens</span>
