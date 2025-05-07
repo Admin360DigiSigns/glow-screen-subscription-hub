@@ -33,7 +33,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex space-x-8">
               <span className="text-rgb-animated"><Link to="/" >Home</Link></span>
-              <span className="text-rgb-animated"><ProductNavMenu /></span>
+              <span className="text-rgb-animated"><Link to="/products" >Products</Link></span>
             
               <span className="text-rgb-animated"><Link to="/pricing" >Pricing</Link></span>
               <span className="text-rgb-animated"><a href="/#showcase" >About Us</a></span>
