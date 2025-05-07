@@ -2,62 +2,12 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-
-const plans = [
-  {
-    name: "Standard",
-    price: "79.99",
-    description: "Perfect for small businesses",
-    features: [
-      "1M x 1M Digital Display",
-      "HD Resolution",
-      "Basic Content Management",
-      "8 Hours Daily Operation",
-      "Monthly Content Updates",
-      "Standard Support"
-    ],
-    color: "digi-red",
-    value: "standard"
-  },
-  {
-    name: "Premium",
-    price: "129.99",
-    description: "Ideal for growing businesses",
-    features: [
-      "1.5M x 1.5M Digital Display",
-      "4K Ultra HD Resolution",
-      "Advanced Content Management",
-      "12 Hours Daily Operation",
-      "Weekly Content Updates",
-      "Priority Support",
-      "Analytics Dashboard"
-    ],
-    color: "digi-green",
-    value: "premium"
-  },
-  {
-    name: "Enterprise",
-    price: "199.99",
-    description: "For maximum business impact",
-    features: [
-      "Custom Size Digital Display",
-      "8K Resolution",
-      "AI-Powered Content Optimization",
-      "24/7 Operation",
-      "Unlimited Content Updates",
-      "Premium Support & Consultation",
-      "Advanced Analytics",
-      "Multi-Screen Management"
-    ],
-    color: "digi-blue",
-    value: "enterprise"
-  }
-];
+import { digitalPlans } from "@/data/planData";
 
 const SubscriptionPlans = () => {
   const navigate = useNavigate();
 
-  const handleSubscribe = (planType: "standard" | "premium" | "enterprise") => {
+  const handleSubscribe = (planType: string) => {
     navigate(`/subscribe/${planType}`);
   };
 
@@ -74,7 +24,7 @@ const SubscriptionPlans = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
+          {digitalPlans.map((plan, index) => (
             <div 
               key={index}
               className="relative rounded-2xl shadow-lg border-2 border-transparent h-full"
@@ -110,7 +60,7 @@ const SubscriptionPlans = () => {
                 </ul>
                 <Button 
                   className={`w-full bg-${plan.color} hover:bg-${plan.color}/90`}
-                  onClick={() => handleSubscribe(plan.value as any)}
+                  onClick={() => handleSubscribe(plan.value)}
                 >
                   Subscribe Now
                 </Button>
