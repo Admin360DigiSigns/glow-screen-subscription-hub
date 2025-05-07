@@ -35,7 +35,7 @@ const Products = () => {
       icon: <Video className="h-10 w-10" />,
       features: ["IP65 weather protection", "High brightness (7000+ nits)", "Temperature resistant", "Vandal-proof options"],
       animation: "glow-pulse",
-      image: "/lovable-uploads/245b0299-aa91-43ad-952e-48b64b19972a.png"
+      image: "/lovable-uploads/757e202f-cdb3-414c-8eaa-21ee158e698c.png"
     },
     {
       id: "touchkiosk",
