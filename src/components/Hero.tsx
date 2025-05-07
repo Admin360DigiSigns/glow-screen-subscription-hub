@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Info, Star, Check, Sparkles, Zap } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
   return (
@@ -118,6 +119,28 @@ const Hero = () => {
                   <Info className="h-5 w-5 text-digi-green mr-2 animate-pulse" />
                   <p className="text-white text-sm">Premium 4K digital display with AI content optimization</p>
                 </div>
+              </div>
+            </div>
+            
+            {/* Add the new colorful display image below */}
+            <div className="mt-6 relative rounded-xl overflow-hidden shadow-2xl group">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-red-500/20 opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Rainbow border effect */}
+              <div className="absolute inset-0 border-2 border-digi-red/50 rounded-xl animate-pulse"></div>
+              <div className="absolute inset-0 border-2 border-digi-green/50 rounded-xl animate-pulse" style={{animationDelay: "0.5s"}}></div>
+              <div className="absolute inset-0 border-2 border-digi-blue/50 rounded-xl animate-pulse" style={{animationDelay: "1s"}}></div>
+              
+              <AspectRatio ratio={16/9} className="w-full">
+                <img 
+                  src="/lovable-uploads/b7279543-0aac-471a-9734-dc4c3a7ca8d4.png" 
+                  alt="Colorful Digital Display Demo" 
+                  className="w-full h-full object-cover rounded-xl transform scale-105 group-hover:scale-110 transition-transform duration-700"
+                />
+              </AspectRatio>
+              
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <p className="text-white text-xs text-center">Premium 4K digital display with AI content optimization</p>
               </div>
             </div>
           </div>
