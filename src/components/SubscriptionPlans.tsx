@@ -64,6 +64,7 @@ const SubscriptionPlans = () => {
   const [selectedPlan, setSelectedPlan] = useState<"standard" | "premium" | "enterprise">("standard");
 
   const handleSubscribe = (planType: "standard" | "premium" | "enterprise") => {
+    console.log("Subscribing to plan:", planType);
     setSelectedPlan(planType);
     setDialogOpen(true);
   };
@@ -121,7 +122,7 @@ const SubscriptionPlans = () => {
                       ? "bg-gradient-rgb bg-300% animate-flow-rgb hover:bg-gradient-rgb" 
                       : `bg-${plan.color} hover:bg-${plan.color}/90`
                   }`}
-                  onClick={() => handleSubscribe(plan.value as any)}
+                  onClick={() => handleSubscribe(plan.value as "standard" | "premium" | "enterprise")}
                 >
                   Subscribe Now
                 </Button>

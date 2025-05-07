@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
@@ -14,6 +13,7 @@ const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState<"standard" | "premium" | "enterprise">("standard");
 
   const handleSubscribe = (planType: "standard" | "premium" | "enterprise") => {
+    console.log("Subscribing to plan:", planType);
     setSelectedPlan(planType);
     setDialogOpen(true);
   };
@@ -271,7 +271,7 @@ const Pricing = () => {
                         plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
                         'bg-blue-600 hover:bg-blue-700 text-white'
                       }`}
-                      onClick={() => handleSubscribe('standard')}
+                      onClick={() => handleSubscribe(index === 0 ? 'standard' : index === 1 ? 'premium' : 'enterprise')}
                     >
                       <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
                     </Button>
@@ -346,7 +346,7 @@ const Pricing = () => {
                         plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
                         'bg-blue-600 hover:bg-blue-700 text-white'
                       }`}
-                      onClick={() => handleSubscribe('standard')}
+                      onClick={() => handleSubscribe(index === 0 ? 'standard' : index === 1 ? 'premium' : 'enterprise')}
                     >
                       <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
                     </Button>
