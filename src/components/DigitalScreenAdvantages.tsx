@@ -71,26 +71,10 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Transparent Screen Highlight Box - Dark Background with Lighting Animation */}
+        {/* Transparent Screen Highlight Box - Content Removed */}
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
-          {/* Dark background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black rounded-xl"></div>
-          
-          {/* Animated lighting effects */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-xl">
-              {/* Moving light beam effect */}
-              <div className="absolute top-0 left-0 w-1/3 h-[400%] bg-gradient-to-b from-transparent via-digi-blue/20 to-transparent rotate-45 animate-light-sweep"></div>
-              <div className="absolute top-0 right-0 w-1/4 h-[400%] bg-gradient-to-b from-transparent via-digi-red/20 to-transparent -rotate-45 animate-light-sweep-reverse"></div>
-              
-              {/* Subtle pulsing glow spots */}
-              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-digi-green/10 rounded-full blur-2xl animate-pulse-slow"></div>
-              <div className="absolute bottom-1/4 right-1/5 w-40 h-40 bg-digi-red/10 rounded-full blur-2xl animate-pulse-slow" style={{animationDelay: "1.5s"}}></div>
-              <div className="absolute top-2/3 left-2/3 w-24 h-24 bg-digi-blue/10 rounded-full blur-2xl animate-pulse-slow" style={{animationDelay: "0.7s"}}></div>
-            </div>
-          </div>
-          
-          <div className="relative overflow-hidden rounded-xl p-8 bg-black/60 backdrop-blur-md border border-white/5">
+          <div className="absolute inset-0 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
+          <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h3 className="text-3xl font-bold text-white mb-6 text-glow">
@@ -130,27 +114,19 @@ const DigitalScreenAdvantages = () => {
               </div>
               
               <div className="relative">
-                {/* Glowing border effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-digi-red via-digi-green to-digi-blue rounded-xl opacity-50 animate-border-glow blur-sm"></div>
-                <div className="relative bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-white/10">
+                <div className="absolute inset-0 bg-gradient-to-r from-digi-red/20 via-digi-green/20 to-digi-blue/20 rounded-xl animate-pulse opacity-50"></div>
+                <div className="relative bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10">
                   <h4 className="text-xl font-semibold text-white mb-4">Transparent Display Features</h4>
                   <div className="flex flex-col space-y-6">
                     {/* Content intentionally left empty as per user request */}
                   </div>
                 </div>
-                
-                {/* Floating light particles */}
-                <div className="absolute inset-0 overflow-hidden">
-                  <div className="particle-1 absolute w-1 h-1 rounded-full bg-digi-blue animate-float"></div>
-                  <div className="particle-2 absolute w-2 h-2 rounded-full bg-digi-red animate-float" style={{animationDelay: "1s", animationDuration: "7s"}}></div>
-                  <div className="particle-3 absolute w-1.5 h-1.5 rounded-full bg-digi-green animate-float" style={{animationDelay: "2s", animationDuration: "9s"}}></div>
-                </div>
               </div>
             </div>
             
-            {/* Additional animated elements */}
-            <div className="absolute -top-12 -right-12 w-24 h-24 bg-digi-red opacity-20 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-digi-blue opacity-20 rounded-full blur-2xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
+            {/* Animated elements */}
+            <div className="absolute -top-12 -right-12 w-24 h-24 bg-digi-red opacity-30 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-digi-blue opacity-30 rounded-full blur-2xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
           </div>
         </div>
         
