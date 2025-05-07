@@ -1,4 +1,3 @@
-
 import { Check, X, Monitor, Tv, Layers, Image, Video, Maximize, ScreenShare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -93,6 +92,7 @@ const useCases = [
     title: "Retail & Brand Experiences",
     description: "Transform storefronts and retail environments with captivating product showcases that stop shoppers in their tracks and drive engagement",
     icon: <Monitor className="h-12 w-12 text-digi-green p-2" />,
+    // Updated image for retail-specific LED video wall
     image: "/lovable-uploads/c7f3d72e-a26d-40a2-98ec-8b935b01e5cd.png",
     animation: "animate-fade-in",
     delay: "1.2s"
