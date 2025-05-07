@@ -583,7 +583,7 @@ export default function SubscriptionForm({
                     <div className="flex justify-between pt-4">
                       <Button 
                         type="button" 
-                        variant="outline" 
+                        
                         onClick={() => setStep(1)}
                         className="bg-digi-green hover:bg-digi-green/90 text-white"
                       >
@@ -880,7 +880,7 @@ export default function SubscriptionForm({
                     <div className="flex justify-between pt-4">
                       <Button 
                         type="button" 
-                        variant="outline" 
+                         
                         onClick={() => setStep(2)}
                         className="bg-digi-blue hover:bg-digi-blue/90 text-white"
                       >
