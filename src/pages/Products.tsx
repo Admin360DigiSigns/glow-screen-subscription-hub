@@ -1,9 +1,10 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Monitor, Tv, Video, Image, Tag, ZapIcon } from "lucide-react";
+import { Monitor, Tv, Video, Image, Tag, ZapIcon, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Products = () => {
@@ -17,7 +18,12 @@ const Products = () => {
       icon: <Monitor className="h-10 w-10" />,
       features: ["Ultra-bright LED panels", "Slim profile design", "4K resolution support"],
       animation: "float",
-      image: "/lovable-uploads/2a4551f7-3b70-4b91-9f39-aae6fa2ee77b.png"
+      image: "/lovable-uploads/2a4551f7-3b70-4b91-9f39-aae6fa2ee77b.png",
+      whyChoose: [
+        { title: "Enhanced Customer Experience", description: "Capture attention with dynamic content that adapts to your audience and time of day." },
+        { title: "Space Efficiency", description: "Slim designs that integrate seamlessly into any interior without disrupting foot traffic." },
+        { title: "Content Flexibility", description: "Update content remotely in real-time across multiple locations from a central dashboard." }
+      ]
     },
     {
       id: "videowall",
@@ -26,7 +32,12 @@ const Products = () => {
       icon: <Tv className="h-10 w-10" />,
       features: ["Bezel-less design", "Synchronized content", "Modular configuration"],
       animation: "pulse-slow",
-      image: "/lovable-uploads/d26589fa-89cf-4e06-9040-3c929662351b.png"
+      image: "/lovable-uploads/d26589fa-89cf-4e06-9040-3c929662351b.png",
+      whyChoose: [
+        { title: "Maximum Visual Impact", description: "Create immersive environments with stunning content across a large-format display." },
+        { title: "Scalable Solutions", description: "Start small and expand your video wall as your needs grow with our modular designs." },
+        { title: "Premium Brand Image", description: "Elevate your brand perception with professional, high-end visual technology." }
+      ]
     },
     {
       id: "outdoor",
@@ -35,7 +46,12 @@ const Products = () => {
       icon: <Video className="h-10 w-10" />,
       features: ["IP65 weather protection", "High brightness (7000+ nits)", "Temperature resistant"],
       animation: "glow-pulse",
-      image: "/lovable-uploads/757e202f-cdb3-414c-8eaa-21ee158e698c.png"
+      image: "/lovable-uploads/757e202f-cdb3-414c-8eaa-21ee158e698c.png",
+      whyChoose: [
+        { title: "All-Weather Performance", description: "Our displays are designed to withstand harsh elements from snow to desert heat." },
+        { title: "Sunlight Visibility", description: "Ultra-bright screens that remain clear and vibrant even in direct sunlight." },
+        { title: "Energy Efficient", description: "Smart power management that reduces operational costs while maintaining performance." }
+      ]
     },
     {
       id: "touchkiosk",
@@ -44,7 +60,12 @@ const Products = () => {
       icon: <ZapIcon className="h-10 w-10" />,
       features: ["Multi-touch capability", "Anti-microbial coating", "Custom branding options"],
       animation: "border-glow",
-      image: "/lovable-uploads/31d7fe0b-c78c-43fd-8b6f-23f11975048a.png"
+      image: "/lovable-uploads/31d7fe0b-c78c-43fd-8b6f-23f11975048a.png",
+      whyChoose: [
+        { title: "Reduce Wait Times", description: "Allow customers to self-serve, reducing lines and improving satisfaction." },
+        { title: "Data Collection", description: "Gather valuable customer insights through interactive engagement." },
+        { title: "24/7 Availability", description: "Provide information and services even outside of regular business hours." }
+      ]
     },
     {
       id: "drivethrough",
@@ -53,7 +74,12 @@ const Products = () => {
       icon: <Image className="h-10 w-10" />,
       features: ["Anti-glare screen", "Integrated speaker system", "Payment integration"],
       animation: "pulse-slow",
-      image: "/lovable-uploads/f166ac1d-4054-4d75-93bf-6d176c885383.png"
+      image: "/lovable-uploads/f166ac1d-4054-4d75-93bf-6d176c885383.png",
+      whyChoose: [
+        { title: "Increased Throughput", description: "Process more customers per hour with efficient self-ordering systems." },
+        { title: "Order Accuracy", description: "Reduce errors with visual confirmation of customer selections." },
+        { title: "Upsell Opportunities", description: "Intelligent product recommendations to increase average order value." }
+      ]
     },
     {
       id: "billboard",
@@ -62,7 +88,12 @@ const Products = () => {
       icon: <Tag className="h-10 w-10" />,
       features: ["Massive visibility", "Scheduled content rotation", "Real-time updates"],
       animation: "border-glow",
-      image: "/lovable-uploads/a0165491-abc9-4d16-9773-8121b1bcb322.png"
+      image: "/lovable-uploads/a0165491-abc9-4d16-9773-8121b1bcb322.png",
+      whyChoose: [
+        { title: "Location Flexibility", description: "Target specific demographics with strategic placement in high-traffic areas." },
+        { title: "Multiple Advertisers", description: "Generate revenue by rotating multiple clients' content on a single display." },
+        { title: "Time-Sensitive Messaging", description: "Update content immediately for time-limited promotions or urgent announcements." }
+      ]
     },
   ];
 
@@ -78,11 +109,15 @@ const Products = () => {
     })
   };
 
+  const selectedCategory = activeCategory 
+    ? productCategories.find(category => category.id === activeCategory) 
+    : null;
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Dark space background with subtle blue nebula effect instead of stars */}
       <div className="fixed inset-0 bg-gradient-to-b from-black via-blue-950/30 to-black z-0"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAICAg8ZmVGdW5jQT4KICAgICAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0idGFibGUiIHRhYmxlVmFsdWVzPSIwIDEiPjwvZmVGdW5jQT4KICAgICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICAICAg8ZmVCbGVuZCBtb2RlPSJzb2Z0LWxpZ2h0IiBpbj0ibm9pc2VCbHVyIiBpbjI9IlNvdXJjZUdyYXBoaWMiIHJlc3VsdD0ibm9pc2VCbGVuZCI+PC9mZUJsZW5kPgogICAgICAgIDwvZmlsdGVyPgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9IjUwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMwNDA4MjAiIGZpbHRlcj0idXJsKCNmaWx0ZXIpIiBvcGFjaXR5PSIwLjIiPjwvcmVjdD4KPC9zdmc+')]
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAJCSAgPGZlRnVuY0E+CiAgICAgICAgICAgICAgICAgICA8ZmVGdW5jQSB0eXBlPSJ0YWJsZSIgdGFibGVWYWx1ZXM9IjAgMSI+PC9mZUZ1bmNBPgogICAgICAgICAgICAgICA8L2ZlQ29tcG9uZW50VHJhbnNmZXI+CiAgICAgICAgICAgIJkgIDxmZUJsZW5kIG1vZGU9InNvZnQtbGlnaHQiIGluPSJub2lzZUJsdXIiIGluMj0iU291cmNlR3JhcGhpYyIgcmVzdWx0PSJub2lzZUJsZW5kIj48L2ZlQmxlbmQ+CiAgICAgICAgPC9maWx0ZXI+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzA0MDgyMCIgZmlsdGVyPSJ1cmwoI2ZpbHRlcikiIG9wYWNpdHk9IjAuMiI+PC9yZWN0Pgo8L3N2Zz4=')]
         bg-repeat opacity-30 z-0"></div>
 
       <Navbar />
@@ -124,57 +159,108 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products grid with RGB theme styling */}
+      {/* Main content section with products grid and why choose card */}
       <section className="py-12 px-4 relative z-10">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {productCategories.map((category, index) => (
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Products grid */}
+            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${activeCategory ? '2' : '3'} gap-8 ${activeCategory ? 'lg:w-2/3' : 'w-full'}`}>
+              {productCategories.map((category, index) => (
+                <motion.div 
+                  key={category.id}
+                  custom={index}
+                  initial="hidden"
+                  animate="visible"
+                  variants={fadeInUpVariants}
+                  className={`${activeCategory === null || activeCategory === category.id ? "block" : "hidden"}`}
+                >
+                  <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[450px] flex flex-col shadow-lg shadow-blue-900/20">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-20"></div>
+                    
+                    <CardHeader className="relative">
+                      <div className="h-48 w-full mb-4 overflow-hidden rounded-lg">
+                        <img 
+                          src={category.image} 
+                          alt={category.name}
+                          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                      <CardTitle className="text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold animate-pulse-rgb">
+                        {category.name}
+                      </CardTitle>
+                      <CardDescription className="text-gray-300 text-center">
+                        {category.description}
+                      </CardDescription>
+                    </CardHeader>
+                    
+                    <CardContent className="relative flex-grow">
+                      <ul className="space-y-2">
+                        {category.features.map((feature, i) => (
+                          <li key={i} className="flex items-center">
+                            <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
+                            <span className="text-white">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                    
+                    <CardFooter className="relative flex justify-center mt-auto pb-6">
+                      <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
+                        Learn More
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Why Choose This Product card - only shows when a product is selected */}
+            {activeCategory && selectedCategory && (
               <motion.div 
-                key={category.id}
-                custom={index}
-                initial="hidden"
-                animate="visible"
-                variants={fadeInUpVariants}
-                className={`${activeCategory === null || activeCategory === category.id ? "block" : "hidden"}`}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="lg:w-1/3"
               >
-                <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[450px] flex flex-col shadow-lg shadow-blue-900/20">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-20"></div>
+                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
                   
-                  <CardHeader className="relative">
-                    <div className="h-48 w-full mb-4 overflow-hidden rounded-lg">
-                      <img 
-                        src={category.image} 
-                        alt={category.name}
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-                      />
+                  <CardHeader className="relative border-b border-gray-800">
+                    <div className="flex items-center gap-3">
+                      {selectedCategory.icon}
+                      <div>
+                        <CardTitle className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold">
+                          Why Choose {selectedCategory.name}?
+                        </CardTitle>
+                      </div>
                     </div>
-                    <CardTitle className="text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold animate-pulse-rgb">
-                      {category.name}
-                    </CardTitle>
-                    <CardDescription className="text-gray-300 text-center">
-                      {category.description}
-                    </CardDescription>
                   </CardHeader>
                   
-                  <CardContent className="relative flex-grow">
-                    <ul className="space-y-2">
-                      {category.features.map((feature, i) => (
-                        <li key={i} className="flex items-center">
-                          <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
-                          <span className="text-white">{feature}</span>
+                  <CardContent className="pt-6">
+                    <ul className="space-y-6">
+                      {selectedCategory.whyChoose.map((reason, i) => (
+                        <li key={i} className="flex gap-3">
+                          <CheckCircle className="h-6 w-6 text-pink-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <h4 className="font-medium text-white mb-1">{reason.title}</h4>
+                            <p className="text-gray-300 text-sm">{reason.description}</p>
+                          </div>
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                   
-                  <CardFooter className="relative flex justify-center mt-auto pb-6">
-                    <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
-                      Learn More
+                  <CardFooter className="pt-2">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white" 
+                      onClick={() => window.location.href = `/contact?product=${selectedCategory.id}`}
+                    >
+                      Request Quote
                     </Button>
                   </CardFooter>
                 </Card>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
