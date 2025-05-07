@@ -6,11 +6,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Monitor, Tv, Video, Image, Tag, ZapIcon, CheckCircle, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import ContactForm from "@/components/ContactForm";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   
   const productCategories = [
@@ -118,7 +117,6 @@ const Products = () => {
 
   const handleScheduleDemo = (productId: string) => {
     setSelectedProduct(productId);
-    setIsContactDialogOpen(true);
   };
 
   return (
@@ -130,7 +128,7 @@ const Products = () => {
 
       <Navbar />
 
-      {/* Header section with RGB theme gradient headers like homepage */}
+      {/* Header section with RGB theme gradient headers */}
       <section className="relative pt-28 pb-12 px-4">
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -221,12 +219,19 @@ const Products = () => {
                     <CardFooter className="relative flex flex-col space-y-3 mt-auto pb-6">
                       {/* Only show Schedule Demo button on main product page (when no category is selected) */}
                       {!activeCategory && (
-                        <Button 
-                          className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
-                          onClick={() => handleScheduleDemo(category.id)}
-                        >
-                          <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
-                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button 
+                              className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
+                              onClick={() => handleScheduleDemo(category.id)}
+                            >
+                              <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
+                            <ContactForm />
+                          </DialogContent>
+                        </Dialog>
                       )}
                     </CardFooter>
                   </Card>
@@ -271,12 +276,19 @@ const Products = () => {
                   </CardContent>
                   
                   <CardFooter className="pt-2 border-t border-gray-800 flex flex-col space-y-3">
-                    <Button 
-                      className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
-                      onClick={() => handleScheduleDemo(selectedCategory.id)}
-                    >
-                      <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10"
+                          onClick={() => handleScheduleDemo(selectedCategory.id)}
+                        >
+                          <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
+                        <ContactForm />
+                      </DialogContent>
+                    </Dialog>
                   </CardFooter>
                 </Card>
               </motion.div>
@@ -326,12 +338,19 @@ const Products = () => {
                   <span className="text-white">Remote content management system</span>
                 </li>
               </ul>
-              <Button 
-                className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white mt-auto"
-                onClick={() => handleScheduleDemo('indoor')}
-              >
-                <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button 
+                    className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white mt-auto"
+                    onClick={() => handleScheduleDemo('indoor')}
+                  >
+                    <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
+                  <ContactForm />
+                </DialogContent>
+              </Dialog>
             </div>
             
             <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-gray-900/80 backdrop-blur-sm h-[600px] flex flex-col shadow-lg shadow-blue-900/20">
@@ -364,12 +383,19 @@ const Products = () => {
                   <span className="text-white">Temperature resistant (-20°C to 50°C)</span>
                 </li>
               </ul>
-              <Button 
-                className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white mt-auto"
-                onClick={() => handleScheduleDemo('outdoor')}
-              >
-                <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button 
+                    className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white mt-auto"
+                    onClick={() => handleScheduleDemo('outdoor')}
+                  >
+                    <Calendar className="mr-2 h-4 w-4" /> Schedule Demo
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
+                  <ContactForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           
@@ -378,22 +404,22 @@ const Products = () => {
             <p className="text-white mb-8 max-w-2xl mx-auto">
               Don't see exactly what you need? Our team specializes in creating custom digital signage solutions tailored to your specific requirements and space constraints.
             </p>
-            <Button 
-              className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white text-lg px-8 py-6"
-              onClick={() => handleScheduleDemo('custom')}
-            >
-              <Calendar className="mr-2 h-5 w-5" /> Schedule Custom Demo
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  className="bg-transparent border border-pink-500 hover:bg-pink-500/10 text-white text-lg px-8 py-6"
+                  onClick={() => handleScheduleDemo('custom')}
+                >
+                  <Calendar className="mr-2 h-5 w-5" /> Schedule Custom Demo
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
+                <ContactForm />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
-
-      {/* Contact Form Dialog */}
-      <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
-        <DialogContent className="bg-gray-900 border border-gray-800 text-white max-w-lg">
-          <ContactForm />
-        </DialogContent>
-      </Dialog>
 
       <Footer />
     </div>
