@@ -144,8 +144,9 @@ const Showcase = () => {
         </div>
       </div>
 
-      {/* Add these animation styles to support the client logo carousel */}
-      <style jsx global>{`
+      {/* Add animation styles as regular style tag */}
+      <style>
+        {`
         @keyframes scroll {
           from {
             transform: translateX(0);
@@ -167,7 +168,8 @@ const Showcase = () => {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-      `}</style>
+      `}
+      </style>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -92,12 +92,47 @@ const clientLogos = [
 
 const ClientLogos = () => {
   const [autoPlay, setAutoPlay] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   // Start the auto-play after component mount
   useEffect(() => {
     const timer = setTimeout(() => setAutoPlay(true), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!autoPlay || !carouselRef.current) return;
+    
+    const scrollContainer = carouselRef.current;
+    let animationFrameId: number;
+    let lastTimestamp: number;
+    
+    const scroll = (timestamp: number) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const elapsed = timestamp - lastTimestamp;
+      
+      if (elapsed > 50) { // Control scroll speed (lower = faster)
+        lastTimestamp = timestamp;
+        scrollContainer.scrollLeft += 1;
+        
+        // Loop back to beginning when reaching the end
+        if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth)) {
+          scrollContainer.scrollLeft = 0;
+        }
+      }
+      
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+    
+    animationFrameId = requestAnimationFrame(scroll);
+    
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [autoPlay]);
 
   return (
     <section className="py-12 bg-black border-t border-b border-gray-800">
@@ -112,45 +147,67 @@ const ClientLogos = () => {
           <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-black to-transparent"></div>
           <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-black to-transparent"></div>
           
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-              dragFree: true,
-              containScroll: false,
+          <div 
+            ref={carouselRef}
+            className="flex overflow-x-auto space-x-8 no-scrollbar scroll-smooth"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none' 
             }}
-            className="w-full"
-            autoplay={autoPlay}
-            interval={50}
           >
-            <CarouselContent className="animate-scroll">
+            <div className="flex space-x-8 animate-scroll">
               {clientLogos.map((logo, index) => (
-                <CarouselItem key={index} className="basis-1/3 md:basis-1/4 lg:basis-1/6 pl-4">
-                  <div className="p-3 h-16 flex items-center justify-center">
+                <div key={index} className="flex-none">
+                  <div className="p-3 h-12 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
                       className="max-h-full max-w-full object-contain filter brightness-90 hover:brightness-110 transition-all"
                     />
                   </div>
-                </CarouselItem>
+                </div>
               ))}
+              
               {/* Duplicate logos for seamless looping */}
               {clientLogos.slice(0, 6).map((logo, index) => (
-                <CarouselItem key={`dup-${index}`} className="basis-1/3 md:basis-1/4 lg:basis-1/6 pl-4">
-                  <div className="p-3 h-16 flex items-center justify-center">
+                <div key={`dup-${index}`} className="flex-none">
+                  <div className="p-3 h-12 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
                       className="max-h-full max-w-full object-contain filter brightness-90 hover:brightness-110 transition-all"
                     />
                   </div>
-                </CarouselItem>
+                </div>
               ))}
-            </CarouselContent>
-          </Carousel>
+            </div>
+          </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes scroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(calc(-100% + 100vw));
+          }
+        }
+        
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 };
