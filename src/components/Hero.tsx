@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Info, Star, Check, Sparkles, Zap } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -122,7 +121,33 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Add the new colorful display image below */}
+            {/* Smaller, more creative floating display for the new image */}
+            <div className="absolute top-[10%] -right-10 w-48 h-48 md:w-56 md:h-56 z-20 animate-float" style={{animationDuration: "8s"}}>
+              <div className="relative h-full w-full rounded-full overflow-hidden shadow-xl shadow-digi-blue/20 group">
+                {/* Spinning rainbow border effect */}
+                <div className="absolute inset-0 rounded-full border-4 border-digi-red/50 animate-spin" style={{animationDuration: "10s"}}></div>
+                <div className="absolute inset-0 rounded-full border-4 border-digi-green/50 animate-spin" style={{animationDuration: "12s", animationDirection: "reverse"}}></div>
+                <div className="absolute inset-0 rounded-full border-4 border-digi-blue/50 animate-spin" style={{animationDuration: "14s"}}></div>
+                
+                {/* Glass effect background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/10 backdrop-blur-sm rounded-full"></div>
+                
+                <div className="h-full w-full rounded-full p-4 flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/b7279543-0aac-471a-9734-dc4c3a7ca8d4.png" 
+                    alt="Colorful Digital Display Demo" 
+                    className="h-full w-full object-cover rounded-full transform scale-100 group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full flex flex-col justify-end items-center p-4">
+                  <p className="text-white text-xs text-center font-bold">Premium RGB Display</p>
+                  <p className="text-digi-green text-[10px] text-center">4K Resolution</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Colorful display image below - modified to be more creative */}
             <div className="mt-6 relative rounded-xl overflow-hidden shadow-2xl group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-red-500/20 opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
               
