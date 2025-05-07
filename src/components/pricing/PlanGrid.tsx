@@ -5,11 +5,9 @@ import PlanCard from "./PlanCard";
 interface PlanGridProps {
   plans: any[];
   type: "digital" | "led";
-  selectedPlan?: string;
-  onSelectPlan?: (plan: string) => void;
 }
 
-const PlanGrid = ({ plans, type, selectedPlan, onSelectPlan }: PlanGridProps) => {
+const PlanGrid = ({ plans, type }: PlanGridProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -32,9 +30,7 @@ const PlanGrid = ({ plans, type, selectedPlan, onSelectPlan }: PlanGridProps) =>
           key={index} 
           plan={plan} 
           type={type} 
-          index={index}
-          selected={selectedPlan === plan.id}
-          onClick={onSelectPlan ? () => onSelectPlan(plan.id) : undefined}
+          index={index} 
         />
       ))}
     </motion.div>
