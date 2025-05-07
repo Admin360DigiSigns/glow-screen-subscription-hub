@@ -231,7 +231,7 @@ const Products = () => {
               
               <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="/lovable-uploads/ba1f709c-8ede-4db7-8b98-d087b9b2a38b.png" 
+                  src="/lovable-uploads/33c6d346-4b1e-4f0a-9024-e7209bd22f83.png" 
                   alt="Outdoor LED Technology"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
