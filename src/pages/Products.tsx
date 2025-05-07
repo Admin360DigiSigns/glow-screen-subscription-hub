@@ -44,7 +44,7 @@ const Products = () => {
       icon: <ZapIcon className="h-10 w-10" />,
       features: ["Multi-touch capability", "Anti-microbial coating", "Custom branding options", "ADA compliant"],
       animation: "border-glow",
-      image: "/lovable-uploads/311b29b3-c960-47bd-a735-c2a07131302f.png"
+      image: "/lovable-uploads/31d7fe0b-c78c-43fd-8b6f-23f11975048a.png"
     },
     {
       id: "drivethrough",
