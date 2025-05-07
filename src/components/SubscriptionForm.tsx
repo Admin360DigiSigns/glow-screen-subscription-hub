@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
@@ -616,4 +617,440 @@ export default function SubscriptionForm({
                               className="flex space-x-6"
                             >
                               <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="single" id="single"
+                                <RadioGroupItem value="single" id="single" />
+                                <Label htmlFor="single">Single Location</Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="multiple" id="multiple" />
+                                <Label htmlFor="multiple">Multiple Locations</Label>
+                              </div>
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <div className="pt-4 flex justify-end">
+                      <Button 
+                        type="button" 
+                        onClick={handleNextStep} 
+                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                      >
+                        Next Step <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* Step 2: Plan Selection */}
+                {step === 2 && (
+                  <motion.div
+                    key="step2"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={stepVariants}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-6"
+                  >
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="bg-digi-red/20 p-2 rounded-full">
+                        <FileText className="h-6 w-6 text-digi-red" />
+                      </div>
+                      <h2 className="text-xl font-bold">Select Your Plan</h2>
+                    </div>
+                    
+                    <FormField
+                      control={form.control}
+                      name="plan"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                              {planOptions.map((plan) => (
+                                <div 
+                                  key={plan.value}
+                                  className={`relative rounded-lg border-2 transition-all cursor-pointer hover:bg-gray-900 
+                                    ${field.value === plan.value 
+                                      ? 'border-digi-red bg-digi-red/10' 
+                                      : 'border-gray-700 bg-gray-950'
+                                    }`}
+                                  onClick={() => field.onChange(plan.value)}
+                                >
+                                  {field.value === plan.value && (
+                                    <div className="absolute -top-3 -right-3 bg-digi-red text-white rounded-full p-1">
+                                      <Check className="h-4 w-4" />
+                                    </div>
+                                  )}
+                                  
+                                  <div className={`rounded-t-md bg-gradient-to-br p-5 ${plan.color}`}>
+                                    <div className="flex justify-between items-start">
+                                      <div>
+                                        <h3 className="font-bold text-lg">{plan.name}</h3>
+                                        <p className="text-sm text-gray-300">{plan.description}</p>
+                                      </div>
+                                      <div>{plan.icon}</div>
+                                    </div>
+                                    <p className="text-2xl font-bold mt-4">{plan.price}</p>
+                                  </div>
+                                  
+                                  <div className="p-5">
+                                    <p className="text-sm font-semibold mb-3">Features:</p>
+                                    <ul className="space-y-2">
+                                      {plan.features.map((feature, idx) => (
+                                        <li key={idx} className="flex items-start text-sm">
+                                          <Check className="h-4 w-4 mr-2 text-digi-red mt-0.5 shrink-0" />
+                                          <span>{feature}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <div className="pt-4 flex justify-between">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={() => setStep(1)}
+                        className="border-gray-700 text-white"
+                      >
+                        Back
+                      </Button>
+                      <Button 
+                        type="button" 
+                        onClick={handleNextStep} 
+                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                      >
+                        Next Step <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* Step 3: Business Details */}
+                {step === 3 && (
+                  <motion.div
+                    key="step3"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={stepVariants}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="bg-digi-red/20 p-2 rounded-full">
+                        <MapPin className="h-6 w-6 text-digi-red" />
+                      </div>
+                      <h2 className="text-xl font-bold">Business Details</h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="businessType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Business Type *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="e.g., Restaurant, Retail" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="businessName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Business Name *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your business name" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <FormField
+                      control={form.control}
+                      name="businessAddress"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white">Street Address *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Street address" {...field} className="bg-black border-gray-700 text-white" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="city"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">City *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="City" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="province"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Province/State *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Province/State" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="postalCode"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Postal Code *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Postal Code" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="businessCountry"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Country *</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger className="bg-black border-gray-700 text-white">
+                                  <SelectValue placeholder="Select country" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className="bg-black text-white border-gray-700">
+                                {countries.map((country) => (
+                                  <SelectItem key={country} value={country}>{country}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <FormField
+                      control={form.control}
+                      name="contractDuration"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white">Contract Duration *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="bg-black border-gray-700 text-white">
+                                <SelectValue placeholder="Select duration" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent className="bg-black text-white border-gray-700">
+                              <SelectItem value="6 months">6 months</SelectItem>
+                              <SelectItem value="12 months">12 months</SelectItem>
+                              <SelectItem value="24 months">24 months</SelectItem>
+                              <SelectItem value="36 months">36 months</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="totalScreens"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white">Number of Screens</FormLabel>
+                          <FormControl>
+                            <div className="flex items-center">
+                              <Button 
+                                type="button" 
+                                variant="outline" 
+                                size="icon"
+                                onClick={handleDecreaseScreens}
+                                className="h-10 w-10 border-gray-700"
+                              >
+                                <Minus className="h-4 w-4" />
+                              </Button>
+                              <div className="w-20 text-center text-lg font-medium">
+                                {field.value}
+                              </div>
+                              <Button 
+                                type="button" 
+                                variant="outline" 
+                                size="icon"
+                                onClick={handleIncreaseScreens}
+                                className="h-10 w-10 border-gray-700"
+                              >
+                                <Plus className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <div className="mt-6 p-4 bg-gray-900 rounded-lg">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <p className="text-sm text-gray-300">Selected Plan</p>
+                          <p className="font-medium">{planDetails?.name}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-300">Monthly Price</p>
+                          <p className="font-medium">${calculatedPrice()} CAD</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="pt-4 flex justify-between">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={() => setStep(2)}
+                        className="border-gray-700 text-white"
+                      >
+                        Back
+                      </Button>
+                      <Button 
+                        type="button" 
+                        onClick={handleNextStep} 
+                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                      >
+                        Next Step <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* Step 4: Review and Agreement */}
+                {step === 4 && (
+                  <motion.div
+                    key="step4"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={stepVariants}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-6"
+                  >
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="bg-digi-red/20 p-2 rounded-full">
+                        <CreditCard className="h-6 w-6 text-digi-red" />
+                      </div>
+                      <h2 className="text-xl font-bold">Review & Payment</h2>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h3 className="font-semibold mb-2">Order Summary</h3>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          <p className="text-gray-400">Selected Plan:</p>
+                          <p>{planDetails?.name}</p>
+                          <p className="text-gray-400">Number of Screens:</p>
+                          <p>{form.getValues("totalScreens")}</p>
+                          <p className="text-gray-400">Contract Duration:</p>
+                          <p>{form.getValues("contractDuration")}</p>
+                          <p className="text-gray-400">Monthly Payment:</p>
+                          <p className="font-semibold">${calculatedPrice()} CAD</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h3 className="font-semibold mb-2">Business Information</h3>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          <p className="text-gray-400">Business Name:</p>
+                          <p>{form.getValues("businessName")}</p>
+                          <p className="text-gray-400">Business Type:</p>
+                          <p>{form.getValues("businessType")}</p>
+                          <p className="text-gray-400">Address:</p>
+                          <p>{form.getValues("businessAddress")}, {form.getValues("city")}, {form.getValues("province")}, {form.getValues("postalCode")}, {form.getValues("businessCountry")}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h3 className="font-semibold mb-2">Contact Information</h3>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          <p className="text-gray-400">Full Name:</p>
+                          <p>{form.getValues("fullName")}</p>
+                          <p className="text-gray-400">Email:</p>
+                          <p>{form.getValues("email")}</p>
+                          <p className="text-gray-400">Phone:</p>
+                          <p>{form.getValues("phoneNumber")}</p>
+                        </div>
+                      </div>
+                      
+                      {/* Rental Agreement */}
+                      <div className="bg-gray-900 rounded-lg p-4">
+                        <h3 className="font-semibold text-lg mb-4">Rental Agreement</h3>
+                        <div className="h-96 overflow-y-auto p-4 bg-gray-950 rounded-md text-left text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: generateRentalAgreement() }} />
+                        
+                        <div className="mt-4 flex items-center space-x-2">
+                          <input type="checkbox" id="agree" className="w-5 h-5 text-digi-red bg-gray-800 border-gray-600 rounded focus:ring-digi-red" />
+                          <label htmlFor="agree" className="text-white text-sm">I have read and agree to the terms and conditions</label>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="pt-4 flex justify-between">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={() => setStep(3)}
+                        className="border-gray-700 text-white"
+                      >
+                        Back
+                      </Button>
+                      <Button 
+                        type="submit" 
+                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                      >
+                        Complete Subscription
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
+          </Form>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
