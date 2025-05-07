@@ -98,7 +98,7 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <Link
+        <a
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800",
@@ -106,7 +106,7 @@ const ListItem = React.forwardRef<
             "group",
             className
           )}
-          {...props}
+          href={props.href}
         >
           <div className="text-sm font-medium leading-none text-white group-hover:text-digi-green">
             {title}
@@ -114,7 +114,7 @@ const ListItem = React.forwardRef<
           <div className="line-clamp-2 text-sm leading-snug text-gray-400 group-hover:text-gray-300">
             {children}
           </div>
-        </Link>
+        </a>
       </NavigationMenuLink>
     </li>
   );

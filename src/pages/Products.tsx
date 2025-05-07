@@ -17,7 +17,8 @@ const Products = () => {
       description: "High-resolution displays perfect for retail, corporate, and entertainment environments",
       icon: <Monitor className="h-10 w-10" />,
       features: ["Ultra-bright LED panels", "Slim profile design", "Multiple size options", "4K resolution support"],
-      animation: "float"
+      animation: "float",
+      image: "/lovable-uploads/1aa5a6ea-b596-4e57-9966-84b9521adcdf.png"
     },
     {
       id: "videowall",
@@ -25,7 +26,8 @@ const Products = () => {
       description: "Create stunning visual experiences with our seamless video wall technology",
       icon: <Tv className="h-10 w-10" />,
       features: ["Bezel-less design", "Synchronized content", "Modular configuration", "Remote management"],
-      animation: "pulse-rgb"
+      animation: "pulse-rgb",
+      image: "/lovable-uploads/35655ba6-4ae2-46e3-9441-c19bae51b5c6.png"
     },
     {
       id: "outdoor",
@@ -33,7 +35,8 @@ const Products = () => {
       description: "Weather-resistant displays designed to capture attention in any outdoor environment",
       icon: <Video className="h-10 w-10" />,
       features: ["IP65 weather protection", "High brightness (7000+ nits)", "Temperature resistant", "Vandal-proof options"],
-      animation: "glow-pulse"
+      animation: "glow-pulse",
+      image: "/lovable-uploads/245b0299-aa91-43ad-952e-48b64b19972a.png"
     },
     {
       id: "touchkiosk",
@@ -41,7 +44,8 @@ const Products = () => {
       description: "Interactive solutions for wayfinding, self-service, and information display",
       icon: <ZapIcon className="h-10 w-10" />,
       features: ["Multi-touch capability", "Anti-microbial coating", "Custom branding options", "ADA compliant"],
-      animation: "border-glow"
+      animation: "border-glow",
+      image: "/lovable-uploads/311b29b3-c960-47bd-a735-c2a07131302f.png"
     },
     {
       id: "drivethrough",
@@ -49,7 +53,8 @@ const Products = () => {
       description: "Streamline drive-through operations with our weatherproof display solutions",
       icon: <Image className="h-10 w-10" />,
       features: ["Anti-glare screen", "Integrated speaker system", "Order confirmation display", "Payment integration"],
-      animation: "pulse-slow"
+      animation: "pulse-slow",
+      image: "/lovable-uploads/e0cebf14-cb64-4d2a-b651-ff8878e38a9d.png"
     },
     {
       id: "billboard",
@@ -57,7 +62,8 @@ const Products = () => {
       description: "High-impact outdoor advertising displays with remote content management",
       icon: <Tag className="h-10 w-10" />,
       features: ["Massive visibility", "Scheduled content rotation", "Real-time updates", "Traffic analysis integration"],
-      animation: "flow-rgb"
+      animation: "flow-rgb",
+      image: "/lovable-uploads/d57eb9f2-1fba-479e-90f5-d681548d7c73.png"
     },
   ];
 
@@ -132,10 +138,12 @@ const Products = () => {
                   <div className={`absolute inset-0 bg-gradient-rgb opacity-10 animate-${category.animation}`}></div>
                   
                   <CardHeader className="relative">
-                    <div className="flex justify-center mb-4">
-                      <div className="p-4 rounded-full bg-gradient-rgb animate-pulse-rgb">
-                        {category.icon}
-                      </div>
+                    <div className="h-48 w-full mb-4 overflow-hidden rounded-lg">
+                      <img 
+                        src={category.image} 
+                        alt={category.name}
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                      />
                     </div>
                     <CardTitle className="text-2xl text-center">{category.name}</CardTitle>
                     <CardDescription className="text-gray-400 text-center">
@@ -176,6 +184,14 @@ const Products = () => {
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-digi-red opacity-30 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-digi-blue opacity-30 rounded-full blur-3xl"></div>
               
+              <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
+                <img 
+                  src="/lovable-uploads/1aab47e4-2e45-45df-be00-ed0fa694df7b.png" 
+                  alt="Indoor Digital Display"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              
               <h3 className="text-2xl font-bold mb-4">Indoor Digital Displays</h3>
               <p className="text-gray-300 mb-6">
                 Our indoor digital screens provide crystal clear visuals and vibrant colors, perfect for retail environments, corporate settings, and entertainment venues. Available in various sizes and configurations to meet your specific needs.
@@ -200,6 +216,14 @@ const Products = () => {
             <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-black/40 backdrop-blur-sm">
               <div className="absolute -top-20 -left-20 w-40 h-40 bg-digi-green opacity-30 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-digi-red opacity-30 rounded-full blur-3xl"></div>
+              
+              <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
+                <img 
+                  src="/lovable-uploads/ba1f709c-8ede-4db7-8b98-d087b9b2a38b.png" 
+                  alt="Outdoor LED Technology"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                />
+              </div>
               
               <h3 className="text-2xl font-bold mb-4">Outdoor LED Technology</h3>
               <p className="text-gray-300 mb-6">
