@@ -58,10 +58,6 @@ const Hero = () => {
                 <span className="absolute inset-0 bg-white/20 transform -translate-x-full hover:translate-x-0 transition-transform duration-300 group-hover:translate-x-full"></span>
                 <Zap className="mr-2 h-5 w-5" /> Start Your Subscription
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 group relative overflow-hidden">
-                <span className="absolute inset-0 bg-white/10 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0"></span>
-                View Showcase
-              </Button>
             </div>
 
             {/* Key benefits section with enhanced styling */}
