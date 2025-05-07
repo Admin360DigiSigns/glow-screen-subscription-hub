@@ -1,4 +1,3 @@
-
 import { Check, X, Monitor, Tv, Layers, Image, Video, Maximize, ScreenShare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -110,7 +109,7 @@ const useCases = [
     title: "Museums & Exhibitions",
     description: "Create interactive, educational displays that bring exhibits to life with dynamic visuals and touchscreen interactivity for memorable experiences",
     icon: <ScreenShare className="h-12 w-12 text-digi-blue p-2" />,
-    image: "/lovable-uploads/47882787-f5cf-418b-999e-1065f6b76035.png",
+    image: "/lovable-uploads/1c00ddff-966e-4de9-bbbc-55391f61c8bf.png", // Updated with new exhibition image
     animation: "animate-fade-in",
     delay: "1.4s"
   }
