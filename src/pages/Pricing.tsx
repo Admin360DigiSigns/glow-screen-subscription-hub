@@ -169,15 +169,15 @@ const Pricing = () => {
             </motion.p>
           </div>
           
-          {/* Tab Selection */}
+          {/* Tab Selection - Enhanced visibility */}
           <div className="flex justify-center mb-12">
-            <div className="bg-gray-900/60 p-1.5 rounded-xl backdrop-blur-sm border border-white/10">
+            <div className="bg-gray-900/80 p-2 rounded-xl backdrop-blur-sm border border-white/20 shadow-lg">
               <button
                 onClick={() => setActiveTab("digital")}
                 className={`px-8 py-3 rounded-lg font-medium transition-all ${
                   activeTab === "digital" 
-                    ? "bg-gradient-rgb bg-300% animate-flow-rgb text-white" 
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-gradient-rgb bg-300% animate-flow-rgb text-white shadow-md" 
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
                 }`}
               >
                 Digital Screens
@@ -186,8 +186,8 @@ const Pricing = () => {
                 onClick={() => setActiveTab("led")}
                 className={`px-8 py-3 rounded-lg font-medium transition-all ${
                   activeTab === "led" 
-                    ? "bg-gradient-rgb bg-300% animate-flow-rgb text-white" 
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-gradient-rgb bg-300% animate-flow-rgb text-white shadow-md" 
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
                 }`}
               >
                 LED Video Walls
@@ -195,7 +195,7 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Pricing Cards */}
+          {/* Pricing Cards with Enhanced Visibility */}
           {activeTab === "digital" ? (
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
@@ -208,51 +208,71 @@ const Pricing = () => {
                 <motion.div 
                   key={index}
                   variants={itemVariants}
-                  className={`relative rounded-2xl overflow-hidden`}
+                  className={`relative rounded-2xl overflow-hidden ${
+                    plan.isPopular ? 'ring-2 ring-white/30 ring-offset-4 ring-offset-black' : ''
+                  }`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${
-                    plan.color === "digi-red" ? "from-digi-red/20 to-black/80" :
-                    plan.color === "digi-green" ? "from-digi-green/20 to-black/80" :
-                    "from-digi-blue/20 to-black/80"
-                  } opacity-70`}></div>
+                    plan.color === "digi-red" ? "from-digi-red/30 to-black/90" :
+                    plan.color === "digi-green" ? "from-digi-green/30 to-black/90" :
+                    "from-digi-blue/30 to-black/90"
+                  } opacity-80`}></div>
                   
-                  <div className={`relative z-10 p-8 border border-white/10 rounded-2xl backdrop-blur-sm ${
+                  <div className={`relative z-10 p-8 border border-white/20 rounded-2xl backdrop-blur-sm ${
                     plan.isPopular ? 'animate-pulse-rgb' : ''
                   }`}>
                     {plan.isPopular && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-rgb bg-300% animate-flow-rgb text-white px-4 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-white px-6 py-2 rounded-full text-sm font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.5)]">
                         Most Popular
                       </div>
                     )}
                     
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className={`text-2xl font-bold text-${plan.color}`}>{plan.name}</h3>
-                      <Badge variant="outline" className="bg-white/10 backdrop-blur-sm">Digital Screen</Badge>
+                      <h3 className={`text-2xl font-bold ${
+                        plan.color === "digi-red" ? "text-red-400" :
+                        plan.color === "digi-green" ? "text-green-400" :
+                        "text-blue-400"
+                      }`}>{plan.name}</h3>
+                      <Badge className="bg-white/20 text-white border-0 backdrop-blur-sm shadow-sm">Digital Screen</Badge>
                     </div>
                     
-                    <p className="text-gray-400 mb-6">{plan.description}</p>
+                    <p className="text-gray-200 mb-6">{plan.description}</p>
                     
                     <div className="flex items-end mb-8">
-                      <DollarSign className={`h-6 w-6 mr-1 text-${plan.color}`} />
-                      <span className="text-4xl font-bold">{plan.price}</span>
-                      <span className="text-gray-400 ml-1">/month</span>
+                      <DollarSign className={`h-6 w-6 mr-1 ${
+                        plan.color === "digi-red" ? "text-red-400" :
+                        plan.color === "digi-green" ? "text-green-400" :
+                        "text-blue-400"
+                      }`} />
+                      <span className="text-4xl font-bold text-white">{plan.price}</span>
+                      <span className="text-gray-300 ml-1">/month</span>
                     </div>
                     
                     <ul className="space-y-3 mb-8">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
-                          <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full bg-${plan.color}/20`}>
-                            <Check className={`h-3 w-3 text-${plan.color}`} />
+                          <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full ${
+                            plan.color === "digi-red" ? "bg-red-500/20" :
+                            plan.color === "digi-green" ? "bg-green-500/20" :
+                            "bg-blue-500/20"
+                          }`}>
+                            <Check className={`h-3 w-3 ${
+                              plan.color === "digi-red" ? "text-red-400" :
+                              plan.color === "digi-green" ? "text-green-400" :
+                              "text-blue-400"
+                            }`} />
                           </div>
-                          <span className="text-gray-300">{feature}</span>
+                          <span className="text-white">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     
-                    <Button className={`w-full ${
+                    <Button className={`w-full shadow-lg ${
                       plan.isPopular 
-                        ? 'bg-gradient-rgb bg-300% animate-flow-rgb' 
-                        : `bg-${plan.color} hover:bg-${plan.color}/90`
+                        ? 'bg-white hover:bg-gray-200 text-black' 
+                        : plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
+                          plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
+                          'bg-blue-600 hover:bg-blue-700 text-white'
                     }`}>
                       <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
                     </Button>
@@ -272,51 +292,71 @@ const Pricing = () => {
                 <motion.div 
                   key={index}
                   variants={itemVariants}
-                  className={`relative rounded-2xl overflow-hidden`}
+                  className={`relative rounded-2xl overflow-hidden ${
+                    plan.isPopular ? 'ring-2 ring-white/30 ring-offset-4 ring-offset-black' : ''
+                  }`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${
-                    plan.color === "digi-red" ? "from-digi-red/20 to-black/80" :
-                    plan.color === "digi-green" ? "from-digi-green/20 to-black/80" :
-                    "from-digi-blue/20 to-black/80"
-                  } opacity-70`}></div>
+                    plan.color === "digi-red" ? "from-digi-red/30 to-black/90" :
+                    plan.color === "digi-green" ? "from-digi-green/30 to-black/90" :
+                    "from-digi-blue/30 to-black/90"
+                  } opacity-80`}></div>
                   
-                  <div className={`relative z-10 p-8 border border-white/10 rounded-2xl backdrop-blur-sm ${
+                  <div className={`relative z-10 p-8 border border-white/20 rounded-2xl backdrop-blur-sm ${
                     plan.isPopular ? 'animate-pulse-rgb' : ''
                   }`}>
                     {plan.isPopular && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-rgb bg-300% animate-flow-rgb text-white px-4 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-white px-6 py-2 rounded-full text-sm font-bold text-black shadow-[0_0_15px_rgba(255,255,255,0.5)]">
                         Most Popular
                       </div>
                     )}
                     
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className={`text-2xl font-bold text-${plan.color}`}>{plan.name}</h3>
-                      <Badge variant="outline" className="bg-white/10 backdrop-blur-sm">LED Wall</Badge>
+                      <h3 className={`text-2xl font-bold ${
+                        plan.color === "digi-red" ? "text-red-400" :
+                        plan.color === "digi-green" ? "text-green-400" :
+                        "text-blue-400"
+                      }`}>{plan.name}</h3>
+                      <Badge className="bg-white/20 text-white border-0 backdrop-blur-sm shadow-sm">LED Wall</Badge>
                     </div>
                     
-                    <p className="text-gray-400 mb-6">{plan.description}</p>
+                    <p className="text-gray-200 mb-6">{plan.description}</p>
                     
                     <div className="flex items-end mb-8">
-                      <DollarSign className={`h-6 w-6 mr-1 text-${plan.color}`} />
-                      <span className="text-4xl font-bold">{plan.price}</span>
-                      <span className="text-gray-400 ml-1">/month</span>
+                      <DollarSign className={`h-6 w-6 mr-1 ${
+                        plan.color === "digi-red" ? "text-red-400" :
+                        plan.color === "digi-green" ? "text-green-400" :
+                        "text-blue-400"
+                      }`} />
+                      <span className="text-4xl font-bold text-white">{plan.price}</span>
+                      <span className="text-gray-300 ml-1">/month</span>
                     </div>
                     
                     <ul className="space-y-3 mb-8">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
-                          <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full bg-${plan.color}/20`}>
-                            <Check className={`h-3 w-3 text-${plan.color}`} />
+                          <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full ${
+                            plan.color === "digi-red" ? "bg-red-500/20" :
+                            plan.color === "digi-green" ? "bg-green-500/20" :
+                            "bg-blue-500/20"
+                          }`}>
+                            <Check className={`h-3 w-3 ${
+                              plan.color === "digi-red" ? "text-red-400" :
+                              plan.color === "digi-green" ? "text-green-400" :
+                              "text-blue-400"
+                            }`} />
                           </div>
-                          <span className="text-gray-300">{feature}</span>
+                          <span className="text-white">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     
-                    <Button className={`w-full ${
+                    <Button className={`w-full shadow-lg ${
                       plan.isPopular 
-                        ? 'bg-gradient-rgb bg-300% animate-flow-rgb' 
-                        : `bg-${plan.color} hover:bg-${plan.color}/90`
+                        ? 'bg-white hover:bg-gray-200 text-black' 
+                        : plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
+                          plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
+                          'bg-blue-600 hover:bg-blue-700 text-white'
                     }`}>
                       <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
                     </Button>
@@ -326,7 +366,7 @@ const Pricing = () => {
             </motion.div>
           )}
           
-          <div className="text-center mt-12 text-gray-500 max-w-2xl mx-auto">
+          <div className="text-center mt-12 text-gray-300 max-w-2xl mx-auto bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-white/10">
             <p className="mb-4 text-sm">No long-term contracts. Cancel anytime. Free installation and maintenance included.</p>
             <p className="text-xs">* Prices are subject to change based on specific requirements, location, and installation complexity. Contact sales for a custom quote.</p>
           </div>
