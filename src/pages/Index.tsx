@@ -7,7 +7,6 @@ import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import LedVideoWall from "@/components/LedVideoWall";
 import DigitalScreenAdvantages from "@/components/DigitalScreenAdvantages";
-import SubscriptionPlans from "@/components/SubscriptionPlans";
 
 const Index = () => {
   return (
@@ -18,7 +17,6 @@ const Index = () => {
       <DigitalScreenAdvantages />
       <LedVideoWall />
       <Showcase />
-      <SubscriptionPlans />
       <Testimonials />
       <Footer />
     </div>
@@ -26,3 +24,4 @@ const Index = () => {
 };
 
 export default Index;
+
