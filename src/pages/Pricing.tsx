@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, Receipt, DollarSign, BadgePercent, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SubscriptionForm from "@/components/SubscriptionForm";
+import FormBackground from "@/components/FormBackground";
 
 const Pricing = () => {
   const [activeTab, setActiveTab] = useState<"digital" | "led">("digital");
@@ -205,7 +206,7 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Pricing Cards with Enhanced Visibility */}
+          {/* Pricing Cards with Enhanced Visibility but without most popular tag */}
           {activeTab === "digital" ? (
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
@@ -218,30 +219,8 @@ const Pricing = () => {
                 <motion.div 
                   key={index}
                   variants={itemVariants}
-                  className={`relative rounded-2xl overflow-hidden ${
-                    plan.isPopular ? 'mt-8 ring-2 ring-digi-green ring-offset-4 ring-offset-black' : ''
-                  }`}
+                  className="relative rounded-2xl overflow-hidden"
                 >
-                  {plan.isPopular && (
-                    <div className="absolute -top-6 inset-x-0 z-10">
-                      <div className="flex justify-center">
-                        <motion.div 
-                          className="px-8 py-2 rounded-full bg-gradient-to-r from-digi-green/90 to-digi-blue/90 border-2 border-white text-white font-bold shadow-[0_0_15px_rgba(106,176,76,0.8)] animate-pulse-slow"
-                          initial={{ y: -10, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.2, duration: 0.5 }}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          <div className="flex items-center justify-center gap-2">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <span className="text-white text-lg tracking-wider">MOST POPULAR</span>
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                          </div>
-                        </motion.div>
-                      </div>
-                    </div>
-                  )}
-                  
                   <div className={`absolute inset-0 bg-gradient-to-br ${
                     plan.color === "digi-red" ? "from-digi-red/30 to-black/90" :
                     plan.color === "digi-green" ? "from-digi-green/30 to-black/90" :
@@ -289,30 +268,16 @@ const Pricing = () => {
                       ))}
                     </ul>
                     
-                    {plan.isPopular ? (
-                      <motion.div
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <Button 
-                          className="w-full shadow-lg bg-gradient-rgb bg-300% animate-flow-rgb text-white hover:shadow-xl transition-all"
-                          onClick={() => handleSubscribe(plan.value as any)}
-                        >
-                          <BadgePercent className="mr-2 h-4 w-4" /> Subscribe Now
-                        </Button>
-                      </motion.div>
-                    ) : (
-                      <Button 
-                        className={`w-full shadow-lg ${
-                          plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
-                          plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
-                          'bg-blue-600 hover:bg-blue-700 text-white'
-                        }`}
-                        onClick={() => handleSubscribe(plan.value as any)}
-                      >
-                        <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
-                      </Button>
-                    )}
+                    <Button 
+                      className={`w-full shadow-lg ${
+                        plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
+                        plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
+                        'bg-blue-600 hover:bg-blue-700 text-white'
+                      }`}
+                      onClick={() => handleSubscribe(plan.value as any)}
+                    >
+                      <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
+                    </Button>
                   </div>
                 </motion.div>
               ))}
@@ -329,30 +294,8 @@ const Pricing = () => {
                 <motion.div 
                   key={index}
                   variants={itemVariants}
-                  className={`relative rounded-2xl overflow-hidden ${
-                    plan.isPopular ? 'mt-8 ring-2 ring-digi-green ring-offset-4 ring-offset-black' : ''
-                  }`}
+                  className="relative rounded-2xl overflow-hidden"
                 >
-                  {plan.isPopular && (
-                    <div className="absolute -top-6 inset-x-0 z-10">
-                      <div className="flex justify-center">
-                        <motion.div 
-                          className="px-8 py-2 rounded-full bg-gradient-to-r from-digi-green/90 to-digi-blue/90 border-2 border-white text-white font-bold shadow-[0_0_15px_rgba(106,176,76,0.8)] animate-pulse-slow"
-                          initial={{ y: -10, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.2, duration: 0.5 }}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          <div className="flex items-center justify-center gap-2">
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                            <span className="text-white text-lg tracking-wider">MOST POPULAR</span>
-                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                          </div>
-                        </motion.div>
-                      </div>
-                    </div>
-                  )}
-                  
                   <div className={`absolute inset-0 bg-gradient-to-br ${
                     plan.color === "digi-red" ? "from-digi-red/30 to-black/90" :
                     plan.color === "digi-green" ? "from-digi-green/30 to-black/90" :
@@ -400,30 +343,16 @@ const Pricing = () => {
                       ))}
                     </ul>
                     
-                    {plan.isPopular ? (
-                      <motion.div
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <Button 
-                          className="w-full shadow-lg bg-gradient-rgb bg-300% animate-flow-rgb text-white hover:shadow-xl transition-all"
-                          onClick={() => handleSubscribe('standard')}
-                        >
-                          <BadgePercent className="mr-2 h-4 w-4" /> Subscribe Now
-                        </Button>
-                      </motion.div>
-                    ) : (
-                      <Button 
-                        className={`w-full shadow-lg ${
-                          plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
-                          plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
-                          'bg-blue-600 hover:bg-blue-700 text-white'
-                        }`}
-                        onClick={() => handleSubscribe('standard')}
-                      >
-                        <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
-                      </Button>
-                    )}
+                    <Button 
+                      className={`w-full shadow-lg ${
+                        plan.color === "digi-red" ? 'bg-red-600 hover:bg-red-700 text-white' :
+                        plan.color === "digi-green" ? 'bg-green-600 hover:bg-green-700 text-white' :
+                        'bg-blue-600 hover:bg-blue-700 text-white'
+                      }`}
+                      onClick={() => handleSubscribe('standard')}
+                    >
+                      <Receipt className="mr-2 h-4 w-4" /> Subscribe Now
+                    </Button>
                   </div>
                 </motion.div>
               ))}

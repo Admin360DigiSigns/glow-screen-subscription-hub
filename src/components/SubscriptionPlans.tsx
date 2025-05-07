@@ -1,7 +1,6 @@
 
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import SubscriptionForm from "@/components/SubscriptionForm";
 
@@ -19,7 +18,6 @@ const plans = [
       "Standard Support"
     ],
     color: "digi-red",
-    isPopular: false,
     value: "standard"
   },
   {
@@ -36,7 +34,6 @@ const plans = [
       "Analytics Dashboard"
     ],
     color: "digi-green",
-    isPopular: true,
     value: "premium"
   },
   {
@@ -54,7 +51,6 @@ const plans = [
       "Multi-Screen Management"
     ],
     color: "digi-blue",
-    isPopular: false,
     value: "enterprise"
   }
 ];
@@ -85,20 +81,7 @@ const SubscriptionPlans = () => {
             <div 
               key={index}
               className="relative rounded-2xl shadow-lg border-2 border-transparent h-full"
-            >
-              {plan.isPopular && (
-                <div className="absolute -top-5 inset-x-0 flex justify-center z-10">
-                  <motion.div
-                    className="px-4 py-1 bg-gradient-to-r from-digi-green to-digi-blue rounded-full text-white text-sm font-bold shadow-lg"
-                    initial={{ y: -10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    Most Popular
-                  </motion.div>
-                </div>
-              )}
-              
+            >              
               <div className={`p-8 bg-gradient-to-br ${
                 plan.color === "digi-red" ? "from-digi-red/10 to-black/95" :
                 plan.color === "digi-green" ? "from-digi-green/10 to-black/95" :
@@ -130,9 +113,9 @@ const SubscriptionPlans = () => {
                 </ul>
                 <Button 
                   className={`w-full ${
-                    plan.isPopular 
-                      ? "bg-gradient-rgb bg-300% animate-flow-rgb hover:bg-gradient-rgb" 
-                      : `bg-${plan.color} hover:bg-${plan.color}/90`
+                    plan.color === "digi-red" ? "bg-digi-red hover:bg-digi-red/90" : 
+                    plan.color === "digi-green" ? "bg-digi-green hover:bg-digi-green/90" : 
+                    "bg-digi-blue hover:bg-digi-blue/90"
                   }`}
                   onClick={() => handleSubscribe(plan.value as any)}
                 >
