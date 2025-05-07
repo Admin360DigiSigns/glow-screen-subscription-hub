@@ -626,13 +626,7 @@ export default function SubscriptionForm({
                               </li>
                             </ul>
                           </div>
-                          <div className="hidden md:block ml-4">
-                            <img 
-                              src="/lovable-uploads/6d2277e4-d817-4132-8e47-069572950bad.png" 
-                              alt="Standard Plan Visual" 
-                              className="w-24 h-24 object-cover rounded-lg opacity-80" 
-                            />
-                          </div>
+                          
                         </div>
                       )}
                       
@@ -651,13 +645,7 @@ export default function SubscriptionForm({
                               </li>
                             </ul>
                           </div>
-                          <div className="hidden md:block ml-4">
-                            <img 
-                              src="/lovable-uploads/55ae7ee6-a5d1-4976-a594-3a46e36d2b2b.png" 
-                              alt="Premium Plan Visual" 
-                              className="w-24 h-24 object-cover rounded-lg opacity-80" 
-                            />
-                          </div>
+                          
                         </div>
                       )}
                       
