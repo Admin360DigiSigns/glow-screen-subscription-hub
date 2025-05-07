@@ -72,13 +72,19 @@ const SubscriptionPlans = () => {
               key={index}
               className={`relative rounded-2xl shadow-lg border-2 ${
                 plan.isPopular 
-                  ? `border-${plan.color} animate-pulse-rgb` 
+                  ? `border-${plan.color}` 
                   : 'border-transparent'
               }`}
             >
               {plan.isPopular && (
-                <div className={`absolute -top-4 left-1/2 transform -translate-x-1/2 bg-${plan.color} text-white px-4 py-1 rounded-full text-sm font-medium`}>
-                  Most Popular
+                <div className="absolute -top-5 left-0 right-0 flex justify-center">
+                  <div className="px-6 py-2 bg-white rounded-full text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-yellow-500">★</span>
+                      MOST POPULAR
+                      <span className="text-yellow-500">★</span>
+                    </div>
+                  </div>
                 </div>
               )}
               <div className="p-8">
@@ -99,7 +105,7 @@ const SubscriptionPlans = () => {
                 <Button 
                   className={`w-full ${
                     plan.isPopular 
-                      ? 'bg-rgb-animated' 
+                      ? 'bg-gradient-rgb bg-300% animate-flow-rgb text-white shadow-lg' 
                       : `bg-${plan.color} hover:bg-${plan.color}/90`
                   }`}>
                   Subscribe Now

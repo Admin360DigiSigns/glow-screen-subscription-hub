@@ -209,7 +209,7 @@ const Pricing = () => {
                   key={index}
                   variants={itemVariants}
                   className={`relative rounded-2xl overflow-hidden ${
-                    plan.isPopular ? 'ring-2 ring-white ring-offset-4 ring-offset-black' : ''
+                    plan.isPopular ? 'ring-4 ring-white/40 ring-offset-8 ring-offset-black' : ''
                   }`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${
@@ -220,25 +220,29 @@ const Pricing = () => {
                   
                   <div className={`relative z-10 p-8 border border-white/20 rounded-2xl backdrop-blur-sm`}>
                     {plan.isPopular && (
-                      <motion.div 
-                        className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-rgb bg-300% animate-flow-rgb px-6 py-2 rounded-full text-sm font-bold text-white shadow-lg"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: 0.3
-                        }}
-                        whileHover={{ 
-                          scale: 1.05,
-                          boxShadow: "0px 0px 15px rgba(255,255,255,0.7)" 
-                        }}
+                      <div 
+                        className="absolute -top-5 -left-2 -right-2 transform flex justify-center"
                       >
-                        <div className="flex items-center">
-                          <Star className="w-4 h-4 mr-1 animate-pulse-slow" />
-                          Most Popular
-                          <Star className="w-4 h-4 ml-1 animate-pulse-slow" />
-                        </div>
-                      </motion.div>
+                        <motion.div 
+                          className="px-8 py-3 rounded-lg bg-white shadow-[0_0_20px_rgba(255,255,255,0.5)] text-lg font-bold text-black animate-pulse-slow"
+                          initial={{ y: -10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: 0.3
+                          }}
+                          whileHover={{ 
+                            scale: 1.05,
+                            boxShadow: "0px 0px 25px rgba(255,255,255,0.8)" 
+                          }}
+                        >
+                          <div className="flex items-center gap-2">
+                            <Star className="w-5 h-5 text-yellow-500 animate-pulse-slow" />
+                            MOST POPULAR
+                            <Star className="w-5 h-5 text-yellow-500 animate-pulse-slow" />
+                          </div>
+                        </motion.div>
+                      </div>
                     )}
                     
                     <div className="flex items-center justify-between mb-4">
@@ -316,7 +320,7 @@ const Pricing = () => {
                   key={index}
                   variants={itemVariants}
                   className={`relative rounded-2xl overflow-hidden ${
-                    plan.isPopular ? 'ring-2 ring-white ring-offset-4 ring-offset-black' : ''
+                    plan.isPopular ? 'ring-4 ring-white/40 ring-offset-8 ring-offset-black' : ''
                   }`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${
@@ -327,25 +331,29 @@ const Pricing = () => {
                   
                   <div className={`relative z-10 p-8 border border-white/20 rounded-2xl backdrop-blur-sm`}>
                     {plan.isPopular && (
-                      <motion.div 
-                        className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-rgb bg-300% animate-flow-rgb px-6 py-2 rounded-full text-sm font-bold text-white shadow-lg"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: 0.3
-                        }}
-                        whileHover={{ 
-                          scale: 1.05,
-                          boxShadow: "0px 0px 15px rgba(255,255,255,0.7)" 
-                        }}
+                      <div 
+                        className="absolute -top-5 -left-2 -right-2 transform flex justify-center"
                       >
-                        <div className="flex items-center">
-                          <Star className="w-4 h-4 mr-1 animate-pulse-slow" />
-                          Most Popular
-                          <Star className="w-4 h-4 ml-1 animate-pulse-slow" />
-                        </div>
-                      </motion.div>
+                        <motion.div 
+                          className="px-8 py-3 rounded-lg bg-white shadow-[0_0_20px_rgba(255,255,255,0.5)] text-lg font-bold text-black animate-pulse-slow"
+                          initial={{ y: -10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: 0.3
+                          }}
+                          whileHover={{ 
+                            scale: 1.05,
+                            boxShadow: "0px 0px 25px rgba(255,255,255,0.8)" 
+                          }}
+                        >
+                          <div className="flex items-center gap-2">
+                            <Star className="w-5 h-5 text-yellow-500 animate-pulse-slow" />
+                            MOST POPULAR
+                            <Star className="w-5 h-5 text-yellow-500 animate-pulse-slow" />
+                          </div>
+                        </motion.div>
+                      </div>
                     )}
                     
                     <div className="flex items-center justify-between mb-4">
