@@ -1,8 +1,8 @@
 
-import { useState, useEffect } from "react";
+import { useRef } from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const showcaseImages = [
   {
@@ -73,39 +73,18 @@ const showcaseImages = [
 ];
 
 const Showcase = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Preload images for smoother experience
-  useEffect(() => {
-    const preloadImages = () => {
-      const promises = showcaseImages.map((image) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = image.src;
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-      });
-
-      Promise.all(promises)
-        .then(() => setIsLoading(false))
-        .catch(() => setIsLoading(false));
-    };
-
-    preloadImages();
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === showcaseImages.length - 1 ? 0 : prevIndex + 1
-    );
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? showcaseImages.length - 1 : prevIndex - 1
-    );
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    }
   };
 
   return (
@@ -120,76 +99,62 @@ const Showcase = () => {
           </p>
         </div>
         
-        <div className="max-w-5xl mx-auto">
-          {/* Main featured image */}
-          <div className="relative overflow-hidden rounded-xl bg-gray-900 shadow-xl border border-gray-800">
-            <AspectRatio ratio={16/9} className="bg-black">
-              <div className="absolute inset-0 flex items-center justify-center">
-                {isLoading ? (
-                  <div className="animate-pulse bg-gray-800 w-full h-full"></div>
-                ) : (
-                  <img 
-                    src={showcaseImages[currentIndex].src} 
-                    alt={showcaseImages[currentIndex].alt}
-                    className="w-full h-full object-contain" 
-                  />
-                )}
-              </div>
-              
-              {/* Image caption */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                <h3 className="text-white text-xl font-bold">
-                  {showcaseImages[currentIndex].title}
-                </h3>
-                <p className="text-gray-300 text-sm">
-                  {showcaseImages[currentIndex].alt}
-                </p>
-              </div>
-              
-              {/* Navigation buttons */}
-              <button 
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full p-2 text-white transition-all"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="h-8 w-8" />
-              </button>
-              <button 
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full p-2 text-white transition-all"
-                aria-label="Next image"
-              >
-                <ChevronRight className="h-8 w-8" />
-              </button>
-            </AspectRatio>
+        <div className="relative">
+          {/* Scroll buttons for horizontal navigation */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
+            <Button 
+              onClick={scrollLeft}
+              variant="outline"
+              size="icon"
+              className="rounded-full bg-black/50 border-white/20 hover:bg-black/80"
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+              <span className="sr-only">Scroll left</span>
+            </Button>
           </div>
           
-          {/* Thumbnails grid */}
-          <div className="mt-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Browse Our Digital Signage Gallery</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-              {showcaseImages.map((image, index) => (
-                <Card 
-                  key={index} 
-                  className={`cursor-pointer transition-all transform hover:scale-105 ${
-                    currentIndex === index 
-                      ? 'ring-2 ring-digi-green border-digi-green' 
-                      : 'border-gray-800 bg-gray-900'
-                  }`}
-                  onClick={() => setCurrentIndex(index)}
-                >
-                  <CardContent className="p-1">
-                    <AspectRatio ratio={1/1}>
-                      <img 
-                        src={image.src} 
-                        alt={image.alt}
-                        className="w-full h-full object-cover rounded" 
-                      />
-                    </AspectRatio>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
+            <Button 
+              onClick={scrollRight}
+              variant="outline"
+              size="icon"
+              className="rounded-full bg-black/50 border-white/20 hover:bg-black/80"
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+              <span className="sr-only">Scroll right</span>
+            </Button>
+          </div>
+          
+          {/* Horizontal scrolling gallery */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto space-x-4 pb-6 no-scrollbar scroll-smooth snap-x"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none' 
+            }}
+          >
+            {showcaseImages.map((image, index) => (
+              <div 
+                key={index}
+                className="flex-none snap-center w-[300px] md:w-[400px] transition-transform hover:scale-[1.02] duration-200"
+              >
+                <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 h-full">
+                  <div className="relative aspect-video">
+                    <img 
+                      src={image.src} 
+                      alt={image.alt}
+                      className="w-full h-full object-cover" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-white font-bold text-lg">{image.title}</h3>
+                    <p className="text-gray-400 text-sm mt-1">{image.alt}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
