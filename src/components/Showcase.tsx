@@ -75,18 +75,18 @@ const Showcase = () => {
   };
 
   return (
-    <section id="showcase" className="py-20 bg-black">
+    <section id="showcase" className="py-20 bg-gradient-to-b from-gray-900 to-black">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-4">
-            Digital Displays <span className="text-rgb-animated">In Action</span>
+            Our Projects <span className="text-rgb-animated">Gallery</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            See how our LED and digital screens are transforming businesses across various industries with vibrant, attention-grabbing displays.
+            See our digital displays and LED walls transforming businesses across various industries
           </p>
         </div>
         
-        <div className="relative">
+        <div className="relative max-w-6xl mx-auto">
           {/* Scroll buttons for horizontal navigation */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
             <Button 
