@@ -32,10 +32,10 @@ const Navbar = () => {
           {/* Desktop Navigation - Centered with white text */}
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex space-x-8">
-              <Link to="/" className="text-white hover:text-digi-green font-large">Home</Link>
+              <Link to="/" className="text-white hover:text-digi-green font-bold">Home</Link>
               <ProductNavMenu />
-              <Link to="/pricing" className="text-white hover:text-digi-green font-large">Pricing</Link>
-              <a href="/#showcase" className="text-white hover:text-digi-green font-large">About Us</a>
+              <Link to="/pricing" className="text-white hover:text-digi-green font-bold">Pricing</Link>
+              <a href="/#showcase" className="text-white hover:text-digi-green font-bold">About Us</a>
             </div>
           </div>
 
@@ -70,10 +70,10 @@ const Navbar = () => {
       {/* Mobile menu, show/hide based on menu state */}
       <div className={`md:hidden ${mobileMenuOpen ? "block" : "hidden"}`} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black shadow-md">
-          <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Home</Link>
-          <Link to="/products" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Products</Link>
-          <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Pricing</Link>
-          <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">About Us</a>
+          <Link to="/" className="block px-3 py-2 rounded-md text-base font-bold text-white hover:bg-gray-900">Home</Link>
+          <Link to="/products" className="block px-3 py-2 rounded-md text-base font-bold text-white hover:bg-gray-900">Products</Link>
+          <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-bold text-white hover:bg-gray-900">Pricing</Link>
+          <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-bold text-white hover:bg-gray-900">About Us</a>
           <div className="px-3 py-2">
             <Dialog>
               <DialogTrigger asChild>
