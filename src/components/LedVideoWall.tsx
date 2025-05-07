@@ -1,3 +1,4 @@
+
 import { Check, X, Monitor, Tv, Layers, Image, Video, Maximize, ScreenShare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -101,7 +102,7 @@ const useCases = [
     title: "Corporate Environments",
     description: "Make powerful first impressions in lobbies and briefing rooms with branded content walls that showcase your company's vision and achievements",
     icon: <Layers className="h-12 w-12 text-digi-red p-2" />,
-    image: "/lovable-uploads/bf5639d8-512a-46eb-8264-74a6434db7ec.png",
+    image: "/lovable-uploads/c6b55d29-2d24-48b7-95e8-054ad34cf13a.png", // Updated image
     animation: "animate-fade-in",
     delay: "1.3s"
   },
