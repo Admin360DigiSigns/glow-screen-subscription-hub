@@ -585,7 +585,7 @@ export default function SubscriptionForm({
                         type="button" 
                         variant="outline" 
                         onClick={() => setStep(1)}
-                        className="border-gray-700 text-white hover:bg-gray-800"
+                        className="bg-digi-green hover:bg-digi-green/90 text-white"
                       >
                         Back
                       </Button>
@@ -882,7 +882,7 @@ export default function SubscriptionForm({
                         type="button" 
                         variant="outline" 
                         onClick={() => setStep(2)}
-                        className="border-gray-700 text-white hover:bg-gray-800"
+                        className="bg-digi-blue hover:bg-digi-blue/90 text-white"
                       >
                         Back
                       </Button>
