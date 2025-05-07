@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -117,7 +116,7 @@ const Products = () => {
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Dark space background with subtle blue nebula effect instead of stars */}
       <div className="fixed inset-0 bg-gradient-to-b from-black via-blue-950/30 to-black z-0"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAJCSAgPGZlRnVuY0E+CiAgICAgICAgICAgICAgICAgICA8ZmVGdW5jQSB0eXBlPSJ0YWJsZSIgdGFibGVWYWx1ZXM9IjAgMSI+PC9mZUZ1bmNBPgogICAgICAgICAgICAgICA8L2ZlQ29tcG9uZW50VHJhbnNmZXI+CiAgICAgICAgICAgIJkgIDxmZUJsZW5kIG1vZGU9InNvZnQtbGlnaHQiIGluPSJub2lzZUJsdXIiIGluMj0iU291cmNlR3JhcGhpYyIgcmVzdWx0PSJub2lzZUJsZW5kIj48L2ZlQmxlbmQ+CiAgICAgICAgPC9maWx0ZXI+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzA0MDgyMCIgZmlsdGVyPSJ1cmwoI2ZpbHRlcikiIG9wYWNpdHk9IjAuMiI+PC9yZWN0Pgo8L3N2Zz4=')]
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8ZmlsdGVyIGlkPSJmaWx0ZXIiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgICAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiIHJlc3VsdD0idHVyYnVsZW5jZSIgLz4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ibm9pc2VBbHBoYSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2ZlciBpbj0ibm9pc2VBbHBoYSIgcmVzdWx0PSJub2lzZUFscGhhVHJhbnNmZXIiPgogICAgICAgICAgICAgICAgIDxmZUZ1bmNBPgogICAgICAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0idGFibGUiIHRhYmxlVmFsdWVzPSIwIDEiPjwvZmVGdW5jQT4KICAgICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICkgIDxmZUJsZW5kIG1vZGU9InNvZnQtbGlnaHQiIGluPSJub2lzZUJsdXIiIGluMj0iU291cmNlR3JhcGhpYyIgcmVzdWx0PSJub2lzZUJsZW5kIj48L2ZlQmxlbmQ+CiAgICAgICAgPC9maWx0ZXI+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzA0MDgyMCIgZmlsdGVyPSJ1cmwoI2ZpbHRlcikiIG9wYWNpdHk9IjAuMiI+PC9yZWN0Pgo8L3N2Zz4=')]
         bg-repeat opacity-30 z-0"></div>
 
       <Navbar />
@@ -159,20 +158,28 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Main content section with products grid and why choose card */}
+      {/* Main content section with products grid and why choose card - UPDATED LAYOUT */}
       <section className="py-12 px-4 relative z-10">
         <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Products grid */}
-            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${activeCategory ? '2' : '3'} gap-8 ${activeCategory ? 'lg:w-2/3' : 'w-full'}`}>
-              {productCategories.map((category, index) => (
+          {/* Changed the grid layout structure to fill empty space when a product is selected */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {productCategories.map((category, index) => {
+              // Only display this product card if no category is selected or this is the selected category
+              const isVisible = activeCategory === null || activeCategory === category.id;
+              // When a category is selected, determine if this should be shown in the original position
+              // or moved to a different grid position to fill the empty space
+              const gridPosition = activeCategory && category.id === activeCategory 
+                ? "lg:col-span-2" // Selected product spans 2 columns when category is active
+                : ""; // Default position when no category selected
+                
+              return (
                 <motion.div 
                   key={category.id}
                   custom={index}
                   initial="hidden"
                   animate="visible"
                   variants={fadeInUpVariants}
-                  className={`${activeCategory === null || activeCategory === category.id ? "block" : "hidden"}`}
+                  className={`${isVisible ? "block" : "hidden"} ${gridPosition}`}
                 >
                   <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[500px] flex flex-col shadow-lg shadow-blue-900/20">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-20"></div>
@@ -214,8 +221,8 @@ const Products = () => {
                     </CardFooter>
                   </Card>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
 
             {/* Why Choose This Product card - only shows when a product is selected */}
             {activeCategory && selectedCategory && (
@@ -223,7 +230,7 @@ const Products = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="lg:w-1/3"
+                className="h-full"
               >
                 <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24 h-[500px] flex flex-col justify-between">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
@@ -262,6 +269,61 @@ const Products = () => {
                     </Button>
                     <Button className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10">
                       Schedule Demo
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            )}
+            
+            {/* Fill the empty space with detailed product content when a category is selected */}
+            {activeCategory && selectedCategory && (
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="h-full"
+              >
+                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 h-[500px] flex flex-col">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
+                  
+                  <CardHeader className="relative border-b border-gray-800">
+                    <CardTitle className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold">
+                      Technical Specifications
+                    </CardTitle>
+                  </CardHeader>
+                  
+                  <CardContent className="pt-6 flex-grow overflow-y-auto">
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-medium text-white mb-2">Dimensions</h4>
+                        <p className="text-gray-300 text-sm">Available in multiple sizes from 32" to 98" to fit your space requirements</p>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-medium text-white mb-2">Resolution</h4>
+                        <p className="text-gray-300 text-sm">Choose from Full HD (1080p) or Ultra HD (4K) for crystal clear visuals</p>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-medium text-white mb-2">Connectivity</h4>
+                        <p className="text-gray-300 text-sm">HDMI, DisplayPort, USB, RS232, and network connectivity for flexible integration</p>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-medium text-white mb-2">Operating System</h4>
+                        <p className="text-gray-300 text-sm">Android or Windows options with customizable interface to match your brand</p>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-medium text-white mb-2">Installation</h4>
+                        <p className="text-gray-300 text-sm">Professional installation available with various mounting options (wall, ceiling, floor stand)</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                  
+                  <CardFooter className="pt-2 border-t border-gray-800">
+                    <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
+                      Download Spec Sheet
                     </Button>
                   </CardFooter>
                 </Card>
