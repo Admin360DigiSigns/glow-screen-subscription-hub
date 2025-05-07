@@ -7,6 +7,7 @@ import Showcase from "@/components/Showcase";
 import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import LedVideoWall from "@/components/LedVideoWall";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <Features />
       <SubscriptionPlans />
       <Showcase />
+      <LedVideoWall />
       <Testimonials />
       <ContactSection />
       <Footer />

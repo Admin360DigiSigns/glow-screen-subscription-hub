@@ -32,6 +32,7 @@ const Navbar = () => {
               <a href="#features" className="text-white hover:text-digi-green font-medium">Features</a>
               <a href="#pricing" className="text-white hover:text-digi-green font-medium">Pricing</a>
               <a href="#showcase" className="text-white hover:text-digi-green font-medium">Gallery</a>
+              <a href="#led-video-wall" className="text-white hover:text-digi-green font-medium">LED Solutions</a>
               <a href="#testimonials" className="text-white hover:text-digi-green font-medium">Clients</a>
               <a href="#contact" className="text-white hover:text-digi-green font-medium">Contact</a>
             </div>
@@ -61,6 +62,7 @@ const Navbar = () => {
           <a href="#features" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Features</a>
           <a href="#pricing" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Pricing</a>
           <a href="#showcase" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Gallery</a>
+          <a href="#led-video-wall" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">LED Solutions</a>
           <a href="#testimonials" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Clients</a>
           <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-900">Contact</a>
           <div className="px-3 py-2">
