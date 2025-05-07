@@ -112,10 +112,10 @@ const Showcase = () => {
             </Button>
           </div>
           
-          {/* Horizontal scrolling gallery with square thumbnails */}
+          {/* Horizontal scrolling gallery with larger thumbnails */}
           <div 
             ref={scrollContainerRef}
-            className="flex overflow-x-auto space-x-4 pb-6 no-scrollbar scroll-smooth snap-x"
+            className="flex overflow-x-auto space-x-6 pb-8 no-scrollbar scroll-smooth snap-x"
             style={{ 
               scrollbarWidth: 'none', 
               msOverflowStyle: 'none' 
@@ -124,18 +124,21 @@ const Showcase = () => {
             {showcaseImages.map((image, index) => (
               <div 
                 key={index}
-                className="flex-none snap-center w-[200px] transition-transform hover:scale-[1.02] duration-200"
+                className="flex-none snap-center w-[280px] md:w-[320px] transition-transform hover:scale-[1.02] duration-200"
               >
-                <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 h-full">
-                  <div className="w-[200px] h-[200px]">
-                    <AspectRatio ratio={1/1} className="overflow-hidden">
+                <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 h-full shadow-lg shadow-black/50">
+                  <div className="w-full h-auto">
+                    <AspectRatio ratio={4/3} className="overflow-hidden">
                       <img 
                         src={image.src} 
                         alt={image.alt}
-                        className="w-full h-full object-cover" 
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
                         loading="lazy"
                       />
                     </AspectRatio>
+                  </div>
+                  <div className="p-3 bg-gray-900/80">
+                    <p className="text-xs text-gray-300 truncate">{image.alt}</p>
                   </div>
                 </div>
               </div>
@@ -144,7 +147,6 @@ const Showcase = () => {
         </div>
       </div>
 
-      {/* Add animation styles as regular style tag */}
       <style>
         {`
         @keyframes scroll {

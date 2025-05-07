@@ -158,7 +158,7 @@ const ClientLogos = () => {
             <div className="flex space-x-8 animate-scroll">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="flex-none">
-                  <div className="p-3 h-12 flex items-center justify-center">
+                  <div className="p-3 h-16 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
@@ -171,7 +171,7 @@ const ClientLogos = () => {
               {/* Duplicate logos for seamless looping */}
               {clientLogos.slice(0, 6).map((logo, index) => (
                 <div key={`dup-${index}`} className="flex-none">
-                  <div className="p-3 h-12 flex items-center justify-center">
+                  <div className="p-3 h-16 flex items-center justify-center">
                     <img
                       src={logo.src}
                       alt={logo.alt}
@@ -185,7 +185,8 @@ const ClientLogos = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>
+        {`
         @keyframes scroll {
           from {
             transform: translateX(0);
@@ -207,7 +208,8 @@ const ClientLogos = () => {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };
