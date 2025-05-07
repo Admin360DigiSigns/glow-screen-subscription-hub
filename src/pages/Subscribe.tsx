@@ -193,7 +193,7 @@ const Subscribe = () => {
           </div>
 
           <motion.div 
-            className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl"
+            className="max-w-3xl mx-auto bg-white text-gray-800 p-8 rounded-xl shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -217,15 +217,14 @@ const Subscribe = () => {
                         name="fullName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700">Full Name *</FormLabel>
+                            <FormLabel>Full Name *</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter your full name" 
                                 {...field} 
-                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -238,13 +237,13 @@ const Subscribe = () => {
                           name="country"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Country *</FormLabel>
+                              <FormLabel>Country *</FormLabel>
                               <Select 
                                 onValueChange={field.onChange} 
                                 defaultValue={field.value}
                               >
                                 <FormControl>
-                                  <SelectTrigger className="bg-white border-gray-300">
+                                  <SelectTrigger>
                                     <SelectValue placeholder="Select country" />
                                   </SelectTrigger>
                                 </FormControl>
@@ -254,7 +253,7 @@ const Subscribe = () => {
                                   <SelectItem value="United Kingdom">United Kingdom</SelectItem>
                                 </SelectContent>
                               </Select>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -266,13 +265,13 @@ const Subscribe = () => {
                           name="phone"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Phone Number *</FormLabel>
+                              <FormLabel>Phone Number *</FormLabel>
                               <FormControl>
                                 <div className="flex">
                                   <div className="flex items-center px-3 bg-gray-100 border border-r-0 border-gray-300 rounded-l-md">
                                     <span className="text-gray-500 flex items-center gap-1">
                                       <img 
-                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MzYgNDgwIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjY3IiBkPSJNMCAwaDYzNnY0ODBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iMXB0IiBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xODEuNzYgMGg0NzkuNnY0OGgtNDc5LjZ6bTAgMTkxLjk5aDQ3OS42djQ4aC00NzkuNnptMCAxOTEuOTloNDc5LjZ2NDhoLTQ3OS42ek0wIDBoMjM5Ljk5djI0MGgzOTZWMGgtNjM2eiIvPjxwYXRoIGZpbGw9InJlZCIgZD0iTTE1LjI1IDE1LjI1aDIwOS41djIwOS41aC0yMDkuNXoiLz48cGF0aCBmaWxsPSIjMDAwMDYyIiBkPSJNNjAgMTE5Ljk5TDM4LjQ1IDk1Ljk4bC0yMS4yMyAyNC41NkwyMS41IDkwLjQxbDAtMzAuNDRsMjQuMzQgMTkuMjhMMjcuNzMgNTUuNDYgNDguMSAzNC4yOCA0Ni4pIEMgOTggNDMuMTYgNzIuMDMgNzMuNzcgNjEuMvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05My45MiA2MC4yVjIwLjM3TDEyMC43OCAwaDI2LjgydjYwLjJIODcuMjV6TTM0LjIxIDE4NC42TDApIGQ9Ik0xMTMuNSAyMC4zN2gtMTYuOUw4MC4xIDQwLjE5aDMzLjM3em0tMzMuMzcgMHYxOS44Mkw2MCw2MC4yaDMzLjM3di0yMC4xbC0xMy4yNS0xOS43M3oiLz48L2c+PC9zdmc+" 
+                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MzYgNDgwIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjY3IiBkPSJNMCAwaDYzNnY0ODBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iMXB0IiBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xODEuNzYgMGg0NzkuNnY0OGgtNDc5LjZ6bTAgMTkxLjk5aDQ3OS42djQ4aC00NzkuNnptMCAxOTEuOTloNDc5LjZ2NDhoLTQ3OS42ek0wIDBoMjM5Ljk5djI0MGgzOTZWMGgtNjM2eiIvPjxwYXRoIGZpbGw9InJlZCIgZD0iTTE1LjI1IDE1LjI1aDIwOS41djIwOS41aC0yMDkuNXoiLz48cGF0aCBmaWxsPSIjMDAwMDYyIiBkPSJNNjAgMTE5Ljk5TDM4LjQ1IDk1Ljk4bC0yMS4yMyAyNC41NkwyMS41IDkwLjQxbDAtMzAuNDRsMjQuMzQgMTkuMjhMMjcuNzMgNTUuNDYgNDguMSAzNC4yOCA0Ni4pIEMgOTggNDMuMTYgNzIuMDMgNzMuNzcgNjEuMvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05My45MiA2MC4yVjIwLjM3TDEyMC43OCAwaDI2Ljgydjg3LjI1TDAk9Ik0xMTMuNSAyMC4zN2gtMTYuOUw4MC4xIDQwLjE5aDMzLjM3em0tMzMuMzcgMHYxOS44Mkw2MCw2MC4yaDMzLjM3di0yMC4xbC0xMy4yNS0xOS43M3oiLz48L2c+PC9zdmc+" 
                                         alt="Canada Flag" 
                                         className="w-5 h-3.5 mr-1"
                                       />
@@ -282,11 +281,11 @@ const Subscribe = () => {
                                   <Input 
                                     placeholder="Enter phone number" 
                                     {...field} 
-                                    className="rounded-l-none border-gray-300" 
+                                    className="rounded-l-none" 
                                   />
                                 </div>
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -299,16 +298,15 @@ const Subscribe = () => {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700">Email ID *</FormLabel>
+                            <FormLabel>Email ID *</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter your email address" 
                                 type="email" 
                                 {...field} 
-                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -320,15 +318,15 @@ const Subscribe = () => {
                         name="installationDate"
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
-                            <FormLabel className="text-gray-700">Installation Date *</FormLabel>
+                            <FormLabel>Installation Date *</FormLabel>
                             <Popover>
                               <PopoverTrigger asChild>
                                 <FormControl>
                                   <Button
                                     variant={"outline"}
                                     className={cn(
-                                      "w-full pl-3 text-left font-normal border-gray-300",
-                                      !field.value && "text-gray-400"
+                                      "w-full pl-3 text-left font-normal",
+                                      !field.value && "text-muted-foreground"
                                     )}
                                   >
                                     {field.value ? (
@@ -347,11 +345,10 @@ const Subscribe = () => {
                                   onSelect={field.onChange}
                                   disabled={(date) => date < new Date()}
                                   initialFocus
-                                  className="p-3 pointer-events-auto"
                                 />
                               </PopoverContent>
                             </Popover>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -363,6 +360,7 @@ const Subscribe = () => {
                         name="locationType"
                         render={({ field }) => (
                           <FormItem className="space-y-2">
+                            <FormLabel>Installation Location</FormLabel>
                             <FormControl>
                               <RadioGroup
                                 onValueChange={field.onChange}
@@ -370,16 +368,16 @@ const Subscribe = () => {
                                 className="flex gap-4"
                               >
                                 <div className="flex items-center">
-                                  <RadioGroupItem value="single" id="single" className="text-red-500" />
-                                  <label htmlFor="single" className="ml-2 text-gray-700">Single Location</label>
+                                  <RadioGroupItem value="single" id="single" />
+                                  <label htmlFor="single" className="ml-2">Single Location</label>
                                 </div>
                                 <div className="flex items-center">
-                                  <RadioGroupItem value="multiple" id="multiple" className="text-red-500" />
-                                  <label htmlFor="multiple" className="ml-2 text-gray-700">Multiple Locations</label>
+                                  <RadioGroupItem value="multiple" id="multiple" />
+                                  <label htmlFor="multiple" className="ml-2">Multiple Locations</label>
                                 </div>
                               </RadioGroup>
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -389,7 +387,6 @@ const Subscribe = () => {
                       <Button 
                         type="button" 
                         onClick={() => form.handleSubmit(onSubmit)()}
-                        className="bg-red-500 hover:bg-red-600 text-white"
                       >
                         Continue <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -405,7 +402,7 @@ const Subscribe = () => {
                     initial="hidden"
                     animate="visible"
                   >
-                    <h2 className="text-xl font-bold text-gray-800">Pricing Plan *</h2>
+                    <h2 className="text-xl font-bold">Pricing Plan *</h2>
                     
                     <motion.div variants={itemVariants}>
                       <FormField
@@ -424,12 +421,9 @@ const Subscribe = () => {
                                   <div className="bg-blue-700 text-white p-4">
                                     <div className="flex justify-between items-center mb-2">
                                       <div className="flex items-center">
-                                        <input
-                                          type="radio"
+                                        <RadioGroupItem
                                           id="standard"
                                           value="standard"
-                                          checked={field.value === "standard"}
-                                          onChange={() => field.onChange("standard")}
                                           className="sr-only"
                                         />
                                         <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none">
@@ -459,12 +453,9 @@ const Subscribe = () => {
                                   <div className="bg-gray-100 text-black p-4">
                                     <div className="flex justify-between items-center mb-2">
                                       <div className="flex items-center">
-                                        <input
-                                          type="radio"
+                                        <RadioGroupItem
                                           id="premium"
                                           value="premium"
-                                          checked={field.value === "premium"}
-                                          onChange={() => field.onChange("premium")}
                                           className="sr-only"
                                         />
                                         <svg className="h-8 w-8 text-gray-700" viewBox="0 0 24 24" fill="none">
@@ -500,12 +491,9 @@ const Subscribe = () => {
                                   <div className="bg-gray-100 text-black p-4">
                                     <div className="flex justify-between items-center mb-2">
                                       <div className="flex items-center">
-                                        <input
-                                          type="radio"
+                                        <RadioGroupItem
                                           id="enterprise"
                                           value="enterprise"
-                                          checked={field.value === "enterprise"}
-                                          onChange={() => field.onChange("enterprise")}
                                           className="sr-only"
                                         />
                                         <svg className="h-8 w-8 text-gray-700" viewBox="0 0 24 24" fill="none">
@@ -530,7 +518,7 @@ const Subscribe = () => {
                                 </div>
                               </RadioGroup>
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -541,14 +529,12 @@ const Subscribe = () => {
                         type="button" 
                         variant="outline" 
                         onClick={handlePrevious}
-                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
                       >
                         Back
                       </Button>
                       <Button 
                         type="button" 
                         onClick={() => form.handleSubmit(onSubmit)()}
-                        className="bg-red-500 hover:bg-red-600 text-white"
                       >
                         Continue <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -570,15 +556,14 @@ const Subscribe = () => {
                         name="businessType"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700">Business Type *</FormLabel>
+                            <FormLabel>Business Type *</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter Business Type" 
                                 {...field} 
-                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -590,15 +575,14 @@ const Subscribe = () => {
                         name="businessName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700">Business Name *</FormLabel>
+                            <FormLabel>Business Name *</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter Business Name" 
                                 {...field} 
-                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -610,15 +594,14 @@ const Subscribe = () => {
                         name="address"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700">Business Address *</FormLabel>
+                            <FormLabel>Business Address *</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter Business Address" 
                                 {...field} 
-                                className="border-gray-300"
                               />
                             </FormControl>
-                            <FormMessage className="text-red-500" />
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -631,15 +614,14 @@ const Subscribe = () => {
                           name="businessCountry"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Country *</FormLabel>
+                              <FormLabel>Country *</FormLabel>
                               <FormControl>
                                 <Input 
                                   placeholder="Enter Business Country" 
                                   {...field} 
-                                  className="border-gray-300"
                                 />
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -651,15 +633,14 @@ const Subscribe = () => {
                           name="province"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Province/State *</FormLabel>
+                              <FormLabel>Province/State *</FormLabel>
                               <FormControl>
                                 <Input 
                                   placeholder="Enter Province/State" 
                                   {...field} 
-                                  className="border-gray-300"
                                 />
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -673,15 +654,14 @@ const Subscribe = () => {
                           name="city"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">City *</FormLabel>
+                              <FormLabel>City *</FormLabel>
                               <FormControl>
                                 <Input 
                                   placeholder="Enter City" 
                                   {...field} 
-                                  className="border-gray-300"
                                 />
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -693,15 +673,14 @@ const Subscribe = () => {
                           name="postalCode"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Postal Code *</FormLabel>
+                              <FormLabel>Postal Code *</FormLabel>
                               <FormControl>
                                 <Input 
                                   placeholder="Enter Postal Code" 
                                   {...field} 
-                                  className="border-gray-300"
                                 />
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -715,15 +694,14 @@ const Subscribe = () => {
                           name="contractDuration"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Contract Duration *</FormLabel>
+                              <FormLabel>Contract Duration *</FormLabel>
                               <FormControl>
                                 <Input 
                                   placeholder="Enter Contract Duration" 
                                   {...field} 
-                                  className="border-gray-300"
                                 />
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -735,21 +713,20 @@ const Subscribe = () => {
                           name="totalScreens"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700">Total Screens *</FormLabel>
+                              <FormLabel>Total Screens *</FormLabel>
                               <FormControl>
                                 <div className="flex">
                                   <Input 
                                     type="number" 
                                     {...field}
                                     onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
-                                    className="border-gray-300" 
                                   />
                                   <div className="flex ml-2">
                                     <Button
                                       type="button"
                                       size="icon"
                                       onClick={() => field.onChange((field.value || 0) + 1)}
-                                      className="h-10 w-10 bg-red-500 hover:bg-red-600 text-white"
+                                      className="h-10 w-10"
                                     >
                                       <Plus className="h-4 w-4" />
                                     </Button>
@@ -758,14 +735,15 @@ const Subscribe = () => {
                                       size="icon"
                                       onClick={() => field.value > 1 && field.onChange(field.value - 1)}
                                       disabled={field.value <= 1}
-                                      className="h-10 w-10 ml-1 bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50"
+                                      className="h-10 w-10 ml-1"
+                                      variant="outline"
                                     >
                                       <Minus className="h-4 w-4" />
                                     </Button>
                                   </div>
                                 </div>
                               </FormControl>
-                              <FormMessage className="text-red-500" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -777,14 +755,12 @@ const Subscribe = () => {
                         type="button" 
                         variant="outline" 
                         onClick={handlePrevious}
-                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
                       >
                         Back
                       </Button>
                       <Button 
                         type="button" 
                         onClick={() => form.handleSubmit(onSubmit)()}
-                        className="bg-red-500 hover:bg-red-600 text-white"
                       >
                         Continue <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -847,7 +823,7 @@ const Subscribe = () => {
                           <input 
                             type="checkbox" 
                             id="terms" 
-                            className="h-4 w-4 rounded border-gray-300 text-red-500 focus:ring-red-500"
+                            className="h-4 w-4 rounded"
                             required 
                           />
                           <label htmlFor="terms" className="text-sm text-gray-700">
@@ -862,13 +838,11 @@ const Subscribe = () => {
                         type="button" 
                         variant="outline" 
                         onClick={handlePrevious}
-                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
                       >
                         Back
                       </Button>
                       <Button 
                         type="submit"
-                        className="bg-red-500 hover:bg-red-600 text-white"
                       >
                         Complete Order
                       </Button>

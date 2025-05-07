@@ -33,7 +33,7 @@ const PlanGrid = ({ plans, type, selectedPlan, onSelectPlan }: PlanGridProps) =>
           plan={plan} 
           type={type} 
           index={index}
-          isSelected={selectedPlan === plan.id}
+          selected={selectedPlan === plan.id}
           onClick={onSelectPlan ? () => onSelectPlan(plan.id) : undefined}
         />
       ))}
