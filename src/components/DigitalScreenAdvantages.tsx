@@ -73,7 +73,7 @@ const DigitalScreenAdvantages = () => {
 
         {/* Transparent Screen Highlight Box - Content Removed */}
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
-          <div className="absolute inset-0 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
+         
           <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
