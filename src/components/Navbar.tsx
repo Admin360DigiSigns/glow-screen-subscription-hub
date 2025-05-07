@@ -32,10 +32,10 @@ const Navbar = () => {
           {/* Desktop Navigation - Centered with white text */}
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex space-x-8">
-              <Link to="/" className="text-white font-display text-xl font-bold hover:text-digi-green animate-pulse-rgb">Home</Link>
+              <Link to="/" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">Home</Link>
               <ProductNavMenu />
-              <Link to="/pricing" className="text-white font-display text-xl font-bold hover:text-digi-green animate-pulse-rgb">Pricing</Link>
-              <a href="/#showcase" className="text-white font-display text-xl font-bold hover:text-digi-green animate-pulse-rgb">About Us</a>
+              <Link to="/pricing" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">Pricing</Link>
+              <a href="/#showcase" className="text-white font-display text-xl font-bold hover:text-digi-green animate-glow-pulse">About Us</a>
             </div>
           </div>
 
@@ -70,10 +70,10 @@ const Navbar = () => {
       {/* Mobile menu, show/hide based on menu state */}
       <div className={`md:hidden ${mobileMenuOpen ? "block" : "hidden"}`} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black shadow-md">
-          <Link to="/" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-pulse-rgb">Home</Link>
-          <Link to="/products" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-pulse-rgb">Products</Link>
-          <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-pulse-rgb">Pricing</Link>
-          <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-pulse-rgb">About Us</a>
+          <Link to="/" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">Home</Link>
+          <Link to="/products" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">Products</Link>
+          <Link to="/pricing" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">Pricing</Link>
+          <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">About Us</a>
           <div className="px-3 py-2">
             <Dialog>
               <DialogTrigger asChild>
