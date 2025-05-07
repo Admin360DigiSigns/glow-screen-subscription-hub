@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
@@ -256,186 +255,6 @@ export default function SubscriptionForm({
     }
   };
   
-  // Generate the full rental agreement text with dynamic values
-  const generateRentalAgreement = () => {
-    const businessName = form.getValues("businessName") || "[Business Name]";
-    const businessAddress = form.getValues("businessAddress") || "[Business Address]";
-    const city = form.getValues("city") || "[City]";
-    const province = form.getValues("province") || "[Province]";
-    const postalCode = form.getValues("postalCode") || "[Postal Code]";
-    const fullAddress = `${businessAddress}, ${city}, ${province} ${postalCode}, ${form.getValues("businessCountry") || "Canada"}`;
-    const price = calculatedPrice();
-    const today = new Date();
-    const formattedDate = format(today, "d 'day of' MMMM yyyy");
-    
-    return `
-      <h4 class="text-xl font-bold text-white mb-4">EQUIPMENT RENTAL AGREEMENT</h4>
-      <p class="mb-4">THIS EQUIPMENT RENTAL AGREEMENT (this "Agreement") dated this ${formattedDate}</p>
-      
-      <p class="mb-4 font-medium">BETWEEN:</p>
-      <p class="mb-4 ml-4">Axis of Desire Inc. (360DigiSigns) of Unit 9, 168 Kennedy Road S, Brampton, L6W3G6 (the "Lessor") of the First Part</p>
-      
-      <p class="mb-4 font-medium">- AND -</p>
-      <p class="mb-4 ml-4">(the "Lessee") of the Second Part</p>
-      
-      <p class="mb-2 font-medium">Business Name: <span class="text-digi-red font-bold">${businessName}</span></p>
-      <p class="mb-4 font-medium">Business Address: <span class="text-digi-red font-bold">${fullAddress}</span></p>
-      
-      <p class="mb-4">(the Lessor and Lessee are collectively the "Parties")</p>
-      
-      <p class="mb-4 font-medium">IN CONSIDERATION OF:</p>
-      <p class="mb-6">The mutual covenants and promises in this Agreement, the receipt and sufficiency of which consideration is hereby acknowledged, the Lessor leases the Equipment to the Lessee, and the Lessee leases the Equipment from the Lessor on the following terms:</p>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Definitions</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">"Casualty Value" means the market value of the Equipment at the end of the Term or when in relation to a Total Loss, the market value the Equipment would have had at the end of the Term but for the Total Loss. The Casualty Value may be less than but will not be more than the original purchase price of the Equipment.</li>
-        <li class="mb-2">"Equipment" means LED Indoor screen 4000 CDI with an approximate value of $1,000.00.</li>
-        <li class="mb-2">"Total Loss" means any loss or damage that is not repairable or that would cost more to repair than the market value of the Equipment.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Lease</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>The Lessor agrees to lease the Equipment to the Lessee, and the Lessee agrees to lease the Equipment from the Lessor in accordance with the terms set out in this Agreement.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Term</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>The Agreement commences on ${formattedDate} and will continue until Cancelled.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Rent</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>The rent, exclusive of HST, will be paid in instalments of <span class="text-digi-red font-bold">CA $${price}</span> each month, in advance, beginning on 7th March and will be paid on the first day of each succeeding month throughout the Term (the "Rent").</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Delivery of Equipment</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>The Lessor will, at the Lessor's own expense and risk, deliver the Equipment to the Lessee at the location specified by the Lessee.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Use of Equipment</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">The Lessee will use the Equipment in a good and careful manner and comply with all of the manufacturer's requirements and applicable laws, including environmental and copyright law.</li>
-        <li class="mb-2">The Lessee will use the Equipment for the purpose for which it was designed.</li>
-        <li>Unless with prior written consent of the Lessor, the Lessee will not alter or modify the Equipment.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Warranties</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">The Equipment will be in good working order and condition upon delivery.</li>
-        <li>The Equipment is fit for its ordinary use and of merchantable quality.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Loss and Damage</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">The Lessee is responsible for risk of loss, theft, damage, or destruction to the Equipment.</li>
-        <li class="mb-2">If the Equipment is lost or damaged, the Lessee will continue paying Rent, notify the Lessor, and repair the Equipment if possible.</li>
-        <li>In the case of Total Loss, the Lessee will pay the Lessor all unpaid Rent and the Casualty Value of the Equipment, transferring ownership to the Lessee.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Ownership, Right to Lease, and Quiet Enjoyment</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">The Equipment remains the property of the Lessor.</li>
-        <li class="mb-2">The Lessee will not encumber the Equipment or pledge it as security.</li>
-        <li>The Lessor warrants the right to lease the Equipment according to this Agreement.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Surrender</h5>
-      <p class="ml-6 mb-4">At the end of the Term or upon termination, the Lessee will make the Equipment available for pickup at the location where the LED screen was originally installed. If the Lessee fails, they will pay any unpaid Rent plus the Casualty Value if any, transferring ownership to the Lessee.</p>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Insurance</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>No insurance coverage is required under this Agreement.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Indemnity</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>The Lessee will indemnify and hold harmless the Lessor against all claims, suits, or damages arising from the Lessee's use of the Equipment.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Default</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">Failure to pay Rent or breach of obligations constitutes an Event of Default.</li>
-        <li class="mb-2">Insolvency or bankruptcy proceedings also constitute an Event of Default.</li>
-        <li>A writ of attachment on the Equipment that is not satisfied within 10 days is an Event of Default.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Remedies</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">The Lessor may declare the entire Rent for the Term due and payable immediately.</li>
-        <li>The Lessor may take possession of the Equipment, commence legal action, or terminate this Agreement upon default.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Renewal</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>The Lessee may renew this Agreement for an additional Term with 30 days' notice and if no defaults exist.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Entire Agreement</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>This Agreement constitutes the entire agreement between the Parties.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Address for Notice</h5>
-      <p class="ml-6 mb-1">All notices should be delivered personally or sent by registered mail or courier to the following addresses:</p>
-      <p class="ml-6 mb-1"><span class="font-medium">Lessor:</span> Axis of Desire Inc., Unit 9, 168 Kennedy Road S, Brampton, L6W3G6</p>
-      <p class="ml-6 mb-1"><span class="font-medium">Lessee:</span></p>
-      <p class="ml-6 mb-1"><span class="font-medium">Business Name:</span> <span class="text-digi-red font-bold">${businessName}</span></p>
-      <p class="ml-6 mb-4"><span class="font-medium">Business Address:</span> <span class="text-digi-red font-bold">${fullAddress}</span></p>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Payment</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>All payments are in Canadian dollars, unless otherwise agreed upon by the Parties.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Interpretation</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>Headings are for convenience only and should not be considered when interpreting this Agreement.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Governing Law</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>This Agreement is governed by the laws of Ontario, Canada.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Severability</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>If any part of this Agreement is deemed invalid, the remaining provisions will remain in effect.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">General Terms</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li class="mb-2">This Agreement may be executed in counterparts. Facsimile signatures are considered valid.</li>
-        <li>Time is of the essence in this Agreement.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Cancellation</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>Either party may cancel this agreement with 2 weeks' notice.</li>
-      </ul>
-      
-      <h5 class="text-lg font-semibold text-white mb-2">Notice to Lessee</h5>
-      <ul class="list-disc ml-6 mb-4">
-        <li>This is a lease, not a purchase. You are entitled to a completed copy of this Agreement when you sign it.</li>
-      </ul>
-      
-      <div class="mt-8 grid grid-cols-2 gap-8">
-        <div>
-          <p class="mb-2 font-medium text-lg">Signature</p>
-          <p class="mb-2">Name & Designation:</p>
-          <p class="mb-2">Lessee:</p>
-          <p class="mb-2">Date:</p>
-        </div>
-        <div>
-          <p class="mb-2 font-medium text-lg">Signature</p>
-          <p class="mb-2">Name & Designation:</p>
-          <p class="mb-2">Lessor:</p>
-          <p class="mb-2">Date:</p>
-        </div>
-      </div>
-    `;
-  };
-  
   // Get the selected plan details
   const selectedPlan = form.watch("plan");
   const planDetails = planOptions.find(p => p.value === selectedPlan);
@@ -617,12 +436,12 @@ export default function SubscriptionForm({
                               className="flex space-x-6"
                             >
                               <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="single" id="single" />
-                                <Label htmlFor="single">Single Location</Label>
+                                <RadioGroupItem value="single" id="single" className="border-gray-500 text-digi-red" />
+                                <Label htmlFor="single" className="text-white">Single Location</Label>
                               </div>
                               <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="multiple" id="multiple" />
-                                <Label htmlFor="multiple">Multiple Locations</Label>
+                                <RadioGroupItem value="multiple" id="multiple" className="border-gray-500 text-digi-red" />
+                                <Label htmlFor="multiple" className="text-white">Multiple Locations</Label>
                               </div>
                             </RadioGroup>
                           </FormControl>
@@ -634,12 +453,36 @@ export default function SubscriptionForm({
                     <div className="pt-4 flex justify-end">
                       <Button 
                         type="button" 
-                        onClick={handleNextStep} 
+                        onClick={handleNextStep}
                         className="bg-digi-red hover:bg-digi-red/90 text-white"
                       >
-                        Next Step <ChevronRight className="ml-2 h-4 w-4" />
+                        Continue <ChevronRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
+                    
+                    {/* Visual element showing benefits */}
+                    <motion.div 
+                      className="mt-6 p-4 bg-gradient-to-br from-digi-red/30 to-transparent rounded-lg border border-digi-red/30"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <h3 className="text-lg font-semibold text-white mb-2">Why Choose 360 DIGI-SIGNS?</h3>
+                      <ul className="space-y-2">
+                        <li className="flex items-start">
+                          <Check className="h-5 w-5 text-digi-red mr-2 mt-0.5" />
+                          <span className="text-gray-300">Free installation and setup included with all plans</span>
+                        </li>
+                        <li className="flex items-start">
+                          <Check className="h-5 w-5 text-digi-red mr-2 mt-0.5" />
+                          <span className="text-gray-300">No long-term contracts - cancel anytime</span>
+                        </li>
+                        <li className="flex items-start">
+                          <Check className="h-5 w-5 text-digi-red mr-2 mt-0.5" />
+                          <span className="text-gray-300">24/7 technical support for all subscribers</span>
+                        </li>
+                      </ul>
+                    </motion.div>
                   </motion.div>
                 )}
                 
@@ -655,83 +498,175 @@ export default function SubscriptionForm({
                     className="space-y-6"
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-digi-red/20 p-2 rounded-full">
-                        <FileText className="h-6 w-6 text-digi-red" />
+                      <div className="bg-digi-green/20 p-2 rounded-full">
+                        <FileText className="h-6 w-6 text-digi-green" />
                       </div>
-                      <h2 className="text-xl font-bold">Select Your Plan</h2>
+                      <h2 className="text-xl font-bold">Pricing Plan *</h2>
                     </div>
                     
                     <FormField
                       control={form.control}
                       name="plan"
                       render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="space-y-4">
                           <FormControl>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <RadioGroup
+                              onValueChange={(value) => {
+                                field.onChange(value);
+                                setSubscriptionDetails({
+                                  ...subscriptionDetails,
+                                  plan: value as any,
+                                  price: value === "standard" ? 79.99 : value === "premium" ? 129.99 : 199.99
+                                });
+                              }}
+                              defaultValue={field.value}
+                              className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                            >
                               {planOptions.map((plan) => (
-                                <div 
-                                  key={plan.value}
-                                  className={`relative rounded-lg border-2 transition-all cursor-pointer hover:bg-gray-900 
-                                    ${field.value === plan.value 
-                                      ? 'border-digi-red bg-digi-red/10' 
-                                      : 'border-gray-700 bg-gray-950'
-                                    }`}
-                                  onClick={() => field.onChange(plan.value)}
-                                >
-                                  {field.value === plan.value && (
-                                    <div className="absolute -top-3 -right-3 bg-digi-red text-white rounded-full p-1">
-                                      <Check className="h-4 w-4" />
-                                    </div>
-                                  )}
-                                  
-                                  <div className={`rounded-t-md bg-gradient-to-br p-5 ${plan.color}`}>
-                                    <div className="flex justify-between items-start">
-                                      <div>
-                                        <h3 className="font-bold text-lg">{plan.name}</h3>
-                                        <p className="text-sm text-gray-300">{plan.description}</p>
+                                <div key={plan.value} className="relative">
+                                  <Label
+                                    htmlFor={plan.value}
+                                    className={cn(
+                                      "flex flex-col h-full cursor-pointer rounded-lg p-4 border-2 transition-colors",
+                                      field.value === plan.value 
+                                        ? "border-digi-green bg-gradient-to-b from-black to-digi-green/10" 
+                                        : "border-gray-700 bg-black hover:border-gray-500"
+                                    )}
+                                  >
+                                    <RadioGroupItem
+                                      value={plan.value}
+                                      id={plan.value}
+                                      className="sr-only"
+                                    />
+                                    {plan.value === "premium" && (
+                                      <div className="absolute -top-3 inset-x-0 flex justify-center">
+                                        <div className="px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/90 to-yellow-600/90 text-white text-xs font-bold">
+                                          Popular 🔥
+                                        </div>
                                       </div>
-                                      <div>{plan.icon}</div>
+                                    )}
+                                    <div className={cn(
+                                      "h-12 w-12 rounded-full flex items-center justify-center mb-3",
+                                      `bg-gradient-to-br ${plan.color}`
+                                    )}>
+                                      {plan.icon}
                                     </div>
-                                    <p className="text-2xl font-bold mt-4">{plan.price}</p>
-                                  </div>
-                                  
-                                  <div className="p-5">
-                                    <p className="text-sm font-semibold mb-3">Features:</p>
-                                    <ul className="space-y-2">
+                                    <div className="font-bold text-lg mb-1">{plan.name}</div>
+                                    <div className="text-xl font-bold mb-2">{plan.price}</div>
+                                    <div className="text-sm text-gray-400 mb-4">{plan.description}</div>
+                                    <ul className="space-y-2 text-sm mt-auto">
                                       {plan.features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-start text-sm">
-                                          <Check className="h-4 w-4 mr-2 text-digi-red mt-0.5 shrink-0" />
-                                          <span>{feature}</span>
+                                        <li key={idx} className="flex items-start">
+                                          <Check className="h-4 w-4 text-digi-green mr-2 mt-0.5 flex-shrink-0" />
+                                          <span className="text-gray-300">{feature}</span>
                                         </li>
                                       ))}
                                     </ul>
-                                  </div>
+                                    {field.value === plan.value && (
+                                      <div className="absolute bottom-2 right-2">
+                                        <div className="w-6 h-6 rounded-full bg-digi-green flex items-center justify-center">
+                                          <Check className="h-4 w-4 text-black" />
+                                        </div>
+                                      </div>
+                                    )}
+                                  </Label>
                                 </div>
                               ))}
-                            </div>
+                            </RadioGroup>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                     
-                    <div className="pt-4 flex justify-between">
+                    <div className="flex justify-between pt-4">
                       <Button 
                         type="button" 
-                        variant="outline" 
+                        
                         onClick={() => setStep(1)}
-                        className="border-gray-700 text-white"
+                        className="bg-digi-green hover:bg-digi-green/90 text-white"
                       >
                         Back
                       </Button>
                       <Button 
                         type="button" 
-                        onClick={handleNextStep} 
-                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                        onClick={handleNextStep}
+                        className="bg-digi-green hover:bg-digi-green/90 text-white"
                       >
-                        Next Step <ChevronRight className="ml-2 h-4 w-4" />
+                        Continue <ChevronRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
+                    
+                    {/* Visual element showing benefits of selected plan */}
+                    <motion.div 
+                      className="mt-6 p-4 bg-gradient-to-br from-digi-green/30 to-transparent rounded-lg border border-digi-green/30"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <h3 className="text-lg font-semibold text-white mb-2">
+                        {selectedPlan === "standard" && "Standard Plan Benefits"}
+                        {selectedPlan === "premium" && "Premium Plan Benefits"}
+                        {selectedPlan === "enterprise" && "Enterprise Plan Benefits"}
+                      </h3>
+                      
+                      {selectedPlan === "standard" && (
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-2">
+                            <p className="text-gray-300">Perfect for small businesses looking to start with digital signage</p>
+                            <ul className="space-y-1">
+                              <li className="flex items-center">
+                                <Check className="h-4 w-4 text-digi-green mr-2" />
+                                <span className="text-gray-300 text-sm">Simple content scheduling</span>
+                              </li>
+                              <li className="flex items-center">
+                                <Check className="h-4 w-4 text-digi-green mr-2" />
+                                <span className="text-gray-300 text-sm">Basic image and video support</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                        </div>
+                      )}
+                      
+                      {selectedPlan === "premium" && (
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-2">
+                            <p className="text-gray-300">Enhanced features for businesses ready to maximize engagement</p>
+                            <ul className="space-y-1">
+                              <li className="flex items-center">
+                                <Check className="h-4 w-4 text-digi-green mr-2" />
+                                <span className="text-gray-300 text-sm">Social media integration</span>
+                              </li>
+                              <li className="flex items-center">
+                                <Check className="h-4 w-4 text-digi-green mr-2" />
+                                <span className="text-gray-300 text-sm">Analytics to measure performance</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                        </div>
+                      )}
+                      
+                      {selectedPlan === "enterprise" && (
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-2">
+                            <p className="text-gray-300">Complete solution with advanced features for maximum impact</p>
+                            <ul className="space-y-1">
+                              <li className="flex items-center">
+                                <Check className="h-4 w-4 text-digi-green mr-2" />
+                                <span className="text-gray-300 text-sm">AI-powered content optimization</span>
+                              </li>
+                              <li className="flex items-center">
+                                <Check className="h-4 w-4 text-digi-green mr-2" />
+                                <span className="text-gray-300 text-sm">Multi-screen synchronization</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                        </div>
+                      )}
+                    </motion.div>
                   </motion.div>
                 )}
                 
@@ -747,13 +682,13 @@ export default function SubscriptionForm({
                     className="space-y-4"
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-digi-red/20 p-2 rounded-full">
-                        <MapPin className="h-6 w-6 text-digi-red" />
+                      <div className="bg-digi-blue/20 p-2 rounded-full">
+                        <MapPin className="h-6 w-6 text-digi-blue" />
                       </div>
                       <h2 className="text-xl font-bold">Business Details</h2>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4">
                       <FormField
                         control={form.control}
                         name="businessType"
@@ -761,7 +696,7 @@ export default function SubscriptionForm({
                           <FormItem>
                             <FormLabel className="text-white">Business Type *</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., Restaurant, Retail" {...field} className="bg-black border-gray-700 text-white" />
+                              <Input placeholder="Enter Business Type" {...field} className="bg-black border-gray-700 text-white" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -775,37 +710,7 @@ export default function SubscriptionForm({
                           <FormItem>
                             <FormLabel className="text-white">Business Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Enter your business name" {...field} className="bg-black border-gray-700 text-white" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    
-                    <FormField
-                      control={form.control}
-                      name="businessAddress"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white">Street Address *</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Street address" {...field} className="bg-black border-gray-700 text-white" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="city"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">City *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="City" {...field} className="bg-black border-gray-700 text-white" />
+                              <Input placeholder="Enter Business Name" {...field} className="bg-black border-gray-700 text-white" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -814,12 +719,12 @@ export default function SubscriptionForm({
                       
                       <FormField
                         control={form.control}
-                        name="province"
+                        name="businessAddress"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white">Province/State *</FormLabel>
+                            <FormLabel className="text-white">Business Address *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Province/State" {...field} className="bg-black border-gray-700 text-white" />
+                              <Input placeholder="Enter Business Address" {...field} className="bg-black border-gray-700 text-white" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -828,20 +733,6 @@ export default function SubscriptionForm({
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="postalCode"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white">Postal Code *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Postal Code" {...field} className="bg-black border-gray-700 text-white" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
                       <FormField
                         control={form.control}
                         name="businessCountry"
@@ -864,102 +755,182 @@ export default function SubscriptionForm({
                           </FormItem>
                         )}
                       />
-                    </div>
-                    
-                    <FormField
-                      control={form.control}
-                      name="contractDuration"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white">Contract Duration *</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      
+                      <FormField
+                        control={form.control}
+                        name="province"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Province/State *</FormLabel>
                             <FormControl>
-                              <SelectTrigger className="bg-black border-gray-700 text-white">
-                                <SelectValue placeholder="Select duration" />
-                              </SelectTrigger>
+                              <Input placeholder="Enter Province/State" {...field} className="bg-black border-gray-700 text-white" />
                             </FormControl>
-                            <SelectContent className="bg-black text-white border-gray-700">
-                              <SelectItem value="6 months">6 months</SelectItem>
-                              <SelectItem value="12 months">12 months</SelectItem>
-                              <SelectItem value="24 months">24 months</SelectItem>
-                              <SelectItem value="36 months">36 months</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="totalScreens"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white">Number of Screens</FormLabel>
-                          <FormControl>
-                            <div className="flex items-center">
-                              <Button 
-                                type="button" 
-                                variant="outline" 
-                                size="icon"
-                                onClick={handleDecreaseScreens}
-                                className="h-10 w-10 border-gray-700"
-                              >
-                                <Minus className="h-4 w-4" />
-                              </Button>
-                              <div className="w-20 text-center text-lg font-medium">
-                                {field.value}
-                              </div>
-                              <Button 
-                                type="button" 
-                                variant="outline" 
-                                size="icon"
-                                onClick={handleIncreaseScreens}
-                                className="h-10 w-10 border-gray-700"
-                              >
-                                <Plus className="h-4 w-4" />
-                              </Button>
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <div className="mt-6 p-4 bg-gray-900 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <p className="text-sm text-gray-300">Selected Plan</p>
-                          <p className="font-medium">{planDetails?.name}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-300">Monthly Price</p>
-                          <p className="font-medium">${calculatedPrice()} CAD</p>
-                        </div>
-                      </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
                     
-                    <div className="pt-4 flex justify-between">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="city"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">City *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter City" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="postalCode"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Postal Code *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter Postal Code" {...field} className="bg-black border-gray-700 text-white" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="contractDuration"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Contract Duration *</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger className="bg-black border-gray-700 text-white">
+                                  <SelectValue placeholder="Select duration" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className="bg-black text-white border-gray-700">
+                                <SelectItem value="3 months">3 months</SelectItem>
+                                <SelectItem value="6 months">6 months</SelectItem>
+                                <SelectItem value="12 months">12 months</SelectItem>
+                                <SelectItem value="24 months">24 months</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="totalScreens"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Total Screens *</FormLabel>
+                            <FormControl>
+                              <div className="flex">
+                                <Input 
+                                  type="number" 
+                                  {...field}
+                                  onChange={(e) => {
+                                    const value = parseInt(e.target.value) || 1;
+                                    field.onChange(value);
+                                    setSubscriptionDetails({
+                                      ...subscriptionDetails,
+                                      screens: value
+                                    });
+                                  }}
+                                  className="bg-black border-gray-700 text-white" 
+                                />
+                                <div className="flex flex-col ml-2">
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={handleIncreaseScreens}
+                                    className="h-5 w-8 border-gray-700 text-white bg-gray-800"
+                                  >
+                                    <Plus className="h-3 w-3" />
+                                  </Button>
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={handleDecreaseScreens}
+                                    disabled={form.getValues("totalScreens") <= 1}
+                                    className="h-5 w-8 mt-1 border-gray-700 text-white bg-gray-800"
+                                  >
+                                    <Minus className="h-3 w-3" />
+                                  </Button>
+                                </div>
+                              </div>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <div className="flex justify-between pt-4">
                       <Button 
                         type="button" 
-                        variant="outline" 
+                         
                         onClick={() => setStep(2)}
-                        className="border-gray-700 text-white"
+                        className="bg-digi-blue hover:bg-digi-blue/90 text-white"
                       >
                         Back
                       </Button>
                       <Button 
                         type="button" 
-                        onClick={handleNextStep} 
-                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                        onClick={handleNextStep}
+                        className="bg-digi-blue hover:bg-digi-blue/90 text-white"
                       >
-                        Next Step <ChevronRight className="ml-2 h-4 w-4" />
+                        Continue <ChevronRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
+                    
+                    {/* Visual element showing installation process */}
+                    <motion.div 
+                      className="mt-6 p-4 bg-gradient-to-br from-digi-blue/30 to-transparent rounded-lg border border-digi-blue/30"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <h3 className="text-lg font-semibold text-white mb-2">Installation Process</h3>
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-2">
+                          <p className="text-gray-300">Our professional installation team will:</p>
+                          <ul className="space-y-1">
+                            <li className="flex items-center">
+                              <Check className="h-4 w-4 text-digi-blue mr-2" />
+                              <span className="text-gray-300 text-sm">Survey your location</span>
+                            </li>
+                            <li className="flex items-center">
+                              <Check className="h-4 w-4 text-digi-blue mr-2" />
+                              <span className="text-gray-300 text-sm">Install hardware with minimal disruption</span>
+                            </li>
+                            <li className="flex items-center">
+                              <Check className="h-4 w-4 text-digi-blue mr-2" />
+                              <span className="text-gray-300 text-sm">Set up content management system</span>
+                            </li>
+                            <li className="flex items-center">
+                              <Check className="h-4 w-4 text-digi-blue mr-2" />
+                              <span className="text-gray-300 text-sm">Train your team on usage</span>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                      </div>
+                    </motion.div>
                   </motion.div>
                 )}
                 
-                {/* Step 4: Review and Agreement */}
+                {/* Step 4: Review & Confirmation */}
                 {step === 4 && (
                   <motion.div
                     key="step4"
@@ -971,77 +942,115 @@ export default function SubscriptionForm({
                     className="space-y-6"
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="bg-digi-red/20 p-2 rounded-full">
-                        <CreditCard className="h-6 w-6 text-digi-red" />
+                      <div className="bg-gradient-rgb p-2 rounded-full">
+                        <CreditCard className="h-6 w-6 text-white" />
                       </div>
-                      <h2 className="text-xl font-bold">Review & Payment</h2>
+                      <h2 className="text-xl font-bold">Order Summary</h2>
                     </div>
                     
                     <div className="space-y-4">
-                      <div className="bg-gray-900 rounded-lg p-4">
-                        <h3 className="font-semibold mb-2">Order Summary</h3>
-                        <div className="grid grid-cols-2 gap-2 text-sm">
-                          <p className="text-gray-400">Selected Plan:</p>
-                          <p>{planDetails?.name}</p>
-                          <p className="text-gray-400">Number of Screens:</p>
-                          <p>{form.getValues("totalScreens")}</p>
-                          <p className="text-gray-400">Contract Duration:</p>
-                          <p>{form.getValues("contractDuration")}</p>
-                          <p className="text-gray-400">Monthly Payment:</p>
-                          <p className="font-semibold">${calculatedPrice()} CAD</p>
+                      <div className="rounded-lg border border-gray-700 overflow-hidden">
+                        <div className="flex items-center gap-3 bg-gray-800 p-4 border-b border-gray-700">
+                          <img 
+                            src="/lovable-uploads/31ca5d5e-9078-4081-b275-427104aac166.png" 
+                            alt="Confirmation" 
+                            className="w-10 h-10 rounded-full" 
+                          />
+                          <h3 className="text-lg font-semibold">Order Details</h3>
                         </div>
-                      </div>
-                      
-                      <div className="bg-gray-900 rounded-lg p-4">
-                        <h3 className="font-semibold mb-2">Business Information</h3>
-                        <div className="grid grid-cols-2 gap-2 text-sm">
-                          <p className="text-gray-400">Business Name:</p>
-                          <p>{form.getValues("businessName")}</p>
-                          <p className="text-gray-400">Business Type:</p>
-                          <p>{form.getValues("businessType")}</p>
-                          <p className="text-gray-400">Address:</p>
-                          <p>{form.getValues("businessAddress")}, {form.getValues("city")}, {form.getValues("province")}, {form.getValues("postalCode")}, {form.getValues("businessCountry")}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-gray-900 rounded-lg p-4">
-                        <h3 className="font-semibold mb-2">Contact Information</h3>
-                        <div className="grid grid-cols-2 gap-2 text-sm">
-                          <p className="text-gray-400">Full Name:</p>
-                          <p>{form.getValues("fullName")}</p>
-                          <p className="text-gray-400">Email:</p>
-                          <p>{form.getValues("email")}</p>
-                          <p className="text-gray-400">Phone:</p>
-                          <p>{form.getValues("phoneNumber")}</p>
-                        </div>
-                      </div>
-                      
-                      {/* Rental Agreement */}
-                      <div className="bg-gray-900 rounded-lg p-4">
-                        <h3 className="font-semibold text-lg mb-4">Rental Agreement</h3>
-                        <div className="h-96 overflow-y-auto p-4 bg-gray-950 rounded-md text-left text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: generateRentalAgreement() }} />
                         
-                        <div className="mt-4 flex items-center space-x-2">
-                          <input type="checkbox" id="agree" className="w-5 h-5 text-digi-red bg-gray-800 border-gray-600 rounded focus:ring-digi-red" />
-                          <label htmlFor="agree" className="text-white text-sm">I have read and agree to the terms and conditions</label>
+                        <div className="p-4 bg-black space-y-3">
+                          <div className="flex justify-between items-center py-2">
+                            <span className="text-gray-400">Total Screens:</span>
+                            <span className="text-white font-medium">{form.getValues("totalScreens")}</span>
+                          </div>
+                          
+                          <div className="flex justify-between items-center py-2">
+                            <span className="text-gray-400">Display Price:</span>
+                            <span className="text-white font-medium">{
+                              form.getValues("plan") === "standard" ? `CA $79.99` :
+                              form.getValues("plan") === "premium" ? `CA $129.99` :
+                              `CA $199.99`
+                            }</span>
+                          </div>
+                          
+                          <div className="flex justify-between items-center py-2 border-t border-gray-700 mt-2">
+                            <span className="text-gray-200 font-semibold">Total Monthly Charge:</span>
+                            <span className="text-digi-red font-bold text-lg">{`CA $${calculatedPrice()}`}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="rounded-lg border border-gray-700 p-4">
+                        <h3 className="text-lg font-semibold mb-3">Selected Plan</h3>
+                        <div className="bg-gradient-to-br from-gray-800 to-black p-4 rounded-md">
+                          <div className="flex items-center gap-3 mb-2">
+                            {planDetails?.icon}
+                            <h4 className="font-bold">{planDetails?.name}</h4>
+                          </div>
+                          <p className="text-gray-400 mb-3">{planDetails?.description}</p>
+                          <ul className="space-y-1">
+                            {planDetails?.features.map((feature, idx) => (
+                              <li key={idx} className="flex items-start">
+                                <Check className="h-4 w-4 text-digi-green mr-2 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-300 text-sm">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="rounded-lg border border-gray-700 p-4">
+                        <h3 className="text-lg font-semibold mb-3">Terms & Conditions</h3>
+                        <div className="max-h-60 overflow-y-auto mb-4 p-5 text-sm text-gray-200 bg-black/50 rounded border border-gray-700 leading-relaxed">
+                          <h4 className="font-medium text-white mb-3">EQUIPMENT RENTAL AGREEMENT</h4>
+                          <p className="mb-3">THIS EQUIPMENT RENTAL AGREEMENT (this "Agreement") dated this 7 day of May, 2025</p>
+                          
+                          <p className="mb-3">By subscribing to our service, you agree to the terms and conditions outlined in our rental agreement.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">1. Equipment Ownership</h5>
+                          <p className="mb-3">The equipment remains the property of 360 DIGI-SIGNS at all times. Customer shall not make any alterations, changes or modifications to the equipment without written permission from 360 DIGI-SIGNS.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">2. Payment Terms</h5>
+                          <p className="mb-3">Monthly fees are charged in advance on the first day of each month. Late payments will incur a 2% fee per month on the outstanding amount.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">3. Cancellation Policy</h5>
+                          <p className="mb-3">Cancellation requires 30 days written notice to be provided to 360 DIGI-SIGNS. Any outstanding fees must be paid in full prior to cancellation being processed.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">4. Damage & Liability</h5>
+                          <p className="mb-3">Damage to equipment may result in repair charges. Customer is responsible for maintaining appropriate insurance coverage for the equipment while it is in their possession.</p>
+                          
+                          <h5 className="font-medium text-white mt-4 mb-2">5. Content Guidelines</h5>
+                          <p>Customer agrees to display only appropriate content that complies with all applicable laws and regulations. 360 DIGI-SIGNS reserves the right to review and reject any content deemed inappropriate.</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <input 
+                            type="checkbox" 
+                            id="terms" 
+                            className="h-5 w-5 rounded border-gray-500 text-digi-red focus:ring-digi-red"
+                            required 
+                          />
+                          <label htmlFor="terms" className="text-sm text-gray-300">
+                            I agree to the Terms & Conditions
+                          </label>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="pt-4 flex justify-between">
+                    <div className="flex justify-between pt-4">
                       <Button 
                         type="button" 
                         variant="outline" 
                         onClick={() => setStep(3)}
-                        className="border-gray-700 text-white"
+                        className="border-gray-700 text-white hover:bg-gray-800"
                       >
                         Back
                       </Button>
                       <Button 
-                        type="submit" 
-                        className="bg-digi-red hover:bg-digi-red/90 text-white"
+                        type="submit"
+                        className="bg-gradient-rgb bg-300% animate-flow-rgb text-white"
                       >
-                        Complete Subscription
+                        Complete Order
                       </Button>
                     </div>
                   </motion.div>
