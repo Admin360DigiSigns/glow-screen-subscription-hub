@@ -88,11 +88,11 @@ const Products = () => {
 
       <Navbar />
 
-      {/* Header section with more vibrant gradient headers */}
+      {/* Header section with RGB theme gradient headers like homepage */}
       <section className="relative pt-28 pb-12 px-4">
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-rgb-animated drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
               Digital Signage
             </span>
             <span className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"> Solutions</span>
@@ -104,7 +104,7 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Category navigation */}
+      {/* Category navigation with RGB theme buttons */}
       <section className="py-8 relative z-10">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-3">
@@ -114,8 +114,8 @@ const Products = () => {
                 onClick={() => setActiveCategory(category.id === activeCategory ? null : category.id)}
                 className={`${
                   category.id === activeCategory 
-                    ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white" 
-                    : "bg-gray-800 hover:bg-gray-700 text-white"
+                    ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white animate-pulse-rgb" 
+                    : "bg-gray-800 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-500 text-white"
                 } transition-all duration-300`}
               >
                 {category.name}
@@ -125,7 +125,7 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products grid */}
+      {/* Products grid with RGB theme styling */}
       <section className="py-12 px-4 relative z-10">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -149,7 +149,7 @@ const Products = () => {
                         className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                       />
                     </div>
-                    <CardTitle className="text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold">
+                    <CardTitle className="text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold animate-pulse-rgb">
                       {category.name}
                     </CardTitle>
                     <CardDescription className="text-gray-300 text-center">
@@ -180,11 +180,11 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Product Highlights with vibrant headers */}
+      {/* Product Highlights with RGB theme headers */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse-rgb drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
               Discover Our Premium
             </span>
             <span className="text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]"> Display Technology</span>
@@ -203,7 +203,7 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Indoor Digital Displays</h3>
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse-rgb">Indoor Digital Displays</h3>
               <p className="text-white mb-6">
                 Our indoor digital screens provide crystal clear visuals and vibrant colors, perfect for retail environments, corporate settings, and entertainment venues. Available in various sizes and configurations to meet your specific needs.
               </p>
@@ -221,7 +221,7 @@ const Products = () => {
                   <span className="text-white">Remote content management system</span>
                 </li>
               </ul>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto">
+              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto animate-pulse-rgb">
                 Explore Indoor Solutions
               </Button>
             </div>
@@ -238,7 +238,7 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Outdoor LED Technology</h3>
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse-rgb">Outdoor LED Technology</h3>
               <p className="text-white mb-6">
                 Built to withstand harsh weather conditions, our outdoor LED screens deliver exceptional brightness and visibility even in direct sunlight. Ideal for storefronts, event venues, and high-traffic areas where visibility is crucial.
               </p>
@@ -256,18 +256,18 @@ const Products = () => {
                   <span className="text-white">Temperature resistant (-20°C to 50°C)</span>
                 </li>
               </ul>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto">
+              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto animate-pulse-rgb">
                 Discover Outdoor Options
               </Button>
             </div>
           </div>
           
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Custom Solutions Available</h3>
+            <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse-rgb">Custom Solutions Available</h3>
             <p className="text-white mb-8 max-w-2xl mx-auto">
               Don't see exactly what you need? Our team specializes in creating custom digital signage solutions tailored to your specific requirements and space constraints.
             </p>
-            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white text-lg px-8 py-6">
+            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white text-lg px-8 py-6 animate-pulse-rgb">
               Request Custom Quote
             </Button>
           </div>
