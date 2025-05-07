@@ -1,6 +1,7 @@
 
-import { Check } from "lucide-react";
+import { Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const plans = [
   {
@@ -70,26 +71,35 @@ const SubscriptionPlans = () => {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`relative rounded-2xl shadow-lg border-2 ${
+              className={`relative rounded-2xl shadow-lg ${
                 plan.isPopular 
-                  ? `border-${plan.color}` 
-                  : 'border-transparent'
+                  ? 'mt-6 ring-2 ring-digi-green ring-offset-4 ring-offset-black' 
+                  : 'border-2 border-transparent'
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-5 left-0 right-0 flex justify-center">
-                  <div className="px-6 py-2 bg-white rounded-full text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-yellow-500">★</span>
-                      MOST POPULAR
-                      <span className="text-yellow-500">★</span>
-                    </div>
+                <div className="absolute -top-6 inset-x-0 z-10">
+                  <div className="flex justify-center">
+                    <motion.div 
+                      className="px-8 py-2 rounded-full bg-gradient-to-r from-digi-green/90 to-digi-blue/90 border-2 border-white text-white font-bold shadow-[0_0_15px_rgba(106,176,76,0.8)] animate-pulse-slow"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center justify-center gap-2">
+                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                        <span className="text-white text-lg tracking-wider">MOST POPULAR</span>
+                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
               )}
-              <div className="p-8">
+              <div className={`p-8 bg-gradient-to-br ${
+                plan.color === "digi-red" ? "from-digi-red/10 to-black/95" :
+                plan.color === "digi-green" ? "from-digi-green/10 to-black/95" :
+                "from-digi-blue/10 to-black/95"
+              } rounded-2xl border border-white/10`}>
                 <h3 className={`text-2xl font-bold mb-2 text-${plan.color}`}>{plan.name}</h3>
-                <p className="text-gray-600 mb-4">{plan.description}</p>
+                <p className="text-gray-400 mb-4">{plan.description}</p>
                 <div className="flex items-end mb-8">
                   <span className="text-4xl font-bold">${plan.price}</span>
                   <span className="text-gray-600 ml-1">/month</span>
@@ -97,8 +107,18 @@ const SubscriptionPlans = () => {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center">
-                      <Check className={`h-5 w-5 mr-2 text-${plan.color}`} />
-                      <span className="text-gray-700">{feature}</span>
+                      <div className={`h-5 w-5 mr-3 flex items-center justify-center rounded-full ${
+                        plan.color === "digi-red" ? "bg-red-500/20" :
+                        plan.color === "digi-green" ? "bg-green-500/20" :
+                        "bg-blue-500/20"
+                      }`}>
+                        <Check className={`h-3 w-3 ${
+                          plan.color === "digi-red" ? "text-red-400" :
+                          plan.color === "digi-green" ? "text-green-400" :
+                          "text-blue-400"
+                        }`} />
+                      </div>
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
