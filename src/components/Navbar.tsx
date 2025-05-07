@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Menu, X, Facebook, Instagram } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
@@ -40,13 +40,13 @@ const Navbar = () => {
                 <span className="text-rgb-animated font-display mr-4" font-bold><a href="/#showcase">About Us</a></span>
                 <div className="flex items-center space-x-4 ml-2 social-icons-container">
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <Facebook size={24} className="text-[#4267B2]" />
+                    <img src="/lovable-uploads/350f96ba-eebc-4cbc-a344-3d9ac4f16e8b.png" alt="Facebook" className="w-8 h-8" />
                   </a>
                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <X size={24} className="text-black bg-white rounded-full p-0.5" />
+                    <img src="/lovable-uploads/1f347ba0-55b6-475f-9a01-de30f77a85b5.png" alt="X" className="w-8 h-8" />
                   </a>
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon hover:scale-110 transition-transform">
-                    <Instagram size={24} className="text-[#E1306C]" />
+                    <img src="/lovable-uploads/38610cd8-f8c5-4f3c-8ea1-2459d62ca5ff.png" alt="Instagram" className="w-8 h-8" />
                   </a>
                 </div>
               </div>
@@ -75,7 +75,13 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
+                </svg>
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -90,13 +96,13 @@ const Navbar = () => {
           <a href="/#showcase" className="block px-3 py-2 rounded-md text-base font-display font-bold text-white hover:bg-gray-900 animate-glow-pulse">About Us</a>
           <div className="flex items-center space-x-4 px-3 py-2 mt-2">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <Facebook size={26} className="text-[#4267B2]" />
+              <img src="/lovable-uploads/350f96ba-eebc-4cbc-a344-3d9ac4f16e8b.png" alt="Facebook" className="w-8 h-8" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <X size={26} className="text-black bg-white rounded-full p-0.5" />
+              <img src="/lovable-uploads/1f347ba0-55b6-475f-9a01-de30f77a85b5.png" alt="X" className="w-8 h-8" />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon-mobile">
-              <Instagram size={26} className="text-[#E1306C]" />
+              <img src="/lovable-uploads/38610cd8-f8c5-4f3c-8ea1-2459d62ca5ff.png" alt="Instagram" className="w-8 h-8" />
             </a>
           </div>
           <div className="px-3 py-2">
