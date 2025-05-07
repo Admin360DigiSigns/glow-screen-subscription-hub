@@ -7,68 +7,55 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const showcaseImages = [
   {
     src: "/lovable-uploads/daa97f75-40ac-4c27-b4e7-a1b534654e56.png",
-    alt: "Janta Tea Stall with LED display",
-    title: "Digital Signage for Small Businesses"
+    alt: "Janta Tea Stall with LED display"
   },
   {
     src: "/lovable-uploads/1aa5a6ea-b596-4e57-9966-84b9521adcdf.png",
-    alt: "Hakka logo illuminated display",
-    title: "LED Backlit Storefront Signage"
+    alt: "Hakka logo illuminated display"
   },
   {
     src: "/lovable-uploads/1d361410-4cb4-497e-8a27-4e713fe0921e.png",
-    alt: "Hakka Nation restaurant digital display",
-    title: "Restaurant Digital Menu Boards"
+    alt: "Hakka Nation restaurant digital display"
   },
   {
     src: "/lovable-uploads/12ed8fa7-9cc9-4ada-aefa-6c1ffd2ccce2.png",
-    alt: "Large smartphone display on building",
-    title: "Building Facade Video Wall"
+    alt: "Large smartphone display on building"
   },
   {
     src: "/lovable-uploads/fa06d4ee-9cf9-4072-b6f9-94917a3178bd.png",
-    alt: "Chai Hai digital menu display",
-    title: "Interactive Beverage Menus"
+    alt: "Chai Hai digital menu display"
   },
   {
     src: "/lovable-uploads/d03bb943-ff57-4e6d-b06f-33a4261175a6.png",
-    alt: "2 for 20 sandwich combos digital sign",
-    title: "Dynamic Promotional Displays"
+    alt: "2 for 20 sandwich combos digital sign"
   },
   {
     src: "/lovable-uploads/50a56687-0542-4401-9453-856bc48c8ea7.png",
-    alt: "Pro Passport Photo digital sign",
-    title: "Retail Service Advertising"
+    alt: "Pro Passport Photo digital sign"
   },
   {
     src: "/lovable-uploads/e0cebf14-cb64-4d2a-b651-ff8878e38a9d.png",
-    alt: "Tawa Kitchen digital menu display",
-    title: "Food Item Promotion Screen"
+    alt: "Tawa Kitchen digital menu display"
   },
   {
     src: "/lovable-uploads/9c92c5a4-6436-431e-9ddb-dc17df729e3d.png",
-    alt: "Choice Indian Restaurant with digital displays",
-    title: "Multi-Screen Restaurant Marketing"
+    alt: "Choice Indian Restaurant with digital displays"
   },
   {
     src: "/lovable-uploads/1f84ea85-a2d9-4fc4-951b-712caa2d2394.png",
-    alt: "Choice Restaurant signage at night",
-    title: "Night-Time Digital Advertising"
+    alt: "Choice Restaurant signage at night"
   },
   {
     src: "/lovable-uploads/bb518ef3-58be-4bf0-8058-a0c54bfe78e9.png",
-    alt: "Korean Shop coming soon display",
-    title: "Coming Soon Announcements"
+    alt: "Korean Shop coming soon display"
   },
   {
     src: "/lovable-uploads/d57eb9f2-1fba-479e-90f5-d681548d7c73.png",
-    alt: "Hakka Nation illuminated storefront",
-    title: "Full Storefront Digital Integration"
+    alt: "Hakka Nation illuminated storefront"
   },
   {
     src: "/lovable-uploads/b17c695d-c844-4445-9606-355a80aee342.png",
-    alt: "Xpress Pizza House digital menu displays",
-    title: "Multi-Offer Digital Signage"
+    alt: "Xpress Pizza House digital menu displays"
   }
 ];
 
@@ -125,7 +112,7 @@ const Showcase = () => {
             </Button>
           </div>
           
-          {/* Horizontal scrolling gallery */}
+          {/* Horizontal scrolling gallery - removed text content underneath images */}
           <div 
             ref={scrollContainerRef}
             className="flex overflow-x-auto space-x-4 pb-6 no-scrollbar scroll-smooth snap-x"
@@ -147,10 +134,6 @@ const Showcase = () => {
                       className="w-full h-full object-cover" 
                       loading="lazy"
                     />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-white font-bold text-lg">{image.title}</h3>
-                    <p className="text-gray-400 text-sm mt-1">{image.alt}</p>
                   </div>
                 </div>
               </div>
