@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FormBackground from "@/components/FormBackground";
-import { SubscriptionFormSteps } from "@/components/SubscriptionFormSteps";
+import SubscriptionFormSteps from "@/components/SubscriptionFormSteps";
 
 export interface SubscriptionFormProps {
   open: boolean;
