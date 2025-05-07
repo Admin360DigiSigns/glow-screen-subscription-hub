@@ -22,24 +22,45 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission with a timeout
-    setTimeout(() => {
+    try {
+      // Create a mailto URL with the form data
+      const subject = encodeURIComponent(`New Inquiry from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone || 'Not provided'}\n\n` +
+        `Message:\n${formData.message}`
+      );
+      
+      // Open the default email client
+      window.open(`mailto:Info@360digisigns.com?subject=${subject}&body=${body}`);
+      
       toast({
         title: "Inquiry Submitted",
-        description: "We'll get back to you as soon as possible!",
+        description: "Email client opened. Please send the email to complete your inquiry.",
       });
-      setIsSubmitting(false);
+
+      // Reset the form
       setFormData({
         name: "",
         email: "",
         phone: "",
         message: ""
       });
-    }, 1000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was a problem submitting your inquiry. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
