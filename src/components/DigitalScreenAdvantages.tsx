@@ -71,7 +71,7 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Transparent Screen Highlight Box */}
+        {/* Transparent Screen Highlight Box - Content Removed */}
         <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
           <div className="absolute inset-0 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
           <div className="relative overflow-hidden rounded-xl p-8 bg-black/40 backdrop-blur-md border border-white/10">
@@ -116,51 +116,10 @@ const DigitalScreenAdvantages = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-digi-red/20 via-digi-green/20 to-digi-blue/20 rounded-xl animate-pulse opacity-50"></div>
                 <div className="relative bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10">
-                  <h4 className="text-xl font-semibold text-white mb-4">Transparent Display Specifications</h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-digi-red rounded-full mt-2 mr-2"></div>
-                      <div>
-                        <span className="font-semibold text-white">Transparency Level:</span>
-                        <span className="text-gray-300 ml-2">Up to 80% with adjustable opacity</span>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-digi-green rounded-full mt-2 mr-2"></div>
-                      <div>
-                        <span className="font-semibold text-white">Resolution:</span>
-                        <span className="text-gray-300 ml-2">Full HD to 4K options available</span>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-digi-blue rounded-full mt-2 mr-2"></div>
-                      <div>
-                        <span className="font-semibold text-white">Panel Type:</span>
-                        <span className="text-gray-300 ml-2">OLED with transparent substrate</span>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-digi-red rounded-full mt-2 mr-2"></div>
-                      <div>
-                        <span className="font-semibold text-white">Sizes:</span>
-                        <span className="text-gray-300 ml-2">32" to 84" diagonal</span>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-digi-green rounded-full mt-2 mr-2"></div>
-                      <div>
-                        <span className="font-semibold text-white">Installation Options:</span>
-                        <span className="text-gray-300 ml-2">Hanging, freestanding, or wall-mounted</span>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-digi-blue rounded-full mt-2 mr-2"></div>
-                      <div>
-                        <span className="font-semibold text-white">Interactivity:</span>
-                        <span className="text-gray-300 ml-2">Optional touch capability</span>
-                      </div>
-                    </li>
-                  </ul>
+                  <h4 className="text-xl font-semibold text-white mb-4">Transparent Display Features</h4>
+                  <div className="flex flex-col space-y-6">
+                    {/* Content intentionally left empty as per user request */}
+                  </div>
                 </div>
               </div>
             </div>
