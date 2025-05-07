@@ -36,7 +36,7 @@ const plans = [
       "Analytics Dashboard"
     ],
     color: "digi-green",
-    isPopular: true,
+    isPopular: false,
     value: "premium"
   },
   {
@@ -86,19 +86,6 @@ const SubscriptionPlans = () => {
               key={index}
               className="relative rounded-2xl shadow-lg border-2 border-transparent h-full"
             >
-              {plan.isPopular && (
-                <div className="absolute -top-5 inset-x-0 flex justify-center z-10">
-                  <motion.div
-                    className="px-4 py-1 bg-gradient-to-r from-digi-green to-digi-blue rounded-full text-white text-sm font-bold shadow-lg"
-                    initial={{ y: -10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    Most Popular
-                  </motion.div>
-                </div>
-              )}
-              
               <div className={`p-8 bg-gradient-to-br ${
                 plan.color === "digi-red" ? "from-digi-red/10 to-black/95" :
                 plan.color === "digi-green" ? "from-digi-green/10 to-black/95" :
