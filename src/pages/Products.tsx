@@ -18,7 +18,7 @@ const Products = () => {
       icon: <Monitor className="h-10 w-10" />,
       features: ["Ultra-bright LED panels", "Slim profile design", "Multiple size options", "4K resolution support"],
       animation: "float",
-      image: "/lovable-uploads/1aa5a6ea-b596-4e57-9966-84b9521adcdf.png"
+      image: "/lovable-uploads/2a4551f7-3b70-4b91-9f39-aae6fa2ee77b.png"
     },
     {
       id: "videowall",
@@ -88,16 +88,19 @@ const Products = () => {
 
       <Navbar />
 
-      {/* Header section */}
+      {/* Header section with more vibrant gradient headers */}
       <section className="relative pt-28 pb-12 px-4">
         <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">Digital Signage</span> Solutions
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+              Digital Signage
+            </span>
+            <span className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"> Solutions</span>
           </h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8 text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
             Transform your space with our state-of-the-art digital display technology
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-300 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-400 to-red-400 mx-auto rounded-full"></div>
         </div>
       </section>
 
@@ -111,7 +114,7 @@ const Products = () => {
                 onClick={() => setActiveCategory(category.id === activeCategory ? null : category.id)}
                 className={`${
                   category.id === activeCategory 
-                    ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white" 
+                    ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white" 
                     : "bg-gray-800 hover:bg-gray-700 text-white"
                 } transition-all duration-300`}
               >
@@ -146,7 +149,9 @@ const Products = () => {
                         className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                       />
                     </div>
-                    <CardTitle className="text-2xl text-center text-digi-green font-semibold drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">{category.name}</CardTitle>
+                    <CardTitle className="text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold">
+                      {category.name}
+                    </CardTitle>
                     <CardDescription className="text-gray-300 text-center">
                       {category.description}
                     </CardDescription>
@@ -156,7 +161,7 @@ const Products = () => {
                     <ul className="space-y-2">
                       {category.features.map((feature, i) => (
                         <li key={i} className="flex items-center">
-                          <span className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-2"></span>
+                          <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
                           <span className="text-white">{feature}</span>
                         </li>
                       ))}
@@ -164,7 +169,7 @@ const Products = () => {
                   </CardContent>
                   
                   <CardFooter className="relative flex justify-center mt-auto pb-6">
-                    <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white">
+                    <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
                       Learn More
                     </Button>
                   </CardFooter>
@@ -175,52 +180,55 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Product Highlights */}
+      {/* Product Highlights with vibrant headers */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
-            Discover Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">Premium</span> Display Technology
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+              Discover Our Premium
+            </span>
+            <span className="text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]"> Display Technology</span>
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-gray-900/80 backdrop-blur-sm h-[600px] flex flex-col shadow-lg shadow-blue-900/20">
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-600 opacity-20 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-500 opacity-20 rounded-full blur-3xl"></div>
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-600 opacity-20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-pink-500 opacity-20 rounded-full blur-3xl"></div>
               
               <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="/lovable-uploads/1aab47e4-2e45-45df-be00-ed0fa694df7b.png" 
+                  src="/lovable-uploads/2a4551f7-3b70-4b91-9f39-aae6fa2ee77b.png" 
                   alt="Indoor Digital Display"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 text-digi-green drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">Indoor Digital Displays</h3>
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Indoor Digital Displays</h3>
               <p className="text-white mb-6">
                 Our indoor digital screens provide crystal clear visuals and vibrant colors, perfect for retail environments, corporate settings, and entertainment venues. Available in various sizes and configurations to meet your specific needs.
               </p>
               <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-digi-green rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
                   <span className="text-white">Ultra-slim bezels for seamless integration</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-pink-400 to-red-400 rounded-full mr-2"></span>
                   <span className="text-white">4K resolution for stunning clarity</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-red-400 to-orange-400 rounded-full mr-2"></span>
                   <span className="text-white">Remote content management system</span>
                 </li>
               </ul>
-              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white mt-auto">
+              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto">
                 Explore Indoor Solutions
               </Button>
             </div>
             
             <div className="relative overflow-hidden rounded-xl p-8 border border-gray-800 bg-gray-900/80 backdrop-blur-sm h-[600px] flex flex-col shadow-lg shadow-blue-900/20">
-              <div className="absolute -top-20 -left-20 w-40 h-40 bg-cyan-500 opacity-20 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-blue-600 opacity-20 rounded-full blur-3xl"></div>
+              <div className="absolute -top-20 -left-20 w-40 h-40 bg-pink-500 opacity-20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-purple-600 opacity-20 rounded-full blur-3xl"></div>
               
               <div className="h-48 w-full mb-6 overflow-hidden rounded-lg">
                 <img 
@@ -230,36 +238,36 @@ const Products = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4 text-digi-green drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">Outdoor LED Technology</h3>
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Outdoor LED Technology</h3>
               <p className="text-white mb-6">
                 Built to withstand harsh weather conditions, our outdoor LED screens deliver exceptional brightness and visibility even in direct sunlight. Ideal for storefronts, event venues, and high-traffic areas where visibility is crucial.
               </p>
               <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-red-400 to-orange-400 rounded-full mr-2"></span>
                   <span className="text-white">Weather-resistant construction (IP65 rated)</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-digi-green rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
                   <span className="text-white">High brightness levels (7000+ nits)</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-pink-400 to-red-400 rounded-full mr-2"></span>
                   <span className="text-white">Temperature resistant (-20°C to 50°C)</span>
                 </li>
               </ul>
-              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white mt-auto">
+              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white mt-auto">
                 Discover Outdoor Options
               </Button>
             </div>
           </div>
           
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 text-digi-green drop-shadow-[0_0_2px_rgba(106,176,76,0.5)]">Custom Solutions Available</h3>
+            <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Custom Solutions Available</h3>
             <p className="text-white mb-8 max-w-2xl mx-auto">
               Don't see exactly what you need? Our team specializes in creating custom digital signage solutions tailored to your specific requirements and space constraints.
             </p>
-            <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white text-lg px-8 py-6">
+            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white text-lg px-8 py-6">
               Request Custom Quote
             </Button>
           </div>
@@ -272,4 +280,3 @@ const Products = () => {
 };
 
 export default Products;
-
