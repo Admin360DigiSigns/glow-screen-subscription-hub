@@ -1,3 +1,4 @@
+
 import { Monitor, Zap, Smartphone, Check, Video, RefreshCw, Shield, Images } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -70,17 +71,15 @@ const DigitalScreenAdvantages = () => {
           </p>
         </div>
 
-        {/* Feature showcase image - REDUCED SIZE to approximately 5x5 cms */}
-        <div className="mb-16 relative animate-fade-in flex justify-center" style={{animationDelay: "0.4s"}}>
-          <div className="w-48 h-48"> {/* Approximately 5x5 cms (192x192px) */}
-            <div className="absolute inset-0.5 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
-            <div className="relative overflow-hidden rounded-xl h-full">
-              <img 
-                src="/lovable-uploads/d0bf0d7e-dc73-4ecb-86be-ad2c4768b83b.png" 
-                alt="360 DIGI-SIGNS Premium Digital Display" 
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </div>
+        {/* Feature showcase image - REPLACED with new full-width image */}
+        <div className="mb-16 relative animate-fade-in" style={{animationDelay: "0.4s"}}>
+          <div className="absolute inset-0.5 bg-gradient-rgb rounded-xl opacity-75 blur-sm"></div>
+          <div className="relative overflow-hidden rounded-xl">
+            <img 
+              src="/lovable-uploads/2ca46601-7103-4b63-b9e8-6869c17c6049.png" 
+              alt="360 DIGI-SIGNS Premium Digital Display" 
+              className="w-full h-auto object-cover rounded-xl"
+            />
           </div>
         </div>
         
