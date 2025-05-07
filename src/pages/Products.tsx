@@ -161,13 +161,12 @@ const Products = () => {
       {/* Main content section with products grid and why choose card - UPDATED LAYOUT */}
       <section className="py-12 px-4 relative z-10">
         <div className="container mx-auto">
-          {/* Changed the grid layout structure to fill empty space when a product is selected */}
+          {/* Modified the grid layout to show products and Why Choose card when category is selected */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {productCategories.map((category, index) => {
               // Only display this product card if no category is selected or this is the selected category
               const isVisible = activeCategory === null || activeCategory === category.id;
               // When a category is selected, determine if this should be shown in the original position
-              // or moved to a different grid position to fill the empty space
               const gridPosition = activeCategory && category.id === activeCategory 
                 ? "lg:col-span-2" // Selected product spans 2 columns when category is active
                 : ""; // Default position when no category selected
@@ -181,11 +180,11 @@ const Products = () => {
                   variants={fadeInUpVariants}
                   className={`${isVisible ? "block" : "hidden"} ${gridPosition}`}
                 >
-                  <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-[500px] flex flex-col shadow-lg shadow-blue-900/20">
+                  <Card className="bg-gray-900 border border-gray-800 overflow-hidden h-full flex flex-col shadow-lg shadow-blue-900/20">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20 opacity-20"></div>
                     
                     <CardHeader className="relative">
-                      <div className="h-52 w-full mb-4 overflow-hidden rounded-lg">
+                      <div className="h-60 w-full mb-4 overflow-hidden rounded-lg">
                         <img 
                           src={category.image} 
                           alt={category.name}
@@ -230,9 +229,9 @@ const Products = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="h-full"
+                className="lg:col-span-1"
               >
-                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 sticky top-24 h-[500px] flex flex-col justify-between">
+                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 h-full flex flex-col justify-between">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
                   
                   <CardHeader className="relative border-b border-gray-800">
@@ -269,61 +268,6 @@ const Products = () => {
                     </Button>
                     <Button className="w-full bg-transparent border border-pink-500 text-white hover:bg-pink-500/10">
                       Schedule Demo
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            )}
-            
-            {/* Fill the empty space with detailed product content when a category is selected */}
-            {activeCategory && selectedCategory && (
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="h-full"
-              >
-                <Card className="bg-gray-900 border border-gray-800 overflow-hidden shadow-lg shadow-purple-900/20 h-[500px] flex flex-col">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20 opacity-20"></div>
-                  
-                  <CardHeader className="relative border-b border-gray-800">
-                    <CardTitle className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold">
-                      Technical Specifications
-                    </CardTitle>
-                  </CardHeader>
-                  
-                  <CardContent className="pt-6 flex-grow overflow-y-auto">
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-medium text-white mb-2">Dimensions</h4>
-                        <p className="text-gray-300 text-sm">Available in multiple sizes from 32" to 98" to fit your space requirements</p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-medium text-white mb-2">Resolution</h4>
-                        <p className="text-gray-300 text-sm">Choose from Full HD (1080p) or Ultra HD (4K) for crystal clear visuals</p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-medium text-white mb-2">Connectivity</h4>
-                        <p className="text-gray-300 text-sm">HDMI, DisplayPort, USB, RS232, and network connectivity for flexible integration</p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-medium text-white mb-2">Operating System</h4>
-                        <p className="text-gray-300 text-sm">Android or Windows options with customizable interface to match your brand</p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-medium text-white mb-2">Installation</h4>
-                        <p className="text-gray-300 text-sm">Professional installation available with various mounting options (wall, ceiling, floor stand)</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                  
-                  <CardFooter className="pt-2 border-t border-gray-800">
-                    <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
-                      Download Spec Sheet
                     </Button>
                   </CardFooter>
                 </Card>
