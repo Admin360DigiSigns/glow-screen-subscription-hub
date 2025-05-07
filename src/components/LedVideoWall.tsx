@@ -2,6 +2,8 @@ import { Check, X, Monitor, Tv, Layers, Image, Video, Maximize, ScreenShare } fr
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import ContactForm from "@/components/ContactForm";
 
 const pros = [
   {
@@ -254,9 +256,16 @@ const LedVideoWall = () => {
           </div>
           
           <div className="mt-12 text-center animate-fade-in" style={{animationDelay: "1.6s"}}>
-            <Button className="bg-rgb-animated font-bold">
-              Request a Consultation
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="bg-rgb-animated font-bold">
+                  Request a Consultation
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-black border-gray-800 text-white max-w-xl">
+                <ContactForm />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
-
 import { Monitor, Zap, Smartphone, Check, Video, RefreshCw, Shield, Images, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import ContactForm from "@/components/ContactForm";
 
 const advantages = [
   {
@@ -161,9 +162,16 @@ const DigitalScreenAdvantages = () => {
         
         {/* Call to action */}
         <div className="text-center animate-fade-in" style={{animationDelay: "1.1s"}}>
-          <Button className="bg-rgb-animated font-bold">
-            Explore Digital Solutions
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="bg-rgb-animated font-bold">
+                Explore Digital Solutions
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-black border-gray-800 text-white max-w-xl">
+              <ContactForm />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>
